@@ -28,3 +28,16 @@ Literatura generica de monotonicos:
 			-seran restricciones con respecto a la probabilidad de distribución de los 
 			 datos y con repecto a las imposiciones de la función de perdida bajo las cuales
 			 el clasificador optimo de Bayes es monotono.
+			-DOMINANCIA ESTOCASTICA:
+				-la restriccion de monotonia comentada (si  x>=x' -> h(x)>=h(x')) no siempre
+				 se aplica en la practica de forma tan restrictiva, por ello hemos de 
+				 hablar en términos probabilisticos a la hora de referirnos a dichas
+				 restricciones
+				-Decimos entonces que, siendo 'k' una de las posibles clases a tomar en el 
+				 dominio por una instancia 'x', y siendo 'y' la etiqueta asignada a una
+				 instancia 'x', si la restricción monótona nos dice que x>=x', entonces
+				 la dominancia estocastica nos dice que P(y<=k|x)<=P(y<=k|x').
+				 Es decir, que la probabilidad de que el valor asignado (y) a la instancia 
+				 dominante (x) sea mayor que cierto valor de la clase fijado (k), es mayor
+				 que la probabilidad de que el valor asignado (y) a la instancia dominada(x')
+				 sea mayor que cierto valor de la clase fijado.
