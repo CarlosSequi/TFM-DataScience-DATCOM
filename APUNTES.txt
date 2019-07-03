@@ -41,3 +41,15 @@ Literatura generica de monotonicos:
 				 dominante (x) sea mayor que cierto valor de la clase fijado (k), es mayor
 				 que la probabilidad de que el valor asignado (y) a la instancia dominada(x')
 				 sea mayor que cierto valor de la clase fijado.
+				-la relacion de dominancia estocastica entre distribuciones se denota asi:
+					x >= x' -> P(y|x) >= P(y|x')
+			-CLASIFICADOR MONOTONO DE BAYES
+				-en el problema de clasificacion el objetivo es encontrar el clasificador más
+				 parecido al clasificador de Bayes, es decir, esta es nuestra función objetivo.
+				-Siendo esta nuestra funcion objetivo, es un requisito que tambien aplique
+				 las restricciones de monotonía que hemos enunciado. Problema: aunque la
+				 distribucion de probabilidad tiene restricciones monotonicas, el clasificador
+				 de Bayes no siempre las matiene.
+				-para solucionar este problema y mantener la monotonia en el clasificador de 
+				 Bayes, han de imponerse una serie de restricciones a la funcion de perdida:
+				 	-
