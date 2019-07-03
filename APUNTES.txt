@@ -1,0 +1,30 @@
+Literatura generica de monotonicos:
+	-Kotlowski:
+		-clasificacion ordinal con restricciones monotonicas: maneja conocimiento subyacente del
+		 problema sobre clases ordenadas, atributos ordenados y una relacion monotonica entre
+		 la evaluacion de los atributos de una instancia y la asignacion de esta a una clase.
+		-principio de dominancia: a mayor valor en atributos de una instancia, mayor sera el
+		 valor de la clase a la que se asigna dicha instancia (clasificacion ordinal con
+		 restricciones monotonicas)
+		-si no hay relacion de monotonia en la asociacion de una clase a una instancia, 
+		 pero las clases si poseen un orden se considera clasificacion ordinal tan solo
+		-con las restricciones de monotonia presentes se puede trabajar con una amplia
+		 variedad de funciones sin temor a que introduzcan más restricciones que 
+		 la de monotonia: es posible hacer inferencia de la clase sobre todas las funciones
+		 monotonas.
+		-proposito del paper:
+			-formalizar la aproximacion de clasificcacion con restricciones monotonicas
+			-analizar los metodos no parametricos de clasificacion
+				-plug-in: estimando la distribucion condicional de la clase. Provienen de la
+				 clasificacion isotonica (monotona creciente o decreciente)
+				-empirical risk (direct approach): minimizando el riesgo empirico
+		-usando el termino de "relacion de dominancia" decimos que una instancia x domina a
+		 otra instancia x' cuando cada una de las variables de entrada de x (atributos de x)
+		 son mayores o iguales que cada uno de los de x', se denota x>=x' y por tanto
+		 x tendra asignada una etiqueta de clase mayor que x'.
+		-una funcion es monotona si x>=x' -> h(x)>=h(x'). Es decir, si x domina a x', la
+		 inferencia de clase de x ha de ser superior a la de x'.
+		-RESTRICCIONES MONOTONICAS:
+			-seran restricciones con respecto a la probabilidad de distribución de los 
+			 datos y con repecto a las imposiciones de la función de perdida bajo las cuales
+			 el clasificador optimo de Bayes es monotono.
