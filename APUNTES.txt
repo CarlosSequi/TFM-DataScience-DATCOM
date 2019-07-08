@@ -51,9 +51,20 @@ Literatura generica de monotonicos:
 				 distribucion de probabilidad tiene restricciones monotonicas, el clasificador
 				 de Bayes no siempre las mantiene.
 				-para solucionar este problema y mantener la monotonia en el clasificador de 
-				 Bayes, ha de imponerse la siguiente restriccion a la funcion de perdida(L):
+				 Bayes, han de imponerse las siguientes restricciones a la funcion de perdida
+				 (L):
 				 	-L(y,k+1)-L(y,k) >= L(y+1,k+1)-L(y+1,k)
-				 	-demostrado en  Computer Society Digital Library at http:// doi.ieeecomputersociety.org/10.1109/TKDE.2012.204
-				 	-esta caracteristica de la funcion de perdida es necesaria
-				 	 en la clasificacion con restricciones monotonicas, si no no tendria sentido
-				 	 minimizar el riesgo dentro de la clase de las funciones monotonas.
+					 	-demostrado en  Computer Society Digital Library at 
+					 	http://doi.ieeecomputersociety.org/10.1109/TKDE.2012.204
+					 	-esta caracteristica de la funcion de perdida es necesaria
+					 	 en la clasificacion con restricciones monotonicas, si no no
+					 	  tendria sentido minimizar el riesgo dentro de la clase de las funciones monotonas.
+					-la siguiente definicion de convexidad es necesaria tambien para
+					 mantener la restriccion de monotonia en el clasificador de Bayes:
+					 	-siendo L(y,k) = c(y-k) (con c(0)=0)
+					 	-la funcion c(k) es convexa si, para todo k entre -(k-1) y (k-1):
+					 		c(k) <= (c(k-1)+c(k+1))/2
+					 	-el clasificador de Bayes es monotono si y solo si c(k) (que es
+					 	 la V-shaped loss function) es convexa.
+
+		-APROXIMACIÓN PLUG-IN:
