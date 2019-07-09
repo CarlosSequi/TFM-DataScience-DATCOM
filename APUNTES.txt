@@ -89,3 +89,14 @@ Literatura generica de monotonicos:
 				-la eleccion de la funcion de error (funcion de perdida de error cuadratico)
 				 parece ser arbitraria. Puede verse que haciendo uso de otras funciones
 				 de perdida, se llega al mismo resultado.
+				-la regresion isotonica es un problema de optimizacion cuadratica con 
+				 restricciones lineales, por ello puede ser resuelta de forma eficiente con
+				 la mayoria de los resolutores de optimizacion de proposito general.
+			-MULTICLASS PROBLEM:
+				-basado en la regresion isotonica multiclase
+				-la idea es descomponer el problema de K-clases en varios problemas binarios
+				 y aplicar regresion isotonica a cada uno de los problemas.
+				-Esta demostrado que la descomposicion del problema de estimacion de 
+				 probabilidad para el caso de multiclase  siempre forman una adecuada 
+				 distribucion de probabilidad, es decir, que siempre son no-negativos
+				 y la suma es igual a 1.
