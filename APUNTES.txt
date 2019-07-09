@@ -72,4 +72,20 @@ Literatura generica de monotonicos:
 			 funciones monotonas. Estos son los que consideraremos a partir de ahora en el
 			 paper. Estos metodos no hacen ninguna asuncion mas sobre el modelo que la de 
 			 las restricciones monotonicas.
-			-
+			-hemos de construir un metodo para estimar P(y|x), sabiendo que P(y|x) posee
+			 dos ventajas:
+			 	1-la distribucion condicional permite la determinacion de la prediccion 
+			 	  optima para cualquier funcion de perdida.
+			 	2-la distribucion condicional mide la confianza de la prediccion
+			-el metodo de estimacion esta basado en la regresion isotonica.
+			-PROBLEMA DE CLASIFICACION BINARIA Y REGRESION ISOTONICA:
+				-en la aproximacion plugin se propone usar un vector de estimadores de densidad
+				 condicional p = (p1,....,pn), el cual es una regresion isotonica del vector de
+				 etiquetas y = (y1,...,yn). Es decir, p nos da la probabilidad de que x 
+				 pertenezca a cada una de las clases existentes en y.
+				-p es la solucion del problema: SUM((yi-pi)^2) sujeto a las restricciones de
+				 monotonicidad (Xi>=Xj --> pi>=pj). Por ello p minimiza el error cuadratico en 
+				 el conjunto de los vectores monotonos p=(p1,..,pn) para cada x.
+				-la eleccion de la funcion de error (funcion de perdida de error cuadratico)
+				 parece ser arbitraria. Puede verse que haciendo uso de otras funciones
+				 de perdida, se llega al mismo resultado.
