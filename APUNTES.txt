@@ -68,3 +68,8 @@ Literatura generica de monotonicos:
 					 	 la V-shaped loss function) es convexa.
 
 		-APROXIMACIÓN PLUG-IN:
+			-los metodos no parametricos son asi llamados porque explotan la clase de todas las
+			 funciones monotonas. Estos son los que consideraremos a partir de ahora en el
+			 paper. Estos metodos no hacen ninguna asuncion mas sobre el modelo que la de 
+			 las restricciones monotonicas.
+			-
