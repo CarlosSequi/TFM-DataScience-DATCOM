@@ -1,5 +1,6 @@
 Literatura generica de monotonicos:
 	-Kotlowski:
+		-funcion monotona: una funcion es monotona si y solo si x<=y implica f(x)<=f(y)
 		-clasificacion ordinal con restricciones monotonicas: maneja conocimiento subyacente del
 		 problema sobre clases ordenadas, atributos ordenados y una relacion monotonica entre
 		 la evaluacion de los atributos de una instancia y la asignacion de esta a una clase.
@@ -102,4 +103,26 @@ Literatura generica de monotonicos:
 				 y la suma es igual a 1.
 
 		-APROXIMACION DIRECTA
-			
+			-consideramos la clasificacion directa basada en la minimizacion del riesgo 
+			 empirico dentro de la clase de todas las funciones monotonas.
+			-aunque este tipo de funciones no se pueden describir con un numero 
+			 finito de parametros, la minimizacion del riesgo puede realizarse debido a 
+			 que solo estamos interesados en valores de funciones monotonas en ciertos
+			 puntos, los incluidos en D (training set).
+			-Una funcion monotona minimizando el riesgo empirico puede obtenerse resolviendo
+			 el siguiente problema de optimizacion:
+			 	minimizar: SUM(L(yi,di))
+			 	sujeto a las restricciones de monotonia.
+			 	-donde di son variables del problema (valores de la funcion monotona optima
+			 	 en puntos de D)
+			-el problema puede tener otra interpretacion interesante: reetiquetar las
+			 instancias para hacer el dataset monotono de forma que las etiquetas de las
+			 instancias sean lo mas parecidas a las del conjunto original, donde esta 
+			 similitud es medida en terminos de la funcion de perdida. Estas nuevas
+			 etiquetas seran los nuevos valores optimos de las variables di. 
+			 Este reetiquetado puede realizarse en el proceso de preprocesamiento
+			 y corresponde a la correccion del error no parametrico.
+			-como el problema de clasificacion no parametrica se asimila al de la regresion
+			 isotonica (exceptuando que ahora se considera una salida discreta), será llamado
+			 ahora "clasificacion isotonica" y su solucion optima d^ será llamada
+			 "clasificacion optima de y"
