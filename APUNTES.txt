@@ -13,7 +13,7 @@ Literatura generica de monotonicos:
 		 la de monotonia: es posible hacer inferencia de la clase sobre todas las funciones
 		 monotonas.
 		-proposito del paper:
-			-formalizar la aproximacion de clasificcacion con restricciones monotonicas
+			-formalizar la aproximacion de clasificacion con restricciones monotonicas
 			-analizar los metodos no parametricos de clasificacion
 				-plug-in: estimando la distribucion condicional de la clase. Provienen de la
 				 clasificacion isotonica (monotona creciente o decreciente)
@@ -40,7 +40,7 @@ Literatura generica de monotonicos:
 				 Es decir, que la probabilidad de que el valor asignado (y) a la instancia 
 				 dominante (x) sea mayor que cierto valor de la clase fijado (k), es mayor
 				 que la probabilidad de que el valor asignado (y) a la instancia dominada(x')
-				 sea mayor que cierto valor de la clase fijado.
+				 sea mayor que ese mismo cierto valor de la clase fijado.
 				-la relacion de dominancia estocastica entre distribuciones se denota asi:
 					x >= x' -> P(y|x) >= P(y|x')
 			-CLASIFICADOR MONOTONO DE BAYES
@@ -100,3 +100,6 @@ Literatura generica de monotonicos:
 				 probabilidad para el caso de multiclase  siempre forman una adecuada 
 				 distribucion de probabilidad, es decir, que siempre son no-negativos
 				 y la suma es igual a 1.
+
+		-APROXIMACION DIRECTA
+			
