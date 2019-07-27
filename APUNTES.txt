@@ -213,7 +213,7 @@ ________________________________________________________________________________
 					-para calcularla se construye una matriz bxb no monotonica, concerniente
 					 a un arbol que contiene b ramas.
 					-cada valor mij es 1 si las ramas i y j son no monotonas y 0 si lo son.
-			 		
+
 				-Positive/Quasi-Positive Decision Tree:
 					-la regla de separacion consiste en separar los puntos que tienen
 					 el hijo derecho mayor que el izquierdo (en terminos de la variable
