@@ -200,8 +200,25 @@ ________________________________________________________________________________
 			 	  		-instance selection: seleccion de subconjunto de instancias del 
 			 	  		 data set con el objetivo de derivar en mejores clasificadores
 			 	  		 monotonicos
-			 	  		-seleccion de conjunto de entrenamiento: 
-			 		
+			 	  		-seleccion de conjunto de entrenamiento: la heuristica seguida por
+			 	  		 estos algoritmos ha de ser generica de forma que el subconjunto
+			 	  		 seleccionado sea el que mejores resultados produce sin importar el 
+			 	  		 clasificador utilizado posteriormente.
+			 	 
+			-Ejemplos de algoritmos basados en arboles:
+				-MID(Monotonic induction of decision trees):
+					-uso del arbol de clasificacion ID3.
+					-Ben-David introduce una medida de monotonicidad denotada como
+					 marcador-totalmente-ambiguo
+					-para calcularla se construye una matriz bxb no monotonica, concerniente
+					 a un arbol que contiene b ramas.
+					-cada valor mij es 1 si las ramas i y j son no monotonas y 0 si lo son.
 
-kdpadfdamfafnjkadfmlnkadfndafldnalk
-fkwfjmlkwofmwloekf
+				-Positive/Quasi-Positive Decision Tree:
+					-la regla de separacion consiste en separar los puntos que tienen
+					 el hijo derecho mayor que el izquierdo (en terminos de la variable
+					 de salida)
+					-el algoritmo añade muestras a los nodos de forma que el arbol resultante
+					 es monotono.
+					-se requiere aplicacion sobre data sets estrictamente monotonos y binarios
+					 (que contengan solo dos clases)
