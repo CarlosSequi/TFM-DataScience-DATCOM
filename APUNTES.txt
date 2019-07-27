@@ -150,3 +150,56 @@ ________________________________________________________________________________
 			  monotónicas las veremos mas adelante con el fin de poder evaluar 
 			  la consistencia de estas.
 
+		-DEFINICION DE CLASIFICACION MONTONICA:
+			-una restriccion monotonica siempre involucra  un atributo de entrada y el
+			 atributo de clase, y ha de haber, al menos, una restriccion de monotonicidad
+			 para distinguir entre clasificacion ordinal y monotonica.
+			-la clasificacion monotonica puede ser directa (más habitaciones, precio mayor
+			 de una casa), o inversa (más polucion, precio menor de la casa).
+			-Normalmente en problemas de clasificacion monotonica reales, las restricciones
+			 monotonicas son consideradas en un subconjunto de caracteristicas del dataset.
+			-DESCRIPCION FORMAL DEL PROBLEMA -> muy bien explicada en el paper(apartado 2,
+			 pagina 6)
+
+		-TAXONOMIA PARA ALGORITMOS DE CLASIFICACION MONOTONICA
+			-categorizacion basada en el proposito de cada metodo, la heuristica que
+			 sigue y el modelo generado por cada algoritmo. Division de algoritmos:
+			 	1-Clasificadores monotonicos: cuyo objetivo es crear modelos predictivos
+			 	  que satisfagan las restricciones monotonicas de forma parcial o total.
+			 	  Clasificadores en funcion del modelo que construyen:
+			 	  		-clasificadores basados en instancias: no crean un modelo, directamente
+			 	  		 utilizan las instancias del data set para la realizacion de decisiones
+			 	  		-arboles de decision o reglas de clasificacion: los modelos creados
+			 	  		 involucran reglas de produccion legibles en forma de arboles de
+			 	  		 decision o conjunto de reglas.
+			 	  		-Ensembles o multiclasificadores: uso de varios clasificadores para
+			 	  		 obtener diferentes respuestas y posteriormente agregarlas en una
+			 	  		 decision de clasificacion global:
+			 	  		 	-boosting
+			 	  		 	-bagging
+			 	  		-redes neuronales: modelo bioinspirado en el que la funcion que
+			 	  		 relaciona las entradas con la salida son bloques de construccion
+			 	  		 (neuronas) interconectadas entre si y organizadas en capas.
+			 	  		 Mediante un proceso de entrenamiento interativo se alcanzan
+			 	  		 los pesos adecuados para cada conexion.
+			 	  		-support vector machine: aprendizaje basado en maquinas de soporte
+			 	  		 vectorial y derivadas
+			 	  		-hibrido: combinacion de varios algoritmos (rules + instance based
+			 	  		 learning i.e.)
+			 	  		-fuzzy integral: basados en el uso de la integral de Choquet (para
+			 	  		 medir la utilidad esperada de un evento incierto). Puede ser vista
+			 	  		 como una generalizacion de la integral estandar de Lebesque para
+			 	  		 el caso de medidas no aditivas.
+			 	2-Preprocesamiento monotonico: refina los conjuntos de datos para mejorar el
+			 	  rendimiento de los clasificadores monotonicos.
+			 	  		-relabeling: para minimizar el numero de violaciones de monotonicidad
+			 	  		 presentes en el data set. (casos en los que la variable de salida
+			 	  		 no concuerda con las restricciones de monotonicidad)
+			 	  		-feature selection: obtener los atributos mas relevantes para mejorar
+			 	  		 el rendimiento de la clasificacion monotonica
+			 	  		-instance selection: seleccion de subconjunto de instancias del 
+			 	  		 data set con el objetivo de derivar en mejores clasificadores
+			 	  		 monotonicos
+			 	  		-seleccion de conjunto de entrenamiento: 
+			 		
+
