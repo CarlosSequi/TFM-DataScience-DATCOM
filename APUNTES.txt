@@ -222,3 +222,20 @@ ________________________________________________________________________________
 					 es monotono.
 					-se requiere aplicacion sobre data sets estrictamente monotonos y binarios
 					 (que contengan solo dos clases)
+
+				-Monotonic Decision Tree:
+					-pensado para generar arboles de decision motononicos a partir de conjuntos
+					 de muestras que pueden no se monotonicos o consistentes.
+					-construye el arbol usando un conjunto de etiquetas ordinales que no son
+					 las mismas que las originales.
+					-puede usarse un proceso de mapeo para reetiquetarlas a las originales
+
+				-Isotonic classification tree:
+					-ajusta la probabilidad estimada en los nodos hoja en caso de una violacion
+					 de la monotonicidad
+					-idea: considerando la restriccion de monotonicidad, la suma de la 
+					 prediccion absoluta de errores en la muestra de entrenamiento ha de ser
+					 minimizada
+					-ademas, el algoritmo puede soportar problemas donde algunos, pero no todos
+					 los atributos, tienen una relacion monotonica con respecto a la variable
+					 dependiente
