@@ -285,3 +285,23 @@ ________________________________________________________________________________
 							de restricciones monotonicas mediante la computacion de socores 
 							para cada caracteristica individual que depende de la cantidad
 							de caracteristicas selccionadas.
+				-Instance Selecion: mediante el uso de heuristicas basadas en instancias, se
+									pretende mejorar el rendimiento de los clasificadores
+									monotonicos escogiendo aquellas instancias más relevantes
+									para el caso de estudio.
+						-Monotonic Iterative Prototype Selection (MONIPS):
+							Sigue un esquema iterativo en el que determina las instancias más
+							representativas que mantienen o mejoran las capacidades predictivas
+							del algoritmo MkNN. Realiza un borrado de instancias basado en la
+							mejora del rendimiento de MkNN.
+				-Training Set Selection: estos algoritmos poseen el mismo objetivo que los 
+										anteriores, con la única diferencia de que la 
+										heuristica seguida ha de ser generica de tal forma que 
+										el subconjunto seleccionado ha de ser el que 
+										proporcione el mejor rendimiento independientemente del
+										clasificador que se utilice más tarde sobre él.
+						-Monotonic Training Set Selection(MonTSS):
+							Incorpora las medidas necesarias para identificar y seleccionar
+							las instancias apropiadas en el conjunto de datos para mejorar
+							tanto el accuracy como la naturaleza monotonica de los modelos
+							producidos por diferentes clasificadores.
