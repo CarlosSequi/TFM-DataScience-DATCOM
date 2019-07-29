@@ -270,3 +270,9 @@ ________________________________________________________________________________
 										  propiedades de una red de flujo minima e identificar
 										  propiedades agradables de algunos cortes maximos.
 										  Es un algoritmo optimo de reetiquetado.
+				-Feature Selection: mejorar capacidad predictiva de clasificadores monotonicos
+									seleccionando las caracteristicas mas relevantes.
+						-O-ReliefF/O-Simba: Los autores introducen algoritmos de selección de
+							 características basados en márgenes para la clasificación monotónica al incorporar las restricciones de monotonicidad en la
+							 tarea ordinal. Los métodos ReliefF y Simba se extienden al
+							 contexto de la clasificación ordinal.
