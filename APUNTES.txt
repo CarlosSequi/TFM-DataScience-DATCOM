@@ -239,3 +239,34 @@ ________________________________________________________________________________
 					-ademas, el algoritmo puede soportar problemas donde algunos, pero no todos
 					 los atributos, tienen una relacion monotonica con respecto a la variable
 					 dependiente
+
+			-preprocesamiento monotonico:
+				-Relabeling: cambio de etiqueta para las instancias que producen violacion
+							 de las restricciones monotonicas que producen conjuntos de
+							 datos completamente monotonos, los cuales son necesarios
+							 para muchos clasificadores monotonicos.
+						-Dykstra Relabel: relabeling basado en la regresión monotonica, 
+										  capaz de minimiazr el error absoluto o el 
+										  error cuadratico.
+										  Es optimo con estas loss functions pero no
+										  garantiza el numero minimo de cambio de 
+										  etiquetas debido a que no es el objetivo.
+						-Daniels-Velikova Greedy Relabel: algoritmo greedy para reetiquetar
+										  ejemplos no monotonos uno por uno. En cada iteracion
+										  busca una instancia y la nueva etiqueta para
+										  maximizar la monotonicidad del data set.
+										  Aunque en cada iteracion es capaz de maximizar el
+										  salto hacia la completa monotonicidad, el algoritmo
+										  reetiqueta mas ejemplos de los necesarios.
+										  No garantiza solucion optima.
+						-Optimal Flow Network Relabel: basado en encontrar un conjunto 
+										  independiente de pesos maximo en el grafo de 
+										  violacion de monotonicidad. Reetiquetando el
+										  complemento de este conjunto, resulta en un 
+										  data set monotono con los menores cambios posibles.
+										  Este metodo es optimo, produciendo el menor numero
+										  de cambios posibles. (Optimo?)
+						-Single-pass Optimal Ordinal Relabel: la idea es explorat las 
+										  propiedades de una red de flujo minima e identificar
+										  propiedades agradables de algunos cortes maximos.
+										  Es un algoritmo optimo de reetiquetado.
