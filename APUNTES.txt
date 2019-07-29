@@ -276,3 +276,12 @@ ________________________________________________________________________________
 							 características basados en márgenes para la clasificación monotónica al incorporar las restricciones de monotonicidad en la
 							 tarea ordinal. Los métodos ReliefF y Simba se extienden al
 							 contexto de la clasificación ordinal.
+						-min-Redundancy max-Relevance(mRMR): integra el ranking de la metrica
+							de informacion mutua con la estrategia de busqueda de la minima
+							redundancia y la maxima relevancia, creando un algoritmo efectivo
+							para el objetivo propuesto.
+						-Non-monotonic feature selection via Multiple Kernel Learning:	
+							seleccion de caracteristicas no monotonica con alivio de violacion
+							de restricciones monotonicas mediante la computacion de socores 
+							para cada caracteristica individual que depende de la cantidad
+							de caracteristicas selccionadas.
