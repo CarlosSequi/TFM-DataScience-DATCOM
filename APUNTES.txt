@@ -378,4 +378,44 @@ Literatura generica de data streams:
 		 	 	 de técnicas que almacenan resumenes de datos compactos suficientes para resolver consultas. Estas aproximaciones requieren un equilibrio entre el accuracy y la cantidad de
 		 	 	 memoria usada para almacenar los resumenes, con una restricción adicional de tiempo de procesado de los datos.
 		 	 -Aproximacion y aleatorización
+		 	 	Dentro del marco del data streaming, como ya hemos dicho, está permitido ofrecer respuestas aproximadas dentro de un pequeño rango de error (e), con una pequeña probabilidad
+		 	 	de fallo (d) para obtener respuestas con una probabilidad de que 1-d se encuentre en el intervalo de radio e.
+		 	 	Los algoritmos que usan dichas aproximacióon y aleatorización son referidos por dichos (e,d).
+		 	 	la idea basicamente consiste en mapear cada espacio grande de entrada en una sinopsis pequeña.
+		 	 	La aproximación y randomización han sido usadas en solventar problemas como mineria de reglas de asociación, items frecuentes, k-means...
+		 	 -Ventanas de tiempo	
+		 	 	-Para la realización del cómputo estadístico referente al modelo de flujos, no nos interesa el total de los datos existentes, si no los más recientes, entendiendo que son los
+		 	 	 que mejor explican la situación a la que nos enfrentamos y pudiendo, de esta forma, deshacernos de grandes cantidades de datos que no nos son útiles.
+		 	 	 Las técnicas más simples en cuanto a este tipo de tratamiento de datos, utilizan una ventana deslizante de tamaño fijo, con un funcionmiento FIFO (first in fist out).
+		 	 	 Definimos dos tipos de ventana deslizante:
+		 	 	 	-basada en sequencia: tamaño de ventana definido por el número de observaciones (tamaño fijo o variable en el tiempo)
+		 	 	 	-basada en marca de tiempo: tamaño de ventana definido en términos de duración. Una ventana de este tipo de tamaño t consiste en todos los elementos cuya marca de tiempo
+		 	 	 								se situa dentro del intervalo de tiempo t del actual periodo de tiempo.
+		 	 	 El hecho de monitorizar, analizar y extraer conocimiento de flujos de datos de alta velocidad, puede hacer que existan diversos niveles de granularidad a la hora de 
+		 	 	 almacenar los datos. Conforme más antiguos son los datos que disponemos, mayor granularidad requeriremos en la información (es decir, menor precisión). Cuanto más
+		 	 	 reciente sean los datos, el grano ha de ser más fino, ya que requerimos más precisión al tratarlos debido a que son más importantes (este es llamado el modelo de ventana de 
+		 	 	 tiempo inclinado).	
+		 	 	 AdWin-ADaptive sliding WINdow: mantiene una ventana variable con respecto a los items recientemente vistos con la propiedad de que la ventana tiene un tamaño maximal
+		 	 	 estadísticamente consistente con la hipótesis de que no haya habido un cambio en la media del valor dentro de la ventana. Un fragmento viejo de la ventana se desecha
+		 	 	 si hay alguna evidencia de que tiene un valor distinto al del resto de la ventana.
+		 	 -sampling	
+		 	 	-seleccion del subconjunto de datos a analizar en intervalos periodicos.
+		 	 	-se usa para calcular estadisticas del flujo (valores esperados)
+		 	 	-reducen coste cantidad de datos a procesar, por tanto, el computacional
+		 	 	-pueden ser una fuente de errores, por ejemplo, en aplicaciones dedicadas a la detección de valores extremos o anomalias
+		 	 	-el problema principal es obtener una muestra representativa
+		 	 	-tecnicas:
+		 	 		-random sampling
+		 	 		-reservoir sampling
+		 	 		-load shedding
+		 -ALGORITHMS FOR LEARNING FROM DATA STREAMS
 
+
+
+
+
+
+		 	 -sinopsis bocetos y resumenes
+		 	 	-sinopsis: estructuras de datos compactas que resumen datos para su posterior consulta.
+		 	 	-data sketching: herramienta de reducción de dimensionalidad. Usa proyecciones aleatorias de datos con cierta dimensión d a un espacio de cierto conjunto de dimensiones.
+		 	 	-data stream summary (by Cormode and Muthukrishnan): usado para aproximaciones (e,d) para resolver consultas de rango, consultas puntuales y consultas innerproduct.
