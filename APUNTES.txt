@@ -346,3 +346,24 @@ ________________________________________________________________________________
 		MEDIDAS CON PROPOSITOS PREDICTIVOS MAS USADAS:
 			-MAE
 			-NMI
+
+_______________________________________________________________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________________________________________________
+
+Literatura generica de data streams:
+	-Gama_2012_article.....:A survey on learning from data streams: current and future trends
+		-Los sistemas tradicionales basados en el uso de memoria, entrenados de una forma fija mediante conjuntos de entrenamiento y los cuales generan modelos estáticos no están
+		 preparados para procesar los datos altamente detallados disponibles en procesos como, por ejemplo, el continuo análisis del consumo de energía de una red electrica en distintas zonas
+		 en el espacio, lo cual genera una gran cantidad de datos que ha de ser procesada de forma rápida con el fin de generar modelos predictivos consistentes
+		 que se adapten a situaciones cambiantes y puedan reaccionar de forma rápida y eficaz a dichos cambios.
+
+		 -MACHINE LEARNING DATA STREAMS:
+		 	-el Machine Learning extrae conocimiento en forma de modelos y patrones de unos datos de naturaleza cambiante. Hoy en día la generación de datos, gracias a las capacidades
+		 	 tecnológicas de las que disfrutamos, se produce a altas velocidades, tanto así, que se pone, en cuanto a velocidad, por delante del procesamiento de dichos datos, lo cual
+		 	 quiere decir que generamos datos a mayor velocidad de lo que las capacidades computacionales que tenemos ahora mismo nos permiten procesarlos.
+		 	 Desde este punto de vista, conviene modelar los datos como flujos de datos transitorios en lugar de como tablas de datos persistentes.
+
+		 	 HACER CAPTURA DE PANTALLA DE LA TABLA 1 EN LA PAGINA 2 del PDF
+
+		 	 
