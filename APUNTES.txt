@@ -366,4 +366,16 @@ Literatura generica de data streams:
 
 		 	 HACER CAPTURA DE PANTALLA DE LA TABLA 1 EN LA PAGINA 2 del PDF
 
-		 	 
+		 	 -Streaming algorithms:
+		 	 	-2 modelos distintos:
+		 	 		-insert-only model: entran datos al sistema de forma secuencial.
+		 	 		-insert-delete model: los elementos que entran pueden ser eliminados o actualizados.
+		 	 	-desde el punto de vista de los sistemas de control de flujo de datos(DSMS), existen varios problemas que requieren técnicas de procesamiento aproximadas para evaluar el flujo 
+		 	 	 continuo de datos que requieren una cantidad ilimitada de memoria.
+		 	 	-los algoritmos que procesan flujos de datos producen soluciones aproximadas dentro de un rango de error con una alta probabilidad, relajando así las restricciones a la hora
+		 	 	 de obtener una solución exacta.
+		 	 	-en algunas aplicaciones una respuesta aproximada deberia estar dentro de un rango de error admisible. Los sistemas de control de flujos de datos han desarrollado un conjunto
+		 	 	 de técnicas que almacenan resumenes de datos compactos suficientes para resolver consultas. Estas aproximaciones requieren un equilibrio entre el accuracy y la cantidad de
+		 	 	 memoria usada para almacenar los resumenes, con una restricción adicional de tiempo de procesado de los datos.
+		 	 -Aproximacion y aleatorización
+
