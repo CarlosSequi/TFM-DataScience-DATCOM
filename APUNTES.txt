@@ -305,3 +305,44 @@ ________________________________________________________________________________
 							las instancias apropiadas en el conjunto de datos para mejorar
 							tanto el accuracy como la naturaleza monotonica de los modelos
 							producidos por diferentes clasificadores.
+
+		-QUALITY METRICS USED IN MONOTONIC CLASSIFICATION (PAGINA 23)
+			-metricas de evaluacion predictiva:
+				-Clasificacion binaria:
+					-accuracy: representa la habilidad predictiva de acuerdo con la proporción de 
+							   los datos clasificados de forma correcta.
+					-error rate: caso opuesto al accuracy, evaluando la proporcion de los datos
+								 evaluados clasificados de forma incorrecta.
+					-recall/sensitivity: medida de la proporcion de TP que estan correctamente clasificados
+					-false positive rate: FP/FP+TN
+					-positive predictive value(PPV) / precision: proporcion de las instancias del test que tienen una
+													 salida positiva y que ademas están bien clasificados.
+													 representa la probabilidad de que una prueba positiva 
+													 refleje la condición subyacente que se está probando.
+					-negative predictive value(NPV): proporcion de instancias de test con valores de prediccion
+													 negativos que estan clasificados de forma correcta.
+					-F-Measure: es la media armónica (inverso de media aritmética) de las medidas precision y recall.
+					-Arean Under Curve(AUC): para combiniar Recall y false positive rate en una sola medida, primeramente
+											 calculamos cada una de estas medidas con varios thresold distintos para la
+											 regresión logística y después los ploteamos en una sola gráfica con 
+											 el ratio de falsos positivos en las abcisas y el Recall en el eje de
+											 ordenadas. El resultado es la curva ROC, y la métrica que consideramos es 
+											 el área bajo esta curva.
+				-Clasificación multiclase:
+					-Mean Squared Error: mide la media de los cuadrados de los errores
+					-Mean Absolute Error: mide como de cerca se encuentran las predicciones de los valores reales de salida (igual que MSE pero sin el cuadrado)
+					-Monotonic Accuracy: igual que accuracy pero tan solo usando las instancias que cumplen los requisitos de monotonia en el conjunto de test.
+					-Monotonic Mean Absolute Error: igual que MAE, pero considerando solo las instancias que cumplen los requisitos de monotonia en el conjunto de test.
+
+			-metricas de cumplimiento de monotonicidad: el interés consiste en evaluar el ratio de monotonicidad provisto por las 
+														predicciones obtenidas o por el modelo construido.
+														NClash(x) = numero de instancias del data set que NO cumplen las restricciones de monotonia con respecto a la instancia x
+														NMonot(x) = numero de instancias del data set que SI cumplen las restricciones de monotonia con respecto a la instancia x
+
+							-el indice de no monotonicidad (NMI) es el numero de parejas de choque (parejas que no cumplen las restricciones monotonicas) dividido por el numero
+							 total de parejas en el data set.
+							-frecuencia de monotonicidad (FOM) es la suma de las parejas que cumplen las restricciones de moonotonicidad dividido entre el número total de parejas.
+
+		MEDIDAS CON PROPOSITOS PREDICTIVOS MAS USADAS:
+			-MAE
+			-NMI
