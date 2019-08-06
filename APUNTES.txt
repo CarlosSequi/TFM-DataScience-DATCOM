@@ -470,6 +470,18 @@ Literatura generica de data streams:
 		 	 el cómputo realizado por el algoritmo sea más complejo. Ante esta balanza, con el fin de no acrecentar el cómputo, haciendo que el algoritmo decida de forma dinámica
 		 	 qué información borrar y cuál no, surge la técnica de ventana deslizante.
 
+		 	-De forma general, es complicado asumir que, en el manejo de flujos de datos durante un largo tiempo, estemos tratando con datos acordes a una distribución de probabilidad
+		 	 estacionaria. En sistemas complejos y en largos periodos de tiempo, debemos esperar cambios en la distribución de los items.
+		 	 Una aproximación natural para estas tareas incrementales son los algoritmos de aprendizaje adaptativo, algoritmos incrementales que tienen en cuenta el concept drift.
+		 	 El concept drift en sí, se refiere al cambio de concepto que sufren los datos a la largo del tiempo, cada vez con cierta permanencia mínima.
+		 	 Hay algoritmos que implementan el olvido de información antigua teniendo en cuenta este cambio de concepto, lo que los hace mucho más precisos que los propios algoritmos
+		 	 que realizan la eliminación de información en forma de tamaño de ventana prefijado.
+		 	 Con el uso de los algoritmos de detección de concept drift podemos averiguar cuando y por qué ha cambiado el comportamiento del flujo de datos.
+		 	 Estos algoritmos no poseen la información de mundo cerrado de la que disponen los algoritmos convencionales para el tratamiento de datos estáticos, si no que han de ser
+		 	 capaces de adaptarse a un munto abierto cambiante de datos para diferenciar entre cambio de concepto y ruido en los datos.
+
+		 -A la hora de evaluar los resultados en el contexto de los flujos de datos, es interesante tener en cuenta la evolución del acierto de nuestro algoritmo a lo largo del tiempo
+		  con los cambios de concepto acaecidos.
 
 
 		 	 
