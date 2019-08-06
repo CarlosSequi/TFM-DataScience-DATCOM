@@ -484,4 +484,23 @@ Literatura generica de data streams:
 		  con los cambios de concepto acaecidos.
 
 
-		 	 
+___________________________________________________________________________________________________
+
+
+	-bifet10a---->MOA: Massive Online Analysis
+		-MOA es un entorno de trabajo open-source relacionado con el proyecto WEKA (Waikato Environment for Knowledge Analysis) para el tratamiento o minería de flujos de datos de evolución masiva conteniendo una gran colección de algoritmos de machine
+		 learning como son: classificación, regresión, clustering, detección de outliers, detección de concept drift y sistemas de recomendación, así como herramientas de
+		 evaluación. 
+		-Requisitos para un entorno de análisis de flujos de datos:
+			1-Procesamiento de un ejemplo en cada instante de tiempo e inspección de este tan solo una vez.
+			2-Limitado uso de memoria.
+			3-Trabajo en un tiempo limitado.
+			4-Estar listo para predecir en cualquier momento.
+		-Ciclo de clasificación de flujo de datos: (COGER LA IMAGEN)
+			1-El algoritmo toma el siguiente ejemplo del flujo
+			2-El algoritmo procesa el ejemplo actualizando sus estructuras de datos. En este punto no se ha de exceder los límites de memoria y ha de ser lo más rápido posible.
+			3-El algoritmo está listo para aceptar el siguiente ejemplo.
+		
+
+
+ 	 
