@@ -500,6 +500,11 @@ ________________________________________________________________________________
 			1-El algoritmo toma el siguiente ejemplo del flujo
 			2-El algoritmo procesa el ejemplo actualizando sus estructuras de datos. En este punto no se ha de exceder los límites de memoria y ha de ser lo más rápido posible.
 			3-El algoritmo está listo para aceptar el siguiente ejemplo.
+		-Para el procedimiento de evaluación de los algoritmos de aprendizaje, mientras que los modelos batch tradicionales utilizan un conjunto de datos de train y otro de 
+		 test de reserva (holdout) para realizar dicha evaluación, en los algoritmos dedicados al data streaming se utiliza el método  Interleaved Test-Then-Train o Prequential,
+		 mediante el cual cada una de las instancias que se reciben se utilizan como instancia de test para, posteriormente, usarla como nuevo dato de aprendizaje (train).
+		 De esta forma no es necesario mantener un conjunto de datos de reserva exclusivo para validar, haciendo que el uso de los datos disponibles sea máximo, además
+		 de que ayuda a crear una representación más visual de la evolución de la precisión del algoritmo a lo largo del tiempo.
 		
 
 
