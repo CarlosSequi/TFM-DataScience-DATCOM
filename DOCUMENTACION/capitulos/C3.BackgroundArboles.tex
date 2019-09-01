@@ -80,7 +80,30 @@ Es decir, para cada nodo, se evalúa mediante unos medidores de pureza, cual es 
 
 De esta forma vamos construyendo de manera progresiva ramas y más ramas del árbol haciendo uso de una técnica greedy de selección de característica a evaluar en cada nivel del árbol para la toma de decisión a la hora de generar nuevos nodos hijos.
 
+\subsubsection{¿Cómo medimos esa ganancia de homogeneidad?}
 
+Para los\textbf{ árboles de regresión} sabemos que el objetivo de cada decisión del árbol en la creación de nuevas separaciones es minimizar la función RSS (\textbf{Residual Sum of Squares}), una medida de error usada también en la regresión lineal. Es por ello que en cada nodo se escogerá una forma de particionar los datos mediante el uso de un predictor u otro, atendiendo a cuál minimiza en mayor medida dicha fórmula.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{imagenes/rss} 
+	\caption{Recursive Binary Splitting in regression trees \cite{ref6}}
+\end{figure}
+
+Como el problema que nos concierne en este caso es el de \textbf{árboles de clasificación}, no entraremos en más detalles acerca de esta fórmula, ya que RSS no puede ser utilizado como criterio de separación binaria en este tipo de árboles.
+
+Una aproximación natural a RSS es el '\textbf{ratio de error en la clasificación}', basado simplemente en la fracción de las observaciones de training en dicha región que no pertenecen a la clase más común de esta. Se calcula de la siguiente forma:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{imagenes/cer} 
+	\caption{Recursive Binary Splitting in classification trees (classification error rate) \cite{ref7}}
+\end{figure}
+
+Donde $\widehat{P}$mk es la proporción $\widehat{P}$ de las observaciones de train de la región \textbf{m} que pertenecen a la clase \textbf{k}. Por tanto, el máximo de $\widehat{P}$mk hace alusión a la proporción máxima de elementos de train que siguen la moda en dicha partición.\\
+Por desgracia esta medida de error no es lo suficientemente sensible conforme el árbol crece, por lo que es preferible el uso de otras medidas como el índice Gini y la Entropía.
+
+Ya sabemos que buscamos nodos con una distribución de clase lo más homogénea posible. Con el fin de medir esa pureza en cada nodo, podremos utilizar los siguientes métodos ya mencionados:
 
 
 \section{Hoeffding Trees y otros algoritmos de data streaming}

@@ -27,8 +27,9 @@
 \contentsline {subsubsection}{Ventajas}{18}{section*.14}% 
 \contentsline {subsubsection}{Inconvenientes}{18}{section*.15}% 
 \contentsline {subsection}{\numberline {3.1.4}Creaci\IeC {\'o}n del \IeC {\'a}rbol}{19}{subsection.3.1.4}% 
-\contentsline {section}{\numberline {3.2}Hoeffding Trees y otros algoritmos de data streaming}{19}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}\IeC {\'A}rboles de decisi\IeC {\'o}n monot\IeC {\'o}nicos}{19}{section.3.3}% 
+\contentsline {subsubsection}{\IeC {\textquestiondown }C\IeC {\'o}mo medimos esa ganancia de homogeneidad?}{19}{section*.16}% 
+\contentsline {section}{\numberline {3.2}Hoeffding Trees y otros algoritmos de data streaming}{20}{section.3.2}% 
+\contentsline {section}{\numberline {3.3}\IeC {\'A}rboles de decisi\IeC {\'o}n monot\IeC {\'o}nicos}{20}{section.3.3}% 
 \contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{21}{chapter.4}% 
 \contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{23}{chapter.5}% 
 \contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{25}{chapter.6}% 
