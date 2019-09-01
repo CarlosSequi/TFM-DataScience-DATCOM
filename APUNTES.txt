@@ -13,6 +13,7 @@ Literatura generica de monotonicos:
 		 variedad de funciones sin temor a que introduzcan más restricciones que 
 		 la de monotonia: es posible hacer inferencia de la clase sobre todas las funciones
 		 monotonas.
+
 		-proposito del paper:
 			-formalizar la aproximacion de clasificacion con restricciones monotonicas
 			-analizar los metodos no parametricos de clasificacion
@@ -25,6 +26,7 @@ Literatura generica de monotonicos:
 		 x tendra asignada una etiqueta de clase mayor que x'.
 		-una funcion es monotona si x>=x' -> h(x)>=h(x'). Es decir, si x domina a x', la
 		 inferencia de clase de x ha de ser superior a la de x'.
+
 		-RESTRICCIONES MONOTONICAS:
 			-seran restricciones con respecto a la probabilidad de distribución de los 
 			 datos y con repecto a las imposiciones de la función de perdida bajo las cuales
@@ -124,8 +126,8 @@ Literatura generica de monotonicos:
 			 y corresponde a la correccion del error no parametrico.
 			-como el problema de clasificacion no parametrica se asimila al de la regresion
 			 isotonica (exceptuando que ahora se considera una salida discreta), será llamado
-			 ahora "clasificacion isotonica" y su solucion optima d^ será llamada
-			 "clasificacion optima de y"
+			 ahora ''clasificacion isotonica'' y su solucion optima d^ será llamada
+			 ''clasificacion optima de y''
 
 ___________________________________________________________________________________________________
 	
@@ -133,21 +135,21 @@ ________________________________________________________________________________
 				 performance measures an data sets.
 
 		-ejemplos de uso de monotonicidad:
-			-comparacion de dos compañias donde una domina sobre la otra en terminos de
-			 TODOS los indicadores financieros. Debido a esto, la compañia dominante
-			 ha de tener una evaluacion final superior a la compañia dominada. Un uso
-			 de esto, es la prediccion de la calificacion crediticia usada por los bancos.
-			-House pricing: el precio de una casa sera superior cuantas mas habitaciones
+			-Comparación de dos compañías donde una domina sobre la otra en términos de
+			 todos los indicadores financieros. Debido a esto, la compañía dominante
+			 ha de tener una evaluación final superior a la compañía dominada. Un uso
+			 de esto, es la predicción de la calificacion crediticia usada por los bancos.
+			-House pricing: el precio de una casa será superior cuantas más habitaciones
 			 posea, mejor sea la calidad del aire acondicionado y menor sea la polución
 			 en el ambiente.
 
 		-la consideracion de restricciones monotonicas queda motivada por dos hechos:
-			1-el tamaño del espacio de la hipotesis es reducido, lo que facilita el
+			1-El tamaño del espacio de la hipótesis es reducido, lo que facilita el
 			  proceso de aprendizaje. (¿existencia de un numero reducido de clases?)
-			2-otras metricas ademas de la precision, como la consistencia con respecto
+			2-Otras métricas además de la precisión, como la consistencia con respecto
 			  a estas restricciones, pueden ser usadas por los expertos para aceptar
-			  o rechazar el modelo. Estas técnicas de evaluacion de restricciones
-			  monotónicas las veremos mas adelante con el fin de poder evaluar 
+			  o rechazar el modelo. Estas técnicas de evaluación de restricciones
+			  monotónicas las veremos más adelante con el fin de poder evaluar 
 			  la consistencia de estas.
 
 		-DEFINICION DE CLASIFICACION MONTONICA:

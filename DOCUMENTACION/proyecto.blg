@@ -1,5 +1,8 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: proyecto.aux
 The style file: plain.bst
-I found no \citation commands---while reading file proyecto.aux
 Database file #1: citas.bib
-(There was 1 error message)
+Warning--to sort, need author or key in ref1
+Warning--to sort, need author or key in ref4
+Warning--to sort, need author or key in ref5
+Warning--to sort, need author or key in ref2
+(There were 4 warnings)

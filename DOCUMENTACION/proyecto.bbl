@@ -1,3 +1,25 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{ref2}
+Computer society digital library.
+\newblock \url{http://doi.ieeecomputersociety.org/10.1109/TKDE.2012.204}.
+
+\bibitem{ref4}
+Decision tree basics.
+\newblock
+  \url{https://bookdown.org/content/2031/arboles-de-decision-parte-i.html#que-son-los-arboles-de-decision}.
+
+\bibitem{ref5}
+Decision tree terminology.
+\newblock
+  \url{https://www.researchgate.net/figure/a-describes-the-components-of-a-decision-tree-the-Nodes-represent-the-possible_fig2_303773171}.
+
+\bibitem{ref1}
+A survey on learning from data streams: current and future trends.
+\newblock \url{}.
+
+\bibitem{ref3}
+R.~Lior and M.O. Z.
+\newblock Data mining with decision trees: Theory and applications, 2007.
 
 \end{thebibliography}
