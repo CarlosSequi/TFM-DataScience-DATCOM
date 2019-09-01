@@ -104,6 +104,43 @@ Donde $\widehat{P}$mk es la proporción $\widehat{P}$ de las observaciones de tr
 Por desgracia esta medida de error no es lo suficientemente sensible conforme el árbol crece, por lo que es preferible el uso de otras medidas como el índice Gini y la Entropía.
 
 Ya sabemos que buscamos nodos con una distribución de clase lo más homogénea posible. Con el fin de medir esa pureza en cada nodo, podremos utilizar los siguientes métodos ya mencionados:
+\begin{itemize}
+	\item \textbf{Índice GINI}: nos indica como de pura es una región del espacio. En este caso la pureza la definimos como la proporción de items de la región que pertenecen a una misma clase. Si la región contiene un índice
+	alto de pureza, entonces el índice Gini será bajo (muy próximo a 0), siguiendo la siguiente fórmula:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{imagenes/gini} 
+		\caption{Recursive Binary Splitting in classification trees (gini) \cite{ref8}}
+	\end{figure}
+	Donde $\widehat{\pi}$mc nos indica la proporción \textbf{$\widehat{\pi}$} de items pertenecientes a la misma clase \textbf{c} en la región/nodo \textbf{m}.
+	\item \textbf{Entropía}: Se encarga también de la medida de homogeneidad de un nodo. En este caso, los resultados obtenidos al aplicar la siguiente fórmula a cada nodo para observar el nivel de entropía, quedan más visibles con respecto a la medida Gini (es decir, se ve de forma más clara el nivel de homogeneidad de un nodo). Una entropía = 0 significa homogeneidad total, una entropia = 1 significa homogeneidad nula.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\textwidth]{imagenes/entropia} 
+		\caption{Recursive Binary Splitting in classification trees (entropia) \cite{ref8}}
+	\end{figure}
+\end{itemize}
+
+\subsubsection{¿Cómo evitamos el overfitting?}
+
+Una vez hemos escogido nuestra estrategia de creación del árbol, necesitamos indicarle al algoritmo cuándo ha de terminar de construirlo el uso de restricciones (prepruning) y su posterior poda (postpruning) para evitar de esta forma un sobreajuste a los datos.\\
+
+\textbf{Prepruning: establecimiento de parámetros}
+\begin{itemize}
+	\item Definir un número de observaciones mínimo sobre un nodo para que sea considerada una ramificación sobre él.
+	\item Definir un número mínimo de observaciones sobre un nodo hoja.
+	\item Establecer una profundidad vertical máxima para el árbol.
+	\item Limitar el número máximo de nodos hoja.
+	\item Parar si la expansión del nodo actual no mejora la medida de pureza utilizada actual.
+\end{itemize}
+
+\textbf{Proceso de Postpruning}:
+\begin{enumerate}
+	\item Crear un árbol muy grande con o sin restricciones de prepruning.
+	\item Recorrer el árbol de abajo hacia arriba para ir cortando las hojas que nos dan ganancias negativas.
+\end{enumerate}
+
+De esta forma podemos mantener ramas que, sin el proceso de postpruning podrían haber sido recortadas, pero que nos llevan a soluciones mejores que las que se ofrecen si este proceso por culpa del uso de la técnica greedy.
 
 
 \section{Hoeffding Trees y otros algoritmos de data streaming}
