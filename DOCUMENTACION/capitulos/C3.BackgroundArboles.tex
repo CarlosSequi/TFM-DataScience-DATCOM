@@ -145,6 +145,37 @@ De esta forma podemos mantener ramas que, sin el proceso de postpruning podrían
 
 \section{Hoeffding Trees y otros algoritmos de data streaming}
 
+Como ya sabemos, los algoritmos dedicados al data streaming han de seguir los siguientes requisitos:
+\begin{itemize}
+	\item Procesar una muestra en cada momento y hacerlo tan solo una vez.
+	\item Usar una cantidad de memoria limitada.
+	\item Trabajar en un tiempo limitado.
+	\item Estar listo para la predicción en cualquier momento.
+\end{itemize}
+
+Además, nuestro algoritmo ha de estar dotado de técnicas de detección de cambios en la distribución de los datos para evitar la disminución de la precisión en la predicción cuando esto suceda.
+
+\subsection{Hoeffding-trees}
+
+Un árbol de Hoeffding (VFDT) es un algoritmo de inducción de árbol de decisión incremental capaz de aprender de flujos de datos masivos, suponiendo que la distribución que genera ejemplos no cambia con el tiempo. Los árboles Hoeffding explotan el hecho de que una pequeña muestra a menudo puede ser suficiente para elegir un atributo de división óptimo. Esta idea está respaldada matemáticamente por el Hoeffding bound, que cuantifica el número de observaciones (en nuestro caso, ejemplos) necesarias para estimar algunas estadísticas dentro de una precisión prescrita (en nuestro caso, la bondad de un atributo). \cite{ref9}
+
+Algunas de las técnicas de clasificación para data streaming tienen los siguientes \textbf{problemas}:
+\begin{itemize}
+	\item Son altamente sensibles a la demanda de ejemplos.
+	\item Carecen de alta eficiencia, siendo en algunos casos más lentos que un algoritmo batch.
+\end{itemize}
+
+Ante estos problemas se plantea\textbf{ Hoeffding-tree} ya que:
+\begin{itemize}
+	\item El aprendizaje de un Hoeffding-tree toma un tiempo constante en cada nuevo ejemplo, lo que lo hace adecuado para el aprendizaje de flujos de datos.
+	\item Los árboles resultantes son similares a los creados con un batch learner convencional.
+\end{itemize}
+
+\subsubsection{Hoeffding bound.}
+
+Con el fin de cumplir con los requisitos establecidos al principio de este apartado para el tratamiento de fllujos de datos, los autores (Hulten y Domingos) proponen la cota Hoeffding para ser capaces de decidir la cantidad de instancias necesarias a evaluar para alcanzar un cierto nivel de confianza a partir del cual sabemos que no es necesario evaluar más ejemplos para seleccionar un atributo mediante el cual realizar la partición del árbol en el nodo actual.\\
+Es decir, una vez alcanzada la cota de Hoeffding, el atributo que seleccionemos para el particionamiento del espacio de predictores, sera el mismo que seleccionariamos si analizásemos una infinidad de ejemplos con el clasificador (evidentemente, con cierto nivel de confianza).
+
 \section{Árboles de decisión monotónicos}
 
 

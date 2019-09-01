@@ -168,10 +168,34 @@ con los cambios de concepto acaecidos.
 
 
 
+\subsection{Requisitos y funcionamiento de data streams.}
 
+A modo de resumen, planteamos los requisitos primordiales para la clasificación de data streams de la siguiente forma:
+\begin{enumerate}
+	\item Procesamiento de un ejemplo en cada instante de tiempo e inspección de este tan solo una vez.
+	\item Limitado uso de memoria.
+	\item Trabajo en un tiempo limitado.
+	\item Estar listo para predecir en cualquier momento.
+\end{enumerate}
 
+De la misma forma, describimos el ciclo de clasificación para flujos de datos
+\begin{enumerate}
+	\item El algoritmo toma el siguiente ejemplo del flujo
+	\item El algoritmo procesa el ejemplo actualizando sus estructuras de datos. En este punto no se ha de exceder los límites de memoria y ha de ser lo más rápido posible.
+	\item El algoritmo está listo para aceptar el siguiente ejemplo.
+\end{enumerate}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{imagenes/ccfd} 
+	\caption{Ciclo de clasificación para flujos de datos junto con los requisitos utilizados en cada paso de los descritos anteriormente.}
+\end{figure}
 
+Para el procedimiento de evaluación de los algoritmos de aprendizaje, mientras que los modelos batch tradicionales utilizan un conjunto de datos de train y otro de 
+test de reserva (holdout) para realizar dicha evaluación, en los algoritmos dedicados al data streaming se utiliza el método  Interleaved Test-Then-Train o Prequential,
+mediante el cual cada una de las instancias que se reciben se utilizan como instancia de test para, posteriormente, usarla como nuevo dato de aprendizaje (train).
+De esta forma no es necesario mantener un conjunto de datos de reserva exclusivo para validar, haciendo que el uso de los datos disponibles sea máximo, además
+de que ayuda a crear una representación más visual de la evolución de la precisión del algoritmo a lo largo del tiempo.
 
 
 
