@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  1 SEP 2019 13:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  1 SEP 2019 16:30
 entering extended mode
 **./proyecto.tex
 (proyecto.tex
@@ -466,7 +466,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ) (portada/portada.tex
 \centeroffset=\skip63
-<imagenes/logo_ugr.jpg, id=107, 777.90625pt x 231.86626pt>
+<imagenes/logo_ugr.jpg, id=115, 777.90625pt x 231.86626pt>
 File: imagenes/logo_ugr.jpg Graphic file (type jpg)
 <use imagenes/logo_ugr.jpg>
 Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 11.
@@ -482,7 +482,7 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 8--22
 | $[]$ 
  []
 
-<imagenes/etsiit_logo.png, id=108, 110.814pt x 40.4712pt>
+<imagenes/etsiit_logo.png, id=116, 110.814pt x 40.4712pt>
 File: imagenes/etsiit_logo.png Graphic file (type png)
 <use imagenes/etsiit_logo.png>
 Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 29.
@@ -511,7 +511,7 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 8--27
 | $[]$ 
  []
 
-<imagenes/decsai.jpg, id=133, 526.1256pt x 102.3825pt>
+<imagenes/decsai.jpg, id=141, 526.1256pt x 102.3825pt>
 File: imagenes/decsai.jpg Graphic file (type jpg)
 <use imagenes/decsai.jpg>
 Package pdftex.def Info: imagenes/decsai.jpg  used on input line 35.
@@ -629,7 +629,7 @@ l.1 \chapter
 
 ]
 Cap\'{\i }tulo 2.
-<imagenes/tabla1.png, id=249, 478.78876pt x 207.02344pt>
+<imagenes/tabla1.png, id=259, 478.78876pt x 207.02344pt>
 File: imagenes/tabla1.png Graphic file (type png)
 <use imagenes/tabla1.png>
 Package pdftex.def Info: imagenes/tabla1.png  used on input line 16.
@@ -714,7 +714,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
 l.243 	\item O
               tras métricas además de la precisión, como la consistencia ...
 [10]
-<imagenes/f1.png, id=280, 808.52063pt x 126.4725pt>
+<imagenes/f1.png, id=290, 808.52063pt x 126.4725pt>
 File: imagenes/f1.png Graphic file (type png)
 <use imagenes/f1.png>
 Package pdftex.def Info: imagenes/f1.png  used on input line 274.
@@ -751,7 +751,7 @@ LaTeX Info: Redefining \. on input line 395.
 LaTeX Info: Redefining \% on input line 395.
  [14]) (capitulos/C3.BackgroundArboles.tex
 Cap\'{\i }tulo 3.
-<imagenes/ejemploArboles.png, id=307, 393.72093pt x 293.59688pt>
+<imagenes/ejemploArboles.png, id=317, 393.72093pt x 293.59688pt>
 File: imagenes/ejemploArboles.png Graphic file (type png)
 <use imagenes/ejemploArboles.png>
 Package pdftex.def Info: imagenes/ejemploArboles.png  used on input line 11.
@@ -762,7 +762,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [15
 
 ]
-<imagenes/ejemploArbol.png, id=314, 354.57469pt x 396.7322pt>
+<imagenes/ejemploArbol.png, id=324, 354.57469pt x 396.7322pt>
 File: imagenes/ejemploArbol.png Graphic file (type png)
 <use imagenes/ejemploArbol.png>
 Package pdftex.def Info: imagenes/ejemploArbol.png  used on input line 22.
@@ -779,8 +779,8 @@ LaTeX Info: Redefining \% on input line 47.
 LaTeX Info: Redefining \. on input line 71.
 LaTeX Info: Redefining \% on input line 71.
  [18]
-LaTeX Info: Redefining \. on input line 80.
-LaTeX Info: Redefining \% on input line 80.
+LaTeX Info: Redefining \. on input line 91.
+LaTeX Info: Redefining \% on input line 91.
  [19])
 (capitulos/C4.Propuesta.tex [20
 
@@ -830,22 +830,15 @@ LaTeX Info: Redefining \% on input line 23.
 )
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 211.
-
-
-Package rerunfilecheck Warning: File `proyecto.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `proyecto.out':
-(rerunfilecheck)             Before: CD4B4A68551FA9BE324D99734E25AB0F;2132
-(rerunfilecheck)             After:  E58F1A329FB33BE9CE1BD81CDA5EFB7A;2245.
+Package rerunfilecheck Info: File `proyecto.out' has not changed.
+(rerunfilecheck)             Checksum: B9AA1C8BF6B15D9338542F46684F1DED;2324.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 211.
  ) 
 Here is how much of TeX's memory you used:
- 8914 strings out of 492895
- 133117 string characters out of 3123736
- 244011 words of memory out of 3000000
- 12564 multiletter control sequences out of 15000+200000
+ 8917 strings out of 492895
+ 133169 string characters out of 3123736
+ 243011 words of memory out of 3000000
+ 12566 multiletter control sequences out of 15000+200000
  10584 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,12n,43p,636b,526s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -859,9 +852,9 @@ a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users
 fb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmsy10.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb>
-Output written on proyecto.pdf (51 pages, 631316 bytes).
+Output written on proyecto.pdf (51 pages, 633541 bytes).
 PDF statistics:
- 451 PDF objects out of 1000 (max. 8388607)
- 90 named destinations out of 1000 (max. 500000)
- 244 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 461 PDF objects out of 1000 (max. 8388607)
+ 91 named destinations out of 1000 (max. 500000)
+ 260 words of extra memory for PDF output out of 10000 (max. 10000000)
 
