@@ -12,4 +12,8 @@ Warning--to sort, need author or key in ref11
 Warning--to sort, need author or key in ref2
 Warning--to sort, need author or key in ref9
 Warning--to sort, need author or key in ref12
-(There were 11 warnings)
+Name 1 in "Bernhard Pfahringer, Geoﬀrey Holmes, and Richard Kirkby" has a comma at the end for entry ref13
+while executing---line 1049 of file plain.bst
+Name 1 in "Bernhard Pfahringer, Geoﬀrey Holmes, and Richard Kirkby" has a comma at the end for entry ref13
+while executing---line 1090 of file plain.bst
+(There were 2 error messages)

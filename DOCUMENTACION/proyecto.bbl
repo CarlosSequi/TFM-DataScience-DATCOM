@@ -51,6 +51,10 @@ Imagen ciclo cvfdt.
 A survey on learning from data streams: current and future trends.
 \newblock \url{}.
 
+\bibitem{ref13}
+Geoffrey~Holmes Bernhard~Pfahringer and Richard Kirkby.
+\newblock New options for hoeffding trees, 2007.
+
 \bibitem{ref3}
 R.~Lior and M.O. Z.
 \newblock Data mining with decision trees: Theory and applications, 2007.
