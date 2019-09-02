@@ -212,7 +212,25 @@ Muchas bases de datos grandes presentan cambios en la distribución de los datos
 
 Ante este problema, surgen técnicas como el uso de una \textbf{ventana deslizante} que tenga en cuenta los X ejemplos más recientes para asegurarnos de aprender siempre un modelo que tenga en cuenta el concepto actual se los datos, olvidando conceptos anteriores. Ante esta situación, ha de tenerse cuidado de escoger un valor adecuado de X, ya que ha de ser lo suficientemente grande como para tener un número suficiente de ejemplos con los que aprender el modelo y lo suficientemente pequeño como para abarcar un solo concepto de los datos.
 
-Concept-adapting Very Fast Decision Tree (CVFDT)
+\subsubsection{CVFDT}
+
+Un algoritmo que utiliza este concepto de ventana deslizante es el llamado\textbf{ Concept-adapting Very Fast Decision Tree (CVFDT)} que, evidentemente, contiene además las características del VFDT. A continuación la explicación de su funcionamiento\cite{ref12}:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{imagenes/cvfdt} 
+	\caption{Ciclo CVFDT \cite{ref11}}
+\end{figure}
+
+\begin{enumerate}
+	\item Entra un nuevo ejemplo al ciclo.
+	\item Se añade a la ventana deslizante.
+	\item Se comprueba si se excede la cantidad de ejemplos necesarios en dicho nodo para poder decidir el atributo apropiado para la división de los nodos hijos. En caso de excederse dicho tamaño de ventana, se elimina el ejemplo más antiguo.
+	\item CVFDTGrow: Se incrementan las estadísticas de cada uno de los nodos por los que pasa el ejemplo tanto en el árbol principal como en los subárboles. Si se ha alcanzado la cantidad suficiente de elementos analizados como para expandir un nodo hoja, escogemos el mejor de los atributos para expandir y se procede a ello.
+	\item CheckSplitValidity: Comprueba si comenzar un árbol alternativo o no basado en el atributo que mejor realiza la división en cada uno de los nodos. Se realiza una comprobación de las estadísticas de cada nodo observando si se produce un cambio de concepto con el nuevo ejemplo, en cuyo caso es posible que el atributo escogido anteriormente en dicho nodo posea una ganancia menor que otro, por lo que el algoritmo creará un subárbol alternativo cuya raíz será ese atributo que tenga mejor gain que el actual en dicho nodo.
+\end{enumerate}
+
+Cada uno de los nodos de decisión ha de tener las estadísticas suficientes para poder olvidar información en caso de que se produzca un cambio de concepto. Para ello, cada uno de los nodos posee un ID monotónicamente incremental que permite al algoritmo validar las decisiones previamente tomadas y realizar el olvido de información inútil en los cambios de concepto. Cuando un ejemplo antiguo es eliminado de la ventana, se recorre el árbol para decrementar las estadísticas por cada uno de los ID de los nodos por los que ha pasado.
 
 \section{Árboles de decisión monotónicos}
 

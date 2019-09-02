@@ -33,11 +33,12 @@
 \contentsline {subsection}{\numberline {3.2.1}Hoeffding tree (VFDT)}{22}{subsection.3.2.1}% 
 \contentsline {subsubsection}{Hoeffding bound.}{23}{section*.18}% 
 \contentsline {subsection}{\numberline {3.2.2}Otros algoritmos de data streaming}{24}{subsection.3.2.2}% 
-\contentsline {section}{\numberline {3.3}\IeC {\'A}rboles de decisi\IeC {\'o}n monot\IeC {\'o}nicos}{24}{section.3.3}% 
-\contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{25}{chapter.4}% 
-\contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{27}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{29}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Framework}{29}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Resultados}{29}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{29}{section.6.3}% 
-\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{31}{chapter.7}% 
+\contentsline {subsubsection}{CVFDT}{24}{section*.19}% 
+\contentsline {section}{\numberline {3.3}\IeC {\'A}rboles de decisi\IeC {\'o}n monot\IeC {\'o}nicos}{26}{section.3.3}% 
+\contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{27}{chapter.4}% 
+\contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{29}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{31}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Framework}{31}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Resultados}{31}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{31}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{33}{chapter.7}% 
