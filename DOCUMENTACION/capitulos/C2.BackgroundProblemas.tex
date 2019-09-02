@@ -92,37 +92,7 @@ A continuación describimos tres métodos de compactación de información para 
 \end{itemize}
 
 
-\subsection{Algoritmos para el aprendizaje de flujos de datos}
 
-Hulten y Domingos presentan un método general para aprender de bases de datos grandes y arbitrarias.
-Este método consiste en derivar un límite superior para la pérdida del learner en función del número de ejemplos usados en cada paso del algoritmo. De esta forma, se minimiza el número de ejemplos requeridos en cada paso del algoritmo, a la vez que se garantiza que el modelo obtenido no difiere de forma significante de aquel que se obtendría con todos los datos.Esta metodologia de datos se ha aplicado de forma exitosa en k-means, clustering jerárquico de variables, árboles de decision, etc.
-
-El aprendizaje de conjuntos de datos grandes puede ser más efectivo con el uso de algoritmos que ponen más énfasis en la gestión del sesgo (bias). Uno de estos algoritmos es el \textbf{Very Fast Decission Tree system (VFDT)}: es un algoritmo de aprendizaje basado en árboles de decisión que ajusta de forma dinámica su sesgo en función
-de que haya nuevos ejemplos disponibles.
-
-En la inducción del árbol de decisión, el principal problema consiste en tomar la decisión de cuando expandir el árbol, instalando un test de división y generando nuevas hojas.
-La idea básica consiste en usar un conjunto pequeño de ejemplos para seleccionar el test de divisón para colocar en un nodo del arbol de decisión.
-Si tras ver un conjunto de ejemplos, la diferencia en resultados entre ambos test de división no satisface un test estadistico (Hoeffding bound), entonces VFDT procede a examinar
-más ejemplos.
-Esto solo toma una decisión cuando hay evidencias estadísticas suficientes a favor de un test particular.
-Esta estrategia satisface la estabilidad del modelo (baja varianza), controla el overfitting, mientras que puede alcanzar un numero acrecentado de grados de libertad (low bias)
-incrementando el número de ejemplos.
-En VFDT se aprende un árbol de decisión de forma recursiva reemplazando hojas por nodos de decisión. Cada hoja almacena las estadísticas necesarias sobre los valores de los
-atributos. Dichas estadísticas necesarias son aquellas que se necesitan por una función de evaluación heurística que realiza el cálculo de el resultado de los test de división 
-basada en el valor de los atributos.
-Cuando hay un ejemplo disponible, atraviesa el árbol desde la raíz hasta una hoja evaluando el atributo requerido en cada nodo y siguiendo la rama correspondiente al valor
-del atributo en el ejemplo.
-Cuando el ejemplo llega a una hoja, la estadística de las hojas por las que ha pasado han sido actualizadas.
-Entonces cada condición basada en los valores de los atributos ha sido evaluada.
-El nuevo nodo de decisión tendrá tantos descendientes como el número de posibles valores tenga el atributo escogido (por lo que el árbol no es necesariamente binario).
-Los nodos de decisión tan solo contienen la información sobre el test de división instalado en ellos.
-La innovación principal de los VFDT es el uso de los Hoeffding bounds para decidir cuantos ejemplos han de verse previa instalación de un test de decisión en un nodo
-hoja.
-VFDT ha sido implementado también para tratar con atributos continuos, hojas funcionales y con flujos de datos no estacionarios. 
-Una característica interesante de VFDT es que tiene la capacidad de congelar las hojas menos comprometedoras en entornos de trabajo con memoria limitada. Existen  también ejemplos de VFDT con bagging y boosting y para aprender regresión y modelos de árboles.
-
-El CVFDT es una extensión para flujos de datos cambiantes en el tiempo. Este genera árboles de decisión alternativos en nodos donde hay evidencia de que el test de división no
-es ya apropiado. El sistema reemplaza el árbol actual con uno nuevo que resulta ser más preciso.
 
 
 \subsection{Problemas en el aprendizaje sobre data streams}

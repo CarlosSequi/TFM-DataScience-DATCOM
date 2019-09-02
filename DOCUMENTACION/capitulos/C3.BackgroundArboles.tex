@@ -155,9 +155,9 @@ Como ya sabemos, los algoritmos dedicados al data streaming han de seguir los si
 
 Además, nuestro algoritmo ha de estar dotado de técnicas de detección de cambios en la distribución de los datos para evitar la disminución de la precisión en la predicción cuando esto suceda.
 
-\subsection{Hoeffding-trees}
+\subsection{Hoeffding tree (VFDT)}
 
-Un árbol de Hoeffding (VFDT) es un algoritmo de inducción de árbol de decisión incremental capaz de aprender de flujos de datos masivos, suponiendo que la distribución que genera ejemplos no cambia con el tiempo. Los árboles Hoeffding explotan el hecho de que una pequeña muestra a menudo puede ser suficiente para elegir un atributo de división óptimo. Esta idea está respaldada matemáticamente por el Hoeffding bound, que cuantifica el número de observaciones (en nuestro caso, ejemplos) necesarias para estimar algunas estadísticas dentro de una precisión prescrita (en nuestro caso, la bondad de un atributo). \cite{ref9}
+Un árbol de Hoeffding es un algoritmo de inducción de árbol de decisión incremental capaz de aprender de flujos de datos masivos, suponiendo que la distribución que genera ejemplos es estacionaria, es decir, que no cambia con el tiempo. Los árboles Hoeffding explotan el hecho de que una pequeña muestra a menudo puede ser suficiente para elegir un atributo de división óptimo. Esta idea está respaldada matemáticamente por el Hoeffding bound, que cuantifica el número de observaciones (en nuestro caso, ejemplos) necesarias para estimar algunas estadísticas dentro de una precisión prescrita (en nuestro caso, la bondad de un atributo). \cite{ref9}
 
 Algunas de las técnicas de clasificación para data streaming tienen los siguientes \textbf{problemas}:
 \begin{itemize}
@@ -173,8 +173,46 @@ Ante estos problemas se plantea\textbf{ Hoeffding-tree} ya que:
 
 \subsubsection{Hoeffding bound.}
 
-Con el fin de cumplir con los requisitos establecidos al principio de este apartado para el tratamiento de fllujos de datos, los autores (Hulten y Domingos) proponen la cota Hoeffding para ser capaces de decidir la cantidad de instancias necesarias a evaluar para alcanzar un cierto nivel de confianza a partir del cual sabemos que no es necesario evaluar más ejemplos para seleccionar un atributo mediante el cual realizar la partición del árbol en el nodo actual.\\
+Hulten y Domingos presentan un método general para aprender de bases de datos grandes y arbitrarias.
+Este método consiste en derivar un límite superior para la pérdida del learner en función del número de ejemplos usados en cada paso del algoritmo. De esta forma, se minimiza el número de ejemplos requeridos en cada paso del algoritmo, a la vez que se garantiza que el modelo obtenido no difiere de forma significante de aquel que se obtendría con todos los datos. Esta metodologia de datos se ha aplicado de forma exitosa en k-means, clustering jerárquico de variables, árboles de decision, etc.
+
+Con el fin de cumplir con los requisitos establecidos al principio de este apartado para el tratamiento de flujos de datos, los autores proponen la cota Hoeffding para ser capaces de decidir la cantidad de instancias necesarias a evaluar para alcanzar un cierto nivel de confianza a partir del cual sabemos que no es necesario evaluar más ejemplos para seleccionar un atributo mediante el cual realizar la partición del árbol en el nodo actual.\\
 Es decir, una vez alcanzada la cota de Hoeffding, el atributo que seleccionemos para el particionamiento del espacio de predictores, sera el mismo que seleccionariamos si analizásemos una infinidad de ejemplos con el clasificador (evidentemente, con cierto nivel de confianza).
+
+La idea básica consiste en usar un conjunto pequeño de ejemplos para seleccionar el test de divisón para colocar en un nodo del árbol de decisión.
+Si tras ver un conjunto de ejemplos, la diferencia en resultados entre ambos test de división no satisface un test estadístico (Hoeffding bound), entonces VFDT procede a examinar más ejemplos.
+
+En VFDT se aprende un árbol de decisión de forma recursiva reemplazando hojas por nodos de decisión. Cada hoja almacena las estadísticas necesarias sobre los valores de los
+atributos. Dichas estadísticas necesarias son aquellas que se necesitan por una función de evaluación heurística que realiza el cálculo del resultado de los test de división 
+basada en el valor de los atributos.
+Cuando hay un ejemplo disponible, atraviesa el árbol desde la raíz hasta una hoja evaluando el atributo requerido en cada nodo y siguiendo la rama correspondiente al valor
+del atributo en el ejemplo.
+Cuando el ejemplo llega a una hoja, la estadística de las hojas por las que ha pasado han sido actualizadas.
+Entonces cada condición basada en los valores de los atributos ha sido evaluada.
+
+El nuevo nodo de decisión tendrá tantos descendientes como el número de posibles valores tenga el atributo escogido (por lo que el árbol no es necesariamente binario).
+Los nodos de decisión tan solo contienen la información sobre el test de división instalado en ellos.
+
+\textbf{Problema}: VFDT no incluye soporte para el concept-drift por lo que, ante cambios en la distribución de los datos, los resultados del algoritmo pueden ser malos.
+
+\textbf{Cálculo de la cota:}
+
+Teniendo n variables independientes $r_{1}...r_{n}$ con un rango R y una media $\bar{r}$, el Hoeffding bound afirma con una probabilidad 1-$\delta$ que la media real es al menos $\bar{r}$-$\epsilon$ donde:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{imagenes/hoeffdingbound} 
+	\caption{Cálculo del límite de Hoeffding \cite{ref10}}
+\end{figure}
+
+Sabiendo que $\delta$ es la tolerancia al fallo a la hora de escoger un atributo en un nodo dado.
+
+\subsection{Otros algoritmos de data streaming}
+
+Muchas bases de datos grandes presentan cambios en la distribución de los datos conforme avanza la generación de estos, es decir, posee un cambio de concepto en el tiempo, un \textbf{concept drift}. El hecho de que un algoritmo de flujos de datos no esté preparado para esos efectos cambiantes puede producir un empeoramiento de los resultados predictivos con el paso del tiempo, por lo que conviene tenerlo en cuenta a la hora de implementar esta clase de algoritmos.
+
+Ante este problema, surgen técnicas como el uso de una \textbf{ventana deslizante} que tenga en cuenta los X ejemplos más recientes para asegurarnos de aprender siempre un modelo que tenga en cuenta el concepto actual se los datos, olvidando conceptos anteriores. Ante esta situación, ha de tenerse cuidado de escoger un valor adecuado de X, ya que ha de ser lo suficientemente grande como para tener un número suficiente de ejemplos con los que aprender el modelo y lo suficientemente pequeño como para abarcar un solo concepto de los datos.
+
+Concept-adapting Very Fast Decision Tree (CVFDT)
 
 \section{Árboles de decisión monotónicos}
 

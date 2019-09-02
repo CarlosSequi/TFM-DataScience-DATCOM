@@ -8,36 +8,36 @@
 \contentsline {subsubsection}{Ejemplo de algoritmo de ventana de tiempo}{5}{section*.7}% 
 \contentsline {subsection}{\numberline {2.1.4}Sampling}{6}{subsection.2.1.4}% 
 \contentsline {subsection}{\numberline {2.1.5}Sinopsis, bocetos y res\IeC {\'u}menes}{6}{subsection.2.1.5}% 
-\contentsline {subsection}{\numberline {2.1.6}Algoritmos para el aprendizaje de flujos de datos}{7}{subsection.2.1.6}% 
-\contentsline {subsection}{\numberline {2.1.7}Problemas en el aprendizaje sobre data streams}{8}{subsection.2.1.7}% 
-\contentsline {subsection}{\numberline {2.1.8}Requisitos y funcionamiento de data streams.}{9}{subsection.2.1.8}% 
-\contentsline {section}{\numberline {2.2}Ordinal and monotonic classification}{10}{section.2.2}% 
-\contentsline {subsection}{\numberline {2.2.1}Restricciones monot\IeC {\'o}nicas}{12}{subsection.2.2.1}% 
-\contentsline {subsubsection}{Dominancia estoc\IeC {\'a}stica}{12}{section*.8}% 
-\contentsline {subsubsection}{Clasificador mon\IeC {\'o}tono de Bayes}{12}{section*.9}% 
-\contentsline {subsection}{\numberline {2.2.2}M\IeC {\'e}todos de clasificaci\IeC {\'o}n no param\IeC {\'e}tricos}{13}{subsection.2.2.2}% 
-\contentsline {subsubsection}{Aproximaci\IeC {\'o}n Plug-In}{13}{section*.10}% 
-\contentsline {subsubsection}{Aproximaci\IeC {\'o}n directa}{14}{section*.11}% 
-\contentsline {chapter}{\numberline {3}Cap\IeC {\'\i }tulo 3. Background en algoritmos de \IeC {\'a}rboles de decisi\IeC {\'o}n}{17}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Fundamentos de \IeC {\'a}rboles de decisi\IeC {\'o}n}{17}{section.3.1}% 
-\contentsline {subsection}{\numberline {3.1.1}Terminolog\IeC {\'\i }a:}{19}{subsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.1.2}\IeC {\textquestiondown }Regresi\IeC {\'o}n o clasificaci\IeC {\'o}n?: similitudes y diferencias.}{19}{subsection.3.1.2}% 
-\contentsline {subsubsection}{Similitudes}{19}{section*.12}% 
-\contentsline {subsubsection}{Diferencias}{20}{section*.13}% 
-\contentsline {subsection}{\numberline {3.1.3}Ventajas e inconvenientes de los \IeC {\'a}rboles de decisi\IeC {\'o}n}{20}{subsection.3.1.3}% 
-\contentsline {subsubsection}{Ventajas}{20}{section*.14}% 
-\contentsline {subsubsection}{Inconvenientes}{20}{section*.15}% 
-\contentsline {subsection}{\numberline {3.1.4}Creaci\IeC {\'o}n del \IeC {\'a}rbol}{21}{subsection.3.1.4}% 
-\contentsline {subsubsection}{\IeC {\textquestiondown }C\IeC {\'o}mo medimos esa ganancia de homogeneidad?}{21}{section*.16}% 
-\contentsline {subsubsection}{\IeC {\textquestiondown }C\IeC {\'o}mo evitamos el overfitting?}{23}{section*.17}% 
-\contentsline {section}{\numberline {3.2}Hoeffding Trees y otros algoritmos de data streaming}{24}{section.3.2}% 
-\contentsline {subsection}{\numberline {3.2.1}Hoeffding-trees}{24}{subsection.3.2.1}% 
-\contentsline {subsubsection}{Hoeffding bound.}{25}{section*.18}% 
-\contentsline {section}{\numberline {3.3}\IeC {\'A}rboles de decisi\IeC {\'o}n monot\IeC {\'o}nicos}{25}{section.3.3}% 
-\contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{27}{chapter.4}% 
-\contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{29}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{31}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Framework}{31}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Resultados}{31}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{31}{section.6.3}% 
-\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{33}{chapter.7}% 
+\contentsline {subsection}{\numberline {2.1.6}Problemas en el aprendizaje sobre data streams}{7}{subsection.2.1.6}% 
+\contentsline {subsection}{\numberline {2.1.7}Requisitos y funcionamiento de data streams.}{8}{subsection.2.1.7}% 
+\contentsline {section}{\numberline {2.2}Ordinal and monotonic classification}{9}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Restricciones monot\IeC {\'o}nicas}{10}{subsection.2.2.1}% 
+\contentsline {subsubsection}{Dominancia estoc\IeC {\'a}stica}{11}{section*.8}% 
+\contentsline {subsubsection}{Clasificador mon\IeC {\'o}tono de Bayes}{11}{section*.9}% 
+\contentsline {subsection}{\numberline {2.2.2}M\IeC {\'e}todos de clasificaci\IeC {\'o}n no param\IeC {\'e}tricos}{12}{subsection.2.2.2}% 
+\contentsline {subsubsection}{Aproximaci\IeC {\'o}n Plug-In}{12}{section*.10}% 
+\contentsline {subsubsection}{Aproximaci\IeC {\'o}n directa}{13}{section*.11}% 
+\contentsline {chapter}{\numberline {3}Cap\IeC {\'\i }tulo 3. Background en algoritmos de \IeC {\'a}rboles de decisi\IeC {\'o}n}{15}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Fundamentos de \IeC {\'a}rboles de decisi\IeC {\'o}n}{15}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}Terminolog\IeC {\'\i }a:}{17}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}\IeC {\textquestiondown }Regresi\IeC {\'o}n o clasificaci\IeC {\'o}n?: similitudes y diferencias.}{17}{subsection.3.1.2}% 
+\contentsline {subsubsection}{Similitudes}{17}{section*.12}% 
+\contentsline {subsubsection}{Diferencias}{18}{section*.13}% 
+\contentsline {subsection}{\numberline {3.1.3}Ventajas e inconvenientes de los \IeC {\'a}rboles de decisi\IeC {\'o}n}{18}{subsection.3.1.3}% 
+\contentsline {subsubsection}{Ventajas}{18}{section*.14}% 
+\contentsline {subsubsection}{Inconvenientes}{18}{section*.15}% 
+\contentsline {subsection}{\numberline {3.1.4}Creaci\IeC {\'o}n del \IeC {\'a}rbol}{19}{subsection.3.1.4}% 
+\contentsline {subsubsection}{\IeC {\textquestiondown }C\IeC {\'o}mo medimos esa ganancia de homogeneidad?}{19}{section*.16}% 
+\contentsline {subsubsection}{\IeC {\textquestiondown }C\IeC {\'o}mo evitamos el overfitting?}{21}{section*.17}% 
+\contentsline {section}{\numberline {3.2}Hoeffding Trees y otros algoritmos de data streaming}{22}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Hoeffding tree (VFDT)}{22}{subsection.3.2.1}% 
+\contentsline {subsubsection}{Hoeffding bound.}{23}{section*.18}% 
+\contentsline {subsection}{\numberline {3.2.2}Otros algoritmos de data streaming}{24}{subsection.3.2.2}% 
+\contentsline {section}{\numberline {3.3}\IeC {\'A}rboles de decisi\IeC {\'o}n monot\IeC {\'o}nicos}{24}{section.3.3}% 
+\contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{25}{chapter.4}% 
+\contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{27}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{29}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Framework}{29}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Resultados}{29}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{29}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{31}{chapter.7}% 

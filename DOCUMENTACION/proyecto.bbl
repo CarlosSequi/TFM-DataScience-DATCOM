@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{ref2}
 Computer society digital library.
@@ -14,8 +14,14 @@ Decision tree terminology.
 \newblock
   \url{https://www.researchgate.net/figure/a-describes-the-components-of-a-decision-tree-the-Nodes-represent-the-possible_fig2_303773171}.
 
+\bibitem{ref10}
+Definición hoeffding bound.
+\newblock \url{https://arxiv.org/pdf/1802.08780.pdf}.
+
 \bibitem{ref9}
 Definición hoeffding tree.
+\newblock
+  \url{http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/HoeffdingTree.html}.
 
 \bibitem{ref7}
 Fórmula cer.

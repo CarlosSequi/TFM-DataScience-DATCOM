@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  1 SEP 2019 20:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  2 SEP 2019 12:23
 entering extended mode
 **./proyecto.tex
 (proyecto.tex
@@ -466,7 +466,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ) (portada/portada.tex
 \centeroffset=\skip63
-<imagenes/logo_ugr.jpg, id=123, 777.90625pt x 231.86626pt>
+<imagenes/logo_ugr.jpg, id=119, 777.90625pt x 231.86626pt>
 File: imagenes/logo_ugr.jpg Graphic file (type jpg)
 <use imagenes/logo_ugr.jpg>
 Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 11.
@@ -482,7 +482,7 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 8--22
 | $[]$ 
  []
 
-<imagenes/etsiit_logo.png, id=124, 110.814pt x 40.4712pt>
+<imagenes/etsiit_logo.png, id=120, 110.814pt x 40.4712pt>
 File: imagenes/etsiit_logo.png Graphic file (type png)
 <use imagenes/etsiit_logo.png>
 Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 29.
@@ -511,7 +511,7 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 8--27
 | $[]$ 
  []
 
-<imagenes/decsai.jpg, id=149, 526.1256pt x 102.3825pt>
+<imagenes/decsai.jpg, id=145, 526.1256pt x 102.3825pt>
 File: imagenes/decsai.jpg Graphic file (type jpg)
 <use imagenes/decsai.jpg>
 Package pdftex.def Info: imagenes/decsai.jpg  used on input line 35.
@@ -639,7 +639,7 @@ l.1 \chapter
 
 ]
 Cap\'{\i }tulo 2.
-<imagenes/tabla1.png, id=289, 478.78876pt x 207.02344pt>
+<imagenes/tabla1.png, id=288, 478.78876pt x 207.02344pt>
 File: imagenes/tabla1.png Graphic file (type png)
 <use imagenes/tabla1.png>
 Package pdftex.def Info: imagenes/tabla1.png  used on input line 16.
@@ -682,96 +682,87 @@ been already used, duplicate ignored
                    \relax 
 l.92 \end{itemize}
                    [6]
-LaTeX Info: Redefining \. on input line 123.
-LaTeX Info: Redefining \% on input line 123.
+LaTeX Info: Redefining \. on input line 135.
+LaTeX Info: Redefining \% on input line 135.
 pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.123 
+l.135 
        [7]
-LaTeX Info: Redefining \. on input line 151.
-LaTeX Info: Redefining \% on input line 151.
+<imagenes/ccfd.png, id=310, 432.86719pt x 189.70876pt>
+File: imagenes/ccfd.png Graphic file (type png)
+<use imagenes/ccfd.png>
+Package pdftex.def Info: imagenes/ccfd.png  used on input line 160.
+(pdftex.def)             Requested size: 360.0pt x 157.77953pt.
+LaTeX Info: Redefining \. on input line 163.
+LaTeX Info: Redefining \% on input line 163.
 pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.151 E
-       videntemente existe una balanza entre la ganancia en rendimiento ofre...
-[8]
-LaTeX Info: Redefining \. on input line 182.
-LaTeX Info: Redefining \% on input line 182.
-pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.182 \begin{enumerate}
-                        [9]
-<imagenes/ccfd.png, id=321, 432.86719pt x 189.70876pt>
-File: imagenes/ccfd.png Graphic file (type png)
-<use imagenes/ccfd.png>
-Package pdftex.def Info: imagenes/ccfd.png  used on input line 190.
-(pdftex.def)             Requested size: 360.0pt x 157.77953pt.
-LaTeX Info: Redefining \. on input line 225.
-LaTeX Info: Redefining \% on input line 225.
-pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.225 	\item \textbf
-                    {Función monótona}: una función es monótona si x$>$=...
-[10 <./imagenes/ccfd.png>]
-Overfull \hbox (14.61913pt too wide) in paragraph at lines 225--227
+l.163 
+       [8]
+Overfull \hbox (14.61913pt too wide) in paragraph at lines 195--197
 []\OT1/cmr/bx/sc/10.95 Funcion monoto-na\OT1/cmr/m/n/10.95 : una fun-cion es
  monoto-na si x$\OML/cmm/m/it/10.95 >$\OT1/cmr/m/n/10.95 =x' -$\OML/cmm/m/it/1
 0.95 >$ \OT1/cmr/m/n/10.95 h(x)$\OML/cmm/m/it/10.95 >$\OT1/cmr/m/n/10.95 =h(x')
 .
  []
 
-LaTeX Info: Redefining \. on input line 265.
-LaTeX Info: Redefining \% on input line 265.
+LaTeX Info: Redefining \. on input line 197.
+LaTeX Info: Redefining \% on input line 197.
+pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.197 \end{itemize}
+                    [9 <./imagenes/ccfd.png>]
+LaTeX Info: Redefining \. on input line 242.
+LaTeX Info: Redefining \% on input line 242.
+pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.242 \end{itemize}
+                    [10]
+<imagenes/f1.png, id=328, 808.52063pt x 126.4725pt>
+File: imagenes/f1.png Graphic file (type png)
+<use imagenes/f1.png>
+Package pdftex.def Info: imagenes/f1.png  used on input line 268.
+(pdftex.def)             Requested size: 143.9978pt x 22.52477pt.
+LaTeX Info: Redefining \. on input line 293.
+LaTeX Info: Redefining \% on input line 293.
 pdfTeX warning (ext4): destination with the same identifier (name{page.11}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.265 	\item E
-              l tamaño del espacio de la hipótesis es reducido, lo que fac...
-[11]
-<imagenes/f1.png, id=333, 808.52063pt x 126.4725pt>
-File: imagenes/f1.png Graphic file (type png)
-<use imagenes/f1.png>
-Package pdftex.def Info: imagenes/f1.png  used on input line 298.
-(pdftex.def)             Requested size: 143.9978pt x 22.52477pt.
-LaTeX Info: Redefining \. on input line 309.
-LaTeX Info: Redefining \% on input line 309.
-pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.309 
-       [12 <./imagenes/f1.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 326.
+l.293 	\item L
+              a siguiente definición de convexidad es necesaria también para
+[11 <./imagenes/f1.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 296.
 
 
 ("C:\Users\cmss_\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 326.
-LaTeX Info: Redefining \. on input line 362.
-LaTeX Info: Redefining \% on input line 362.
-
-[13]
-LaTeX Info: Redefining \. on input line 410.
-LaTeX Info: Redefining \% on input line 410.
- [14]
-LaTeX Info: Redefining \. on input line 419.
-LaTeX Info: Redefining \% on input line 419.
- [15]) (capitulos/C3.BackgroundArboles.tex [16
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 296.
+LaTeX Info: Redefining \. on input line 339.
+LaTeX Info: Redefining \% on input line 339.
+pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.339 
+       [12]
+LaTeX Info: Redefining \. on input line 389.
+LaTeX Info: Redefining \% on input line 389.
+ [13]) (capitulos/C3.BackgroundArboles.tex [14
 
 ]
 Cap\'{\i }tulo 3.
-<imagenes/ejemploArboles.png, id=364, 393.72093pt x 293.59688pt>
+<imagenes/ejemploArboles.png, id=355, 393.72093pt x 293.59688pt>
 File: imagenes/ejemploArboles.png Graphic file (type png)
 <use imagenes/ejemploArboles.png>
 Package pdftex.def Info: imagenes/ejemploArboles.png  used on input line 11.
@@ -779,8 +770,8 @@ Package pdftex.def Info: imagenes/ejemploArboles.png  used on input line 11.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17]
-<imagenes/ejemploArbol.png, id=372, 354.57469pt x 396.7322pt>
+ [15]
+<imagenes/ejemploArbol.png, id=362, 354.57469pt x 396.7322pt>
 File: imagenes/ejemploArbol.png Graphic file (type png)
 <use imagenes/ejemploArbol.png>
 Package pdftex.def Info: imagenes/ejemploArbol.png  used on input line 22.
@@ -790,68 +781,79 @@ Underfull \vbox (badness 1558) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 29.
 LaTeX Info: Redefining \% on input line 29.
- [18 <./imagenes/ejemploArboles.png> <./imagenes/ejemploArbol.png>]
+ [16 <./imagenes/ejemploArboles.png> <./imagenes/ejemploArbol.png>]
 LaTeX Info: Redefining \. on input line 47.
 LaTeX Info: Redefining \% on input line 47.
- [19]
+ [17]
 LaTeX Info: Redefining \. on input line 71.
 LaTeX Info: Redefining \% on input line 71.
- [20]
-<imagenes/rss.png, id=392, 301.8778pt x 95.6072pt>
+ [18]
+<imagenes/rss.png, id=383, 301.8778pt x 95.6072pt>
 File: imagenes/rss.png Graphic file (type png)
 <use imagenes/rss.png>
 Package pdftex.def Info: imagenes/rss.png  used on input line 89.
 (pdftex.def)             Requested size: 180.0pt x 57.00732pt.
 LaTeX Info: Redefining \. on input line 94.
 LaTeX Info: Redefining \% on input line 94.
- [21 <./imagenes/rss.png>]
-<imagenes/cer.png, id=400, 493.845pt x 79.04532pt>
+ [19 <./imagenes/rss.png>]
+<imagenes/cer.png, id=391, 493.845pt x 79.04532pt>
 File: imagenes/cer.png Graphic file (type png)
 <use imagenes/cer.png>
 Package pdftex.def Info: imagenes/cer.png  used on input line 99.
 (pdftex.def)             Requested size: 180.0pt x 28.81088pt.
-<imagenes/gini.png, id=403, 283.81032pt x 107.65219pt>
+<imagenes/gini.png, id=394, 283.81032pt x 107.65219pt>
 File: imagenes/gini.png Graphic file (type png)
 <use imagenes/gini.png>
 Package pdftex.def Info: imagenes/gini.png  used on input line 112.
 (pdftex.def)             Requested size: 180.0pt x 68.27788pt.
-<imagenes/entropia.png, id=405, 288.3272pt x 102.3825pt>
+<imagenes/entropia.png, id=396, 288.3272pt x 102.3825pt>
 File: imagenes/entropia.png Graphic file (type png)
 <use imagenes/entropia.png>
 Package pdftex.def Info: imagenes/entropia.png  used on input line 119.
 (pdftex.def)             Requested size: 180.0pt x 63.9186pt.
 LaTeX Info: Redefining \. on input line 121.
 LaTeX Info: Redefining \% on input line 121.
- [22 <./imagenes/cer.png> <./imagenes/gini.png>]
+ [20 <./imagenes/cer.png> <./imagenes/gini.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
 LaTeX Info: Redefining \. on input line 150.
 LaTeX Info: Redefining \% on input line 150.
-[23 <./imagenes/entropia.png>]
+[21 <./imagenes/entropia.png>]
 LaTeX Info: Redefining \. on input line 178.
 LaTeX Info: Redefining \% on input line 178.
- [24]
-LaTeX Info: Redefining \. on input line 182.
-LaTeX Info: Redefining \% on input line 182.
- [25]) (capitulos/C4.Propuesta.tex [26
+ [22]
+Underfull \vbox (badness 6173) has occurred while \output is active []
 
-]
+LaTeX Info: Redefining \. on input line 197.
+LaTeX Info: Redefining \% on input line 197.
+ [23]
+<imagenes/hoeffdingbound.png, id=425, 338.76563pt x 135.50626pt>
+File: imagenes/hoeffdingbound.png Graphic file (type png)
+<use imagenes/hoeffdingbound.png>
+Package pdftex.def Info: imagenes/hoeffdingbound.png  used on input line 203.
+(pdftex.def)             Requested size: 108.0011pt x 43.19952pt.
+LaTeX Info: Redefining \. on input line 216.
+LaTeX Info: Redefining \% on input line 216.
+
+[24 <./imagenes/hoeffdingbound.png>]) (capitulos/C4.Propuesta.tex
 Cap\'{\i }tulo 4.
-[27]) (capitulos/C5.Software.tex [28
+[25
+
+]) (capitulos/C5.Software.tex [26
 
 ]
 Cap\'{\i }tulo 5.
-[29]) (capitulos/C6.Experimentos.tex [30
+[27]) (capitulos/C6.Experimentos.tex [28
 
 ]
 Cap\'{\i }tulo 6.
-[31]) (capitulos/C7.ConclusionesTrabajoFuturo.tex [32
+[29]) (capitulos/C7.ConclusionesTrabajoFuturo.tex [30
 
 ]
 Cap\'{\i }tulo 7.
-[33]) (proyecto.bbl [34
+[31]) (proyecto.bbl [32
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 8--11
@@ -866,46 +868,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--11
  []
 
 
-Overfull \hbox (117.17969pt too wide) in paragraph at lines 13--16
+Overfull \hbox (122.6547pt too wide) in paragraph at lines 13--16
 \OT1/cmtt/m/n/10.95 a-[]describes-[]the-[]components-[]of-[]a-[]decision-[]tree
 -[]the-[]Nodes-[]represent-[]the-[]possible _
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--24
+Underfull \hbox (badness 10000) in paragraph at lines 27--30
 []\OT1/cmr/m/n/10.95 Formu-la cer.  []$\OT1/cmtt/m/n/10.95 https : / / towards
 datascience . com /
  []
 
 
-Overfull \hbox (14.74498pt too wide) in paragraph at lines 21--24
+Overfull \hbox (20.21999pt too wide) in paragraph at lines 27--30
 \OT1/cmtt/m/n/10.95 everything-[]you-[]need-[]to-[]know-[]about-[]decision-[]tr
 ees-[]8fcd68ecaa71$[]\OT1/cmr/m/n/10.95 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--29
+Underfull \hbox (badness 10000) in paragraph at lines 32--35
 []\OT1/cmr/m/n/10.95 Formu-la rss.  []$\OT1/cmtt/m/n/10.95 https : / / www . q
 uantstart . com / articles /
  []
 
 
-Overfull \hbox (37.73973pt too wide) in paragraph at lines 26--29
+Overfull \hbox (43.21474pt too wide) in paragraph at lines 32--35
 \OT1/cmtt/m/n/10.95 Beginners-[]Guide-[]to-[]Decision-[]Trees-[]for-[]Supervise
 d-[]Machine-[]Learning$[]\OT1/cmr/m/n/10.95 . 
  []
 
 
-Overfull \hbox (37.73973pt too wide) in paragraph at lines 31--34
+Overfull \hbox (43.21474pt too wide) in paragraph at lines 37--40
 \OT1/cmtt/m/n/10.95 Beginners-[]Guide-[]to-[]Decision-[]Trees-[]for-[]Supervise
 d-[]Machine-[]Learning$[]\OT1/cmr/m/n/10.95 . 
  []
 
-) [35] [36
+) [33] [34
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 211.
- [37]
+ [35]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
  (proyecto.aux
 LaTeX Info: Redefining \. on input line 23.
@@ -913,22 +915,28 @@ LaTeX Info: Redefining \% on input line 23.
 )
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 211.
-Package rerunfilecheck Info: File `proyecto.out' has not changed.
-(rerunfilecheck)             Checksum: 2CBAE15C35FB7C135A8CC1027BBB9A33;2493.
 
+
+Package rerunfilecheck Warning: File `proyecto.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `proyecto.out':
+(rerunfilecheck)             Before: 5DD7BB674D599B28E31C2BE3AC3A64F0;2397
+(rerunfilecheck)             After:  471994F3F14519EB8C915FE7E8916F64;2486.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 211.
  ) 
 Here is how much of TeX's memory you used:
- 8981 strings out of 492895
- 134015 string characters out of 3123736
- 243115 words of memory out of 3000000
- 12595 multiletter control sequences out of 15000+200000
+ 8991 strings out of 492895
+ 134221 string characters out of 3123736
+ 242143 words of memory out of 3000000
+ 12604 multiletter control sequences out of 15000+200000
  10893 words of font info for 38 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,13n,43p,714b,676s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,13n,43p,707b,676s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/f
@@ -938,12 +946,14 @@ Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/
 cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.p
 fb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmmi10.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cmss_/AppData/Local/Programs
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on proyecto.pdf (57 pages, 714624 bytes).
+ublic/amsfonts/cm/cmmi8.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/cmss_/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/cmss_/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cmss_
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on proyecto.pdf (55 pages, 740639 bytes).
 PDF statistics:
- 563 PDF objects out of 1000 (max. 8388607)
+ 570 PDF objects out of 1000 (max. 8388607)
  120 named destinations out of 1000 (max. 500000)
- 301 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 298 words of extra memory for PDF output out of 10000 (max. 10000000)
 
