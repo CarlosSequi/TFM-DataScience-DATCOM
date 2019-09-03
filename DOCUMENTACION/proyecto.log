@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  3 SEP 2019 17:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  3 SEP 2019 18:50
 entering extended mode
 **./proyecto.tex
 (proyecto.tex
@@ -649,31 +649,69 @@ l.13 U
 [1
 
 ]
-LaTeX Info: Redefining \. on input line 51.
-LaTeX Info: Redefining \% on input line 51.
+Underfull \hbox (badness 10000) in paragraph at lines 13--15
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 21.
+LaTeX Info: Redefining \% on input line 21.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.51 
+l.21 
       [2]
-LaTeX Info: Redefining \. on input line 57.
-LaTeX Info: Redefining \% on input line 57.
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 65.
+LaTeX Info: Redefining \% on input line 65.
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.57 \newpage
-              [3]) (capitulos/C2.BackgroundProblemas.texpdfTeX warning (ext4): 
-destination with the same identifier (name{page.4}) has been already used, dupl
-icate ignored
+l.65 
+      [3]
+LaTeX Info: Redefining \. on input line 71.
+LaTeX Info: Redefining \% on input line 71.
+pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1 \chapter
-            [Capítulo 2. Background en problemas]{Background en problemas}
-[4
-
-]
+l.71 \newpage
+              [4]) (capitulos/C2.BackgroundProblemas.tex
 Cap\'{\i }tulo 2.
 <imagenes/tabla1.png, id=351, 478.78876pt x 207.02344pt>
 File: imagenes/tabla1.png Graphic file (type png)
@@ -688,7 +726,9 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.19 
-      [5]
+      [5
+
+]
 Overfull \hbox (4.81502pt too wide) in paragraph at lines 30--31
 []\OT1/cmr/m/n/10.95 Desde el pun-to de vis-ta de los sis-te-mas de con-trol de
  flu-jo de da-tos(DSMS),
@@ -1001,7 +1041,7 @@ LaTeX Info: Redefining \% on input line 23.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 211.
 Package rerunfilecheck Info: File `proyecto.out' has not changed.
-(rerunfilecheck)             Checksum: 7D535C6A841A33B3FBD8A1C816CF5CFF;3039.
+(rerunfilecheck)             Checksum: 0A3FDD893470460B9DE28E5886CDD930;3039.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1015,7 +1055,7 @@ Here is how much of TeX's memory you used:
  12638 multiletter control sequences out of 15000+200000
  10893 words of font info for 38 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,13n,43p,1009b,676s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,13n,43p,1011b,676s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/f
@@ -1030,7 +1070,7 @@ onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/cmss_/AppData/Local/Programs/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/cmss_/AppData/Loca
 l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cmss_
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on proyecto.pdf (63 pages, 960590 bytes).
+Output written on proyecto.pdf (63 pages, 963516 bytes).
 PDF statistics:
  700 PDF objects out of 1000 (max. 8388607)
  152 named destinations out of 1000 (max. 500000)
