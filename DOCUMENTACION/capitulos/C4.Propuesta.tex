@@ -1,5 +1,40 @@
 \chapter[Capítulo 4. Propuesta]{Propuesta}
 
+\section{Introducción de la propuesta}
+
+Una vez conocemos el funcionamiento, características, algunas formas de implementación y los problemas a los que se enfrentan cada una de las técnicas descritas hasta ahora (es decir, de los árboles de decisión, el data streaming y la aplicación de restricciones monotónicas), procedemos a exponer la propuesta hacia la cual se encauza el propósito de este documento.\\
+
+Hemos comprobado que existen métodos eficientes de adquisición de conocimiento y predicción sobre flujos de datos utilizando árboles de decisión, tales como Option trees y Hoeffding Anytime Tree (HATT), ambos basados en Hoeffding Tree, o incluso su versión mejorada para la detección del cambio de concepto en el tiempo (CVFDT).\\
+
+Así mismo, hemos observado también que existen ejemplos de conjuntos de datos que poseen características dignas de ser tenidas en cuenta a la hora de crear un modelo de aprendizaje de conocimiento, ya que aportan una base de información subyacente a los datos que ofrece al algoritmo la capacidad de crear una estructura de datos más eficiente para la resolución de cualquier problema que se enfrente a datos de este estilo. Evidentemente hablamos de los conjuntos de datos que aguardan en sí una relación de monotonía entre los valores de los atributos de sus instancias y las clases asignadas a estas.\\
+
+\section{Propuesta y resultados esperados}
+
+Visto todo esto, parece lógico crear una adaptación de los algoritmos de árboles de decisión para data streaming que además posean información sobre restricciones de monotonía para conseguir resultados superiores en cuanto al análisis del dominio del problema al que se enfrentan los algoritmos que trabajan con este tipo de conjuntos de datos.\\
+
+La propuesta no pretende conseguir resultados mejores en cuanto al accuracy obtenido en la predicción de resultados si no que, pretende que las estructuras creadas por los árboles de decisión para flujos de datos sean más fieles a la realidad que subyace bajo data sets con cierto nivel de monotonía en su relación atributos-clase.\\
+
+Dicho esto, podría darse el caso en el que el algoritmo básico comparativo sin restricciones de monotonía alcance un accuracy superior al que puedan alcanzar las adaptaciones realizadas las cuales si posean información sobre dichas relaciones monotónicas.\\
+
+\section{Algoritmos a comparar}
+
+Como \textbf{algoritmo de comparación} utilizaremos aquél del cual la literatura ha hecho más uso para la realización de estudios comparativos y mejoras de otros aspectos, es decir: \textbf{Hoeffding Tree}, la base de la que parten gran cantidad de algoritmos de árboles de decisión para el tratamiento de data streaming.\\
+
+Los \textbf{algoritmos que pretenden hacerle frente} en cuanto a los aspectos ya mencionados serán:
+\begin{itemize}
+	\item Adaptación de Hoeffding Tree con restricciones monotónicas mediante el uso del \textbf{método basado en matriz}.
+	\item Adaptación de Hoeffding Tree con restricciones monotónicas mediante el uso del \textbf{método de evaluación de monotonicidad de ramas}.
+	\item Adaptación de Hoeffding Tree con restricciones monotónicas mediante el uso de\textbf{ ambos métodos al mismo tiempo}.
+\end{itemize}
+
+
+
+
+
+
+
+
+
 
 
 \newpage

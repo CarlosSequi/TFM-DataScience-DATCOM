@@ -265,13 +265,15 @@ Crear un árbol de decisión que cumpla las restricciones de monotonía estudiad
 
 Aún no siendo una tarea simple, existen \textbf{métodos de creación de estos árboles} como los que describimos a continuación.
 
+\subsubsection{Método basado en matriz}
+
 Uno de estos métodos es el \textbf{basado en matriz}. Teniendo ya construido un árbol con k ramas, construimos una matriz simétric M de tamaño k x k donde el valor $m_{ij}$ es un 1 en caso de que la rama de la fila i no guarde una relación de monotonía con la rama de la columna j y un 0 en caso contrario. Cada columna (y fila) está asociada con un contador que hace referencia a la suma de los unos que contiene, de esta forma sabemos con qué cantidad de ramas no guarda la relación de monotonía. Comenzamos eliminando (podando) aquellas ramas del árbol que tienen un contador mayor de no-monotonía y actualizando los contadores del resto de ramas hasta llegar a obtener una matriz llena de ceros o hasta llegar a una matriz 1 x 1, en cuyo caso M sería una matriz de no-monotonicidad.
 
 Otro método más rápido a la hora de ejecutar es tomar inicialmente de forma aleatoria una rama del árbol y declararla como monotónica. A partir de aquí ir tomando siempre de forma aleatoria cada una de las demás ramas del árbol, compararlas con las ramas ya declaradas monotónicas y, o bien descartarlas (en caso de no guardar relación de monotonía con las ya declaradas monotónicas) o bien introducirlas en el conjunto de ramas declaradas monotónicas.
 
-\subsection{Método de evaluación de monotonicidad y precisión}
+\subsubsection{Método de evaluación de monotonicidad y precisión}
 
-Describimos en este apartado una métrica para que tenga en cuenta tanto el error como las restricciónes monotónicas.
+Describimos en este apartado una métrica para que tenga en cuenta tanto el error como las restricciónes monotónicas a la hora de decidir si expandir un nodo del árbol de decisión, lo que lo convierte en el segundo de los métodos que describiremos para la creación de árboles de decisión montónicos.
 
 Primeramente definimos una medida de no-monotonicidad para los árboles de decisión:\\
 El \textbf{índice de no-monotonicidad} nos dice el ratio entre el número real de pares de ramas no monotónicas de un árbol de decisión y el número máximo de pares que podrían no haber sido monotónicos con respecto a otras en el mismo árbol.

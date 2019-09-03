@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  3 SEP 2019 19:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  3 SEP 2019 21:09
 entering extended mode
 **./proyecto.tex
 (proyecto.tex
@@ -466,7 +466,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ) (portada/portada.tex
 \centeroffset=\skip63
-<imagenes/logo_ugr.jpg, id=147, 777.90625pt x 231.86626pt>
+<imagenes/logo_ugr.jpg, id=155, 777.90625pt x 231.86626pt>
 File: imagenes/logo_ugr.jpg Graphic file (type jpg)
 <use imagenes/logo_ugr.jpg>
 Package pdftex.def Info: imagenes/logo_ugr.jpg  used on input line 11.
@@ -482,7 +482,7 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 8--22
 | $[]$ 
  []
 
-<imagenes/etsiit_logo.png, id=148, 110.814pt x 40.4712pt>
+<imagenes/etsiit_logo.png, id=156, 110.814pt x 40.4712pt>
 File: imagenes/etsiit_logo.png Graphic file (type png)
 <use imagenes/etsiit_logo.png>
 Package pdftex.def Info: imagenes/etsiit_logo.png  used on input line 29.
@@ -511,7 +511,7 @@ Overfull \hbox (24.0pt too wide) in paragraph at lines 8--27
 | $[]$ 
  []
 
-<imagenes/decsai.jpg, id=173, 526.1256pt x 102.3825pt>
+<imagenes/decsai.jpg, id=181, 526.1256pt x 102.3825pt>
 File: imagenes/decsai.jpg Graphic file (type jpg)
 <use imagenes/decsai.jpg>
 Package pdftex.def Info: imagenes/decsai.jpg  used on input line 35.
@@ -717,7 +717,7 @@ been already used, duplicate ignored
 l.49 \newpage
               [4]) (capitulos/C2.BackgroundProblemas.tex
 Cap\'{\i }tulo 2.
-<imagenes/tabla1.png, id=346, 478.78876pt x 207.02344pt>
+<imagenes/tabla1.png, id=356, 478.78876pt x 207.02344pt>
 File: imagenes/tabla1.png Graphic file (type png)
 <use imagenes/tabla1.png>
 Package pdftex.def Info: imagenes/tabla1.png  used on input line 16.
@@ -770,7 +770,7 @@ been already used, duplicate ignored
                    \relax 
 l.135 
        [9]
-<imagenes/ccfd.png, id=368, 432.86719pt x 189.70876pt>
+<imagenes/ccfd.png, id=378, 432.86719pt x 189.70876pt>
 File: imagenes/ccfd.png Graphic file (type png)
 <use imagenes/ccfd.png>
 Package pdftex.def Info: imagenes/ccfd.png  used on input line 160.
@@ -806,7 +806,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
                    \relax 
 l.242 \end{itemize}
                     [12]
-<imagenes/f1.png, id=387, 808.52063pt x 126.4725pt>
+<imagenes/f1.png, id=397, 808.52063pt x 126.4725pt>
 File: imagenes/f1.png Graphic file (type png)
 <use imagenes/f1.png>
 Package pdftex.def Info: imagenes/f1.png  used on input line 268.
@@ -832,7 +832,7 @@ LaTeX Info: Redefining \% on input line 389.
 
 ]
 Cap\'{\i }tulo 3.
-<imagenes/ejemploArboles.png, id=415, 393.72093pt x 293.59688pt>
+<imagenes/ejemploArboles.png, id=425, 393.72093pt x 293.59688pt>
 File: imagenes/ejemploArboles.png Graphic file (type png)
 <use imagenes/ejemploArboles.png>
 Package pdftex.def Info: imagenes/ejemploArboles.png  used on input line 11.
@@ -841,7 +841,7 @@ Package pdftex.def Info: imagenes/ejemploArboles.png  used on input line 11.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17]
-<imagenes/ejemploArbol.png, id=423, 354.57469pt x 396.7322pt>
+<imagenes/ejemploArbol.png, id=433, 354.57469pt x 396.7322pt>
 File: imagenes/ejemploArbol.png Graphic file (type png)
 <use imagenes/ejemploArbol.png>
 Package pdftex.def Info: imagenes/ejemploArbol.png  used on input line 22.
@@ -858,7 +858,7 @@ LaTeX Info: Redefining \% on input line 47.
 LaTeX Info: Redefining \. on input line 71.
 LaTeX Info: Redefining \% on input line 71.
  [20]
-<imagenes/rss.png, id=443, 301.8778pt x 95.6072pt>
+<imagenes/rss.png, id=453, 301.8778pt x 95.6072pt>
 File: imagenes/rss.png Graphic file (type png)
 <use imagenes/rss.png>
 Package pdftex.def Info: imagenes/rss.png  used on input line 89.
@@ -866,17 +866,17 @@ Package pdftex.def Info: imagenes/rss.png  used on input line 89.
 LaTeX Info: Redefining \. on input line 94.
 LaTeX Info: Redefining \% on input line 94.
  [21 <./imagenes/rss.png>]
-<imagenes/cer.png, id=451, 493.845pt x 79.04532pt>
+<imagenes/cer.png, id=461, 493.845pt x 79.04532pt>
 File: imagenes/cer.png Graphic file (type png)
 <use imagenes/cer.png>
 Package pdftex.def Info: imagenes/cer.png  used on input line 99.
 (pdftex.def)             Requested size: 180.0pt x 28.81088pt.
-<imagenes/gini.png, id=454, 283.81032pt x 107.65219pt>
+<imagenes/gini.png, id=464, 283.81032pt x 107.65219pt>
 File: imagenes/gini.png Graphic file (type png)
 <use imagenes/gini.png>
 Package pdftex.def Info: imagenes/gini.png  used on input line 112.
 (pdftex.def)             Requested size: 180.0pt x 68.27788pt.
-<imagenes/entropia.png, id=456, 288.3272pt x 102.3825pt>
+<imagenes/entropia.png, id=466, 288.3272pt x 102.3825pt>
 File: imagenes/entropia.png Graphic file (type png)
 <use imagenes/entropia.png>
 Package pdftex.def Info: imagenes/entropia.png  used on input line 119.
@@ -899,12 +899,12 @@ Underfull \vbox (badness 6173) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 197.
 LaTeX Info: Redefining \% on input line 197.
  [25]
-<imagenes/hoeffdingbound.png, id=485, 338.76563pt x 135.50626pt>
+<imagenes/hoeffdingbound.png, id=495, 338.76563pt x 135.50626pt>
 File: imagenes/hoeffdingbound.png Graphic file (type png)
 <use imagenes/hoeffdingbound.png>
 Package pdftex.def Info: imagenes/hoeffdingbound.png  used on input line 203.
 (pdftex.def)             Requested size: 108.0011pt x 43.19952pt.
-<imagenes/cvfdt.png, id=488, 680.5425pt x 423.83344pt>
+<imagenes/cvfdt.png, id=498, 680.5425pt x 423.83344pt>
 File: imagenes/cvfdt.png Graphic file (type png)
 <use imagenes/cvfdt.png>
 Package pdftex.def Info: imagenes/cvfdt.png  used on input line 221.
@@ -921,45 +921,88 @@ Underfull \vbox (badness 4084) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 253.
 LaTeX Info: Redefining \% on input line 253.
  [28]
-LaTeX Info: Redefining \. on input line 270.
-LaTeX Info: Redefining \% on input line 270.
+LaTeX Info: Redefining \. on input line 271.
+LaTeX Info: Redefining \% on input line 271.
 
 [29]
-<imagenes/wsum.png, id=524, 557.08125pt x 276.28218pt>
+<imagenes/wsum.png, id=535, 557.08125pt x 276.28218pt>
 File: imagenes/wsum.png Graphic file (type png)
 <use imagenes/wsum.png>
-Package pdftex.def Info: imagenes/wsum.png  used on input line 283.
+Package pdftex.def Info: imagenes/wsum.png  used on input line 285.
 (pdftex.def)             Requested size: 90.0pt x 44.63184pt.
-<imagenes/inm.png, id=526, 510.40688pt x 130.23656pt>
+<imagenes/inm.png, id=537, 510.40688pt x 130.23656pt>
 File: imagenes/inm.png Graphic file (type png)
 <use imagenes/inm.png>
-Package pdftex.def Info: imagenes/inm.png  used on input line 291.
+Package pdftex.def Info: imagenes/inm.png  used on input line 293.
 (pdftex.def)             Requested size: 180.0pt x 45.92924pt.
-<imagenes/oas.png, id=528, 636.12656pt x 110.66344pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 296.
+LaTeX Info: Redefining \% on input line 296.
+ [30 <./imagenes/wsum.png>]
+<imagenes/oas.png, id=545, 636.12656pt x 110.66344pt>
 File: imagenes/oas.png Graphic file (type png)
 <use imagenes/oas.png>
-Package pdftex.def Info: imagenes/oas.png  used on input line 299.
+Package pdftex.def Info: imagenes/oas.png  used on input line 301.
 (pdftex.def)             Requested size: 270.0pt x 46.9697pt.
-LaTeX Info: Redefining \. on input line 301.
-LaTeX Info: Redefining \% on input line 301.
- [30 <./imagenes/wsum.png> <./imagenes/inm.png>]
-<imagenes/tas.png, id=536, 563.85657pt x 90.3375pt>
+<imagenes/tas.png, id=547, 563.85657pt x 90.3375pt>
 File: imagenes/tas.png Graphic file (type png)
 <use imagenes/tas.png>
-Package pdftex.def Info: imagenes/tas.png  used on input line 307.
+Package pdftex.def Info: imagenes/tas.png  used on input line 309.
 (pdftex.def)             Requested size: 198.0011pt x 31.72197pt.
-LaTeX Info: Redefining \. on input line 315.
-LaTeX Info: Redefining \% on input line 315.
- [31 <./imagenes/oas.png> <./imagenes/tas.png>]) (capitulos/C4.Propuesta.tex [3
-2
+LaTeX Info: Redefining \. on input line 317.
+LaTeX Info: Redefining \% on input line 317.
+ [31 <./imagenes/inm.png> <./imagenes/oas.png> <./imagenes/tas.png>]) (capitulo
+s/C4.Propuesta.tex [32
 
 ]
 Cap\'{\i }tulo 4.
-[33]) (capitulos/C5.Software.tex [34
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33]
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+LaTeX Info: Redefining \. on input line 40.
+LaTeX Info: Redefining \% on input line 40.
+[34]) (capitulos/C5.Software.tex
 Cap\'{\i }tulo 5.
-[35]) (capitulos/C6.Experimentos.tex [36
+[35
+
+]) (capitulos/C6.Experimentos.tex [36
 
 ]
 Cap\'{\i }tulo 6.
@@ -1045,7 +1088,7 @@ LaTeX Info: Redefining \% on input line 23.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 211.
 Package rerunfilecheck Info: File `proyecto.out' has not changed.
-(rerunfilecheck)             Checksum: 41D768244B641ADFFEFE2C6B2171EF6D;2994.
+(rerunfilecheck)             Checksum: 1D01A0525F52E56AA6B6FB001B2F9CC6;3109.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1053,13 +1096,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 211.
  ) 
 Here is how much of TeX's memory you used:
- 9060 strings out of 492895
- 135153 string characters out of 3123736
+ 9066 strings out of 492895
+ 135213 string characters out of 3123736
  242255 words of memory out of 3000000
- 12637 multiletter control sequences out of 15000+200000
+ 12639 multiletter control sequences out of 15000+200000
  10893 words of font info for 38 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,13n,43p,1011b,676s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,13n,43p,1011b,669s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/f
@@ -1074,9 +1117,9 @@ onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/cmss_/AppData/Local/Programs/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/cmss_/AppData/Loca
 l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cmss_
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on proyecto.pdf (63 pages, 963201 bytes).
+Output written on proyecto.pdf (63 pages, 967587 bytes).
 PDF statistics:
- 695 PDF objects out of 1000 (max. 8388607)
- 151 named destinations out of 1000 (max. 500000)
- 379 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 707 PDF objects out of 1000 (max. 8388607)
+ 155 named destinations out of 1000 (max. 500000)
+ 395 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -42,8 +42,12 @@
 \contentsline {section}{\numberline {3.3}\IeC {\'A}rboles de decisi\IeC {\'o}n monot\IeC {\'o}nicos}{29}{section.3.3}% 
 \contentsline {subsection}{\numberline {3.3.1}Problema:}{29}{subsection.3.3.1}% 
 \contentsline {subsection}{\numberline {3.3.2}\IeC {\textquestiondown }C\IeC {\'o}mo creamos un \IeC {\'a}rbol de decisi\IeC {\'o}n monot\IeC {\'o}nico?}{29}{subsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.3.3}M\IeC {\'e}todo de evaluaci\IeC {\'o}n de monotonicidad y precisi\IeC {\'o}n}{30}{subsection.3.3.3}% 
+\contentsline {subsubsection}{M\IeC {\'e}todo basado en matriz}{29}{section*.22}% 
+\contentsline {subsubsection}{M\IeC {\'e}todo de evaluaci\IeC {\'o}n de monotonicidad y precisi\IeC {\'o}n}{30}{section*.23}% 
 \contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{33}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Introducci\IeC {\'o}n de la propuesta}{33}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Propuesta y resultados esperados}{34}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Algoritmos a comparar}{34}{section.4.3}% 
 \contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{35}{chapter.5}% 
 \contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{37}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Framework}{37}{section.6.1}% 
