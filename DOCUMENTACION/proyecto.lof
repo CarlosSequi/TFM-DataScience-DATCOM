@@ -1,21 +1,21 @@
 \babel@toc {spanish}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Resumen entre las diferencias principales entre el procesamiento est\IeC {\'a}ndar de una base de datos y el procesamiento de flujo de datos. \cite {ref1}}}{4}{figure.2.1}% 
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Ciclo de clasificaci\IeC {\'o}n para flujos de datos junto con los requisitos utilizados en cada paso de los descritos anteriormente.}}{9}{figure.2.2}% 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Resumen entre las diferencias principales entre el procesamiento est\IeC {\'a}ndar de una base de datos y el procesamiento de flujo de datos. \cite {ref1}}}{6}{figure.2.1}% 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ciclo de clasificaci\IeC {\'o}n para flujos de datos junto con los requisitos utilizados en cada paso de los descritos anteriormente.}}{11}{figure.2.2}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Ejemplo de \IeC {\'a}rbol de decisi\IeC {\'o}n \cite {ref4}}}{16}{figure.3.1}% 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Partes de un \IeC {\'a}rbol de decisi\IeC {\'o}n \cite {ref5}}}{16}{figure.3.2}% 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Recursive Binary Splitting in regression trees \cite {ref6}}}{19}{figure.3.3}% 
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Recursive Binary Splitting in classification trees (classification error rate) \cite {ref7}}}{20}{figure.3.4}% 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Recursive Binary Splitting in classification trees (gini) \cite {ref8}}}{20}{figure.3.5}% 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Recursive Binary Splitting in classification trees (entropia) \cite {ref8}}}{21}{figure.3.6}% 
-\contentsline {figure}{\numberline {3.7}{\ignorespaces C\IeC {\'a}lculo del l\IeC {\'\i }mite de Hoeffding \cite {ref10}}}{24}{figure.3.7}% 
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Ciclo CVFDT \cite {ref11}}}{25}{figure.3.8}% 
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Definici\IeC {\'o}n de W \cite {ref14}}}{28}{figure.3.9}% 
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Definici\IeC {\'o}n \IeC {\'\i }ndice de no-monotonicidad \cite {ref14}}}{28}{figure.3.10}% 
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Definici\IeC {\'o}n de order-ambiguity-score \cite {ref14}}}{29}{figure.3.11}% 
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Definici\IeC {\'o}n de total-ambiguity-score \cite {ref14}}}{29}{figure.3.12}% 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ejemplo de \IeC {\'a}rbol de decisi\IeC {\'o}n \cite {ref4}}}{18}{figure.3.1}% 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Partes de un \IeC {\'a}rbol de decisi\IeC {\'o}n \cite {ref5}}}{18}{figure.3.2}% 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Recursive Binary Splitting in regression trees \cite {ref6}}}{21}{figure.3.3}% 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Recursive Binary Splitting in classification trees (classification error rate) \cite {ref7}}}{22}{figure.3.4}% 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Recursive Binary Splitting in classification trees (gini) \cite {ref8}}}{22}{figure.3.5}% 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Recursive Binary Splitting in classification trees (entropia) \cite {ref8}}}{23}{figure.3.6}% 
+\contentsline {figure}{\numberline {3.7}{\ignorespaces C\IeC {\'a}lculo del l\IeC {\'\i }mite de Hoeffding \cite {ref10}}}{26}{figure.3.7}% 
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Ciclo CVFDT \cite {ref11}}}{27}{figure.3.8}% 
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Definici\IeC {\'o}n de W \cite {ref14}}}{30}{figure.3.9}% 
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Definici\IeC {\'o}n \IeC {\'\i }ndice de no-monotonicidad \cite {ref14}}}{30}{figure.3.10}% 
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Definici\IeC {\'o}n de order-ambiguity-score \cite {ref14}}}{31}{figure.3.11}% 
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Definici\IeC {\'o}n de total-ambiguity-score \cite {ref14}}}{31}{figure.3.12}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
