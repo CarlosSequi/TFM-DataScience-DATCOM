@@ -21,10 +21,13 @@
 \BOOKMARK [2][-]{subsection.3.2.1}{Hoeffding tree \(VFDT\)}{section.3.2}% 21
 \BOOKMARK [2][-]{subsection.3.2.2}{Otros algoritmos de data streaming}{section.3.2}% 22
 \BOOKMARK [1][-]{section.3.3}{\301rboles de decisi\363n monot\363nicos}{chapter.3}% 23
-\BOOKMARK [0][-]{chapter.4}{Cap\355tulo 4. Propuesta}{}% 24
-\BOOKMARK [0][-]{chapter.5}{Cap\355tulo 5. Software desarrollado y uso}{}% 25
-\BOOKMARK [0][-]{chapter.6}{Cap\355tulo 6. Experimentos}{}% 26
-\BOOKMARK [1][-]{section.6.1}{Framework}{chapter.6}% 27
-\BOOKMARK [1][-]{section.6.2}{Resultados}{chapter.6}% 28
-\BOOKMARK [1][-]{section.6.3}{An\341lisis}{chapter.6}% 29
-\BOOKMARK [0][-]{chapter.7}{Cap\355tulo 7. Conclusiones y trabajo futuro}{}% 30
+\BOOKMARK [2][-]{subsection.3.3.1}{Problema:}{section.3.3}% 24
+\BOOKMARK [2][-]{subsection.3.3.2}{\277C\363mo creamos un \341rbol de decisi\363n monot\363nico?}{section.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.3}{M\351todo de evaluaci\363n de monotonicidad y precisi\363n}{section.3.3}% 26
+\BOOKMARK [0][-]{chapter.4}{Cap\355tulo 4. Propuesta}{}% 27
+\BOOKMARK [0][-]{chapter.5}{Cap\355tulo 5. Software desarrollado y uso}{}% 28
+\BOOKMARK [0][-]{chapter.6}{Cap\355tulo 6. Experimentos}{}% 29
+\BOOKMARK [1][-]{section.6.1}{Framework}{chapter.6}% 30
+\BOOKMARK [1][-]{section.6.2}{Resultados}{chapter.6}% 31
+\BOOKMARK [1][-]{section.6.3}{An\341lisis}{chapter.6}% 32
+\BOOKMARK [0][-]{chapter.7}{Cap\355tulo 7. Conclusiones y trabajo futuro}{}% 33

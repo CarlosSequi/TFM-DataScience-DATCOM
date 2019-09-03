@@ -37,10 +37,13 @@
 \contentsline {subsubsection}{HATT}{26}{section*.20}% 
 \contentsline {subsubsection}{Option trees}{26}{section*.21}% 
 \contentsline {section}{\numberline {3.3}\IeC {\'A}rboles de decisi\IeC {\'o}n monot\IeC {\'o}nicos}{27}{section.3.3}% 
-\contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{29}{chapter.4}% 
-\contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{31}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{33}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Framework}{33}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Resultados}{33}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{33}{section.6.3}% 
-\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{35}{chapter.7}% 
+\contentsline {subsection}{\numberline {3.3.1}Problema:}{27}{subsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.3.2}\IeC {\textquestiondown }C\IeC {\'o}mo creamos un \IeC {\'a}rbol de decisi\IeC {\'o}n monot\IeC {\'o}nico?}{27}{subsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.3.3}M\IeC {\'e}todo de evaluaci\IeC {\'o}n de monotonicidad y precisi\IeC {\'o}n}{28}{subsection.3.3.3}% 
+\contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{31}{chapter.4}% 
+\contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{33}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{35}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Framework}{35}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Resultados}{35}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{35}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{37}{chapter.7}% 
