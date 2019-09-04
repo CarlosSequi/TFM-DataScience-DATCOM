@@ -14,6 +14,14 @@ Warning--to sort, need author or key in ref9
 Warning--to sort, need author or key in ref12
 Name 1 in "Bernhard Pfahringer, Geoffrey Holmes, and Richard Kirkby" has a comma at the end for entry ref13
 while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "José-Ramón Cano, Pedro Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak, Salvador García" for entry ref15
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "José-Ramón Cano, Pedro Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak, Salvador García" for entry ref15
+while executing---line 1049 of file plain.bst
 Name 1 in "Bernhard Pfahringer, Geoffrey Holmes, and Richard Kirkby" has a comma at the end for entry ref13
 while executing---line 1090 of file plain.bst
-(There were 2 error messages)
+Too many commas in name 1 of "José-Ramón Cano, Pedro Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak, Salvador García" for entry ref15
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "José-Ramón Cano, Pedro Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak, Salvador García" for entry ref15
+while executing---line 1090 of file plain.bst
+(There were 6 error messages)

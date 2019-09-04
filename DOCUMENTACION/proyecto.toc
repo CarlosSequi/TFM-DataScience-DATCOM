@@ -51,6 +51,10 @@
 \contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{37}{chapter.5}% 
 \contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{39}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Framework}{39}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Resultados}{39}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{39}{section.6.3}% 
-\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{41}{chapter.7}% 
+\contentsline {subsection}{\numberline {6.1.1}Data sets}{39}{subsection.6.1.1}% 
+\contentsline {subsection}{\numberline {6.1.2}Medidas}{39}{subsection.6.1.2}% 
+\contentsline {subsubsection}{Medidas de precisi\IeC {\'o}n}{39}{section*.24}% 
+\contentsline {subsubsection}{Medidas de monotonicidad}{41}{section*.25}% 
+\contentsline {section}{\numberline {6.2}Resultados}{42}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{42}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{43}{chapter.7}% 
