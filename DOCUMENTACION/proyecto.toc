@@ -47,7 +47,7 @@
 \contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{33}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Introducci\IeC {\'o}n}{33}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}Propuesta y resultados esperados}{35}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Algoritmos a comparar}{35}{section.4.3}% 
+\contentsline {section}{\numberline {4.3}Algoritmos a comparar}{36}{section.4.3}% 
 \contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{37}{chapter.5}% 
 \contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{39}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Framework}{39}{section.6.1}% 

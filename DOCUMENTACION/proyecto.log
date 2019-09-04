@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  4 SEP 2019 10:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  4 SEP 2019 11:56
 entering extended mode
 **./proyecto.tex
 (proyecto.tex
@@ -717,7 +717,7 @@ been already used, duplicate ignored
 l.49 \newpage
               [4]) (capitulos/C2.BackgroundProblemas.tex
 Cap\'{\i }tulo 2.
-<imagenes/tabla1.png, id=362, 478.78876pt x 207.02344pt>
+<imagenes/tabla1.png, id=365, 478.78876pt x 207.02344pt>
 File: imagenes/tabla1.png Graphic file (type png)
 <use imagenes/tabla1.png>
 Package pdftex.def Info: imagenes/tabla1.png  used on input line 16.
@@ -770,7 +770,7 @@ been already used, duplicate ignored
                    \relax 
 l.135 
        [9]
-<imagenes/ccfd.png, id=384, 432.86719pt x 189.70876pt>
+<imagenes/ccfd.png, id=387, 432.86719pt x 189.70876pt>
 File: imagenes/ccfd.png Graphic file (type png)
 <use imagenes/ccfd.png>
 Package pdftex.def Info: imagenes/ccfd.png  used on input line 160.
@@ -806,7 +806,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
                    \relax 
 l.242 \end{itemize}
                     [12]
-<imagenes/f1.png, id=403, 808.52063pt x 126.4725pt>
+<imagenes/f1.png, id=406, 808.52063pt x 126.4725pt>
 File: imagenes/f1.png Graphic file (type png)
 <use imagenes/f1.png>
 Package pdftex.def Info: imagenes/f1.png  used on input line 268.
@@ -832,7 +832,7 @@ LaTeX Info: Redefining \% on input line 389.
 
 ]
 Cap\'{\i }tulo 3.
-<imagenes/ejemploArboles.png, id=431, 393.72093pt x 293.59688pt>
+<imagenes/ejemploArboles.png, id=434, 393.72093pt x 293.59688pt>
 File: imagenes/ejemploArboles.png Graphic file (type png)
 <use imagenes/ejemploArboles.png>
 Package pdftex.def Info: imagenes/ejemploArboles.png  used on input line 11.
@@ -841,7 +841,7 @@ Package pdftex.def Info: imagenes/ejemploArboles.png  used on input line 11.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17]
-<imagenes/ejemploArbol.png, id=439, 354.57469pt x 396.7322pt>
+<imagenes/ejemploArbol.png, id=442, 354.57469pt x 396.7322pt>
 File: imagenes/ejemploArbol.png Graphic file (type png)
 <use imagenes/ejemploArbol.png>
 Package pdftex.def Info: imagenes/ejemploArbol.png  used on input line 22.
@@ -858,7 +858,7 @@ LaTeX Info: Redefining \% on input line 47.
 LaTeX Info: Redefining \. on input line 71.
 LaTeX Info: Redefining \% on input line 71.
  [20]
-<imagenes/rss.png, id=459, 301.8778pt x 95.6072pt>
+<imagenes/rss.png, id=462, 301.8778pt x 95.6072pt>
 File: imagenes/rss.png Graphic file (type png)
 <use imagenes/rss.png>
 Package pdftex.def Info: imagenes/rss.png  used on input line 89.
@@ -866,17 +866,17 @@ Package pdftex.def Info: imagenes/rss.png  used on input line 89.
 LaTeX Info: Redefining \. on input line 94.
 LaTeX Info: Redefining \% on input line 94.
  [21 <./imagenes/rss.png>]
-<imagenes/cer.png, id=467, 493.845pt x 79.04532pt>
+<imagenes/cer.png, id=470, 493.845pt x 79.04532pt>
 File: imagenes/cer.png Graphic file (type png)
 <use imagenes/cer.png>
 Package pdftex.def Info: imagenes/cer.png  used on input line 99.
 (pdftex.def)             Requested size: 180.0pt x 28.81088pt.
-<imagenes/gini.png, id=470, 283.81032pt x 107.65219pt>
+<imagenes/gini.png, id=473, 283.81032pt x 107.65219pt>
 File: imagenes/gini.png Graphic file (type png)
 <use imagenes/gini.png>
 Package pdftex.def Info: imagenes/gini.png  used on input line 112.
 (pdftex.def)             Requested size: 180.0pt x 68.27788pt.
-<imagenes/entropia.png, id=472, 288.3272pt x 102.3825pt>
+<imagenes/entropia.png, id=475, 288.3272pt x 102.3825pt>
 File: imagenes/entropia.png Graphic file (type png)
 <use imagenes/entropia.png>
 Package pdftex.def Info: imagenes/entropia.png  used on input line 119.
@@ -899,12 +899,12 @@ Underfull \vbox (badness 6173) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 197.
 LaTeX Info: Redefining \% on input line 197.
  [25]
-<imagenes/hoeffdingbound.png, id=501, 338.76563pt x 135.50626pt>
+<imagenes/hoeffdingbound.png, id=504, 338.76563pt x 135.50626pt>
 File: imagenes/hoeffdingbound.png Graphic file (type png)
 <use imagenes/hoeffdingbound.png>
 Package pdftex.def Info: imagenes/hoeffdingbound.png  used on input line 203.
 (pdftex.def)             Requested size: 108.0011pt x 43.19952pt.
-<imagenes/cvfdt.png, id=504, 680.5425pt x 423.83344pt>
+<imagenes/cvfdt.png, id=507, 680.5425pt x 423.83344pt>
 File: imagenes/cvfdt.png Graphic file (type png)
 <use imagenes/cvfdt.png>
 Package pdftex.def Info: imagenes/cvfdt.png  used on input line 221.
@@ -925,12 +925,12 @@ LaTeX Info: Redefining \. on input line 271.
 LaTeX Info: Redefining \% on input line 271.
 
 [29]
-<imagenes/wsum.png, id=541, 557.08125pt x 276.28218pt>
+<imagenes/wsum.png, id=544, 557.08125pt x 276.28218pt>
 File: imagenes/wsum.png Graphic file (type png)
 <use imagenes/wsum.png>
 Package pdftex.def Info: imagenes/wsum.png  used on input line 285.
 (pdftex.def)             Requested size: 90.0pt x 44.63184pt.
-<imagenes/inm.png, id=543, 510.40688pt x 130.23656pt>
+<imagenes/inm.png, id=546, 510.40688pt x 130.23656pt>
 File: imagenes/inm.png Graphic file (type png)
 <use imagenes/inm.png>
 Package pdftex.def Info: imagenes/inm.png  used on input line 293.
@@ -941,12 +941,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 LaTeX Info: Redefining \. on input line 296.
 LaTeX Info: Redefining \% on input line 296.
  [30 <./imagenes/wsum.png>]
-<imagenes/oas.png, id=551, 636.12656pt x 110.66344pt>
+<imagenes/oas.png, id=554, 636.12656pt x 110.66344pt>
 File: imagenes/oas.png Graphic file (type png)
 <use imagenes/oas.png>
 Package pdftex.def Info: imagenes/oas.png  used on input line 301.
 (pdftex.def)             Requested size: 270.0pt x 46.9697pt.
-<imagenes/tas.png, id=553, 563.85657pt x 90.3375pt>
+<imagenes/tas.png, id=556, 563.85657pt x 90.3375pt>
 File: imagenes/tas.png Graphic file (type png)
 <use imagenes/tas.png>
 Package pdftex.def Info: imagenes/tas.png  used on input line 309.
@@ -982,45 +982,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--12
 Underfull \vbox (badness 1558) has occurred while \output is active []
 
  [33]
-<imagenes/ejAr.png, id=572, 676.02562pt x 259.7203pt>
+<imagenes/ejAr.png, id=575, 378.66469pt x 365.11406pt>
 File: imagenes/ejAr.png Graphic file (type png)
 <use imagenes/ejAr.png>
-Package pdftex.def Info: imagenes/ejAr.png  used on input line 18.
-(pdftex.def)             Requested size: 360.0pt x 138.30896pt.
-<imagenes/tablaEj.png, id=574, 556.32843pt x 149.8097pt>
+Package pdftex.def Info: imagenes/ejAr.png  used on input line 19.
+(pdftex.def)             Requested size: 169.20044pt x 163.14656pt.
+<imagenes/ejAr2.png, id=576, 361.35pt x 254.45062pt>
+File: imagenes/ejAr2.png Graphic file (type png)
+<use imagenes/ejAr2.png>
+Package pdftex.def Info: imagenes/ejAr2.png  used on input line 24.
+(pdftex.def)             Requested size: 169.20044pt x 119.14531pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+
+ []
+
+<imagenes/tablaEj.png, id=578, 556.32843pt x 149.8097pt>
 File: imagenes/tablaEj.png Graphic file (type png)
 <use imagenes/tablaEj.png>
-Package pdftex.def Info: imagenes/tablaEj.png  used on input line 29.
+Package pdftex.def Info: imagenes/tablaEj.png  used on input line 37.
 (pdftex.def)             Requested size: 323.9978pt x 87.24855pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--36
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- []
-
-LaTeX Info: Redefining \. on input line 36.
-LaTeX Info: Redefining \% on input line 36.
-[34 <./imagenes/ejAr.png> <./imagenes/tablaEj.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
-
- []
-
-
+LaTeX Info: Redefining \. on input line 40.
+LaTeX Info: Redefining \% on input line 40.
+ [34 <./imagenes/ejAr.png> <./imagenes/ejAr2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
-LaTeX Info: Redefining \. on input line 62.
-LaTeX Info: Redefining \% on input line 62.
-[35]) (capitulos/C5.Software.tex [36
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+
+ []
+
+<imagenes/arbolBueno.png, id=586, 421.575pt x 382.42876pt>
+File: imagenes/arbolBueno.png Graphic file (type png)
+<use imagenes/arbolBueno.png>
+Package pdftex.def Info: imagenes/arbolBueno.png  used on input line 53.
+(pdftex.def)             Requested size: 198.0011pt x 179.61899pt.
+LaTeX Info: Redefining \. on input line 56.
+LaTeX Info: Redefining \% on input line 56.
+[35 <./imagenes/tablaEj.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+LaTeX Info: Redefining \. on input line 78.
+LaTeX Info: Redefining \% on input line 78.
+[36 <./imagenes/arbolBueno.png>]) (capitulos/C5.Software.tex
 Cap\'{\i }tulo 5.
-[37]) (capitulos/C6.Experimentos.tex [38
+[37
+
+]) (capitulos/C6.Experimentos.tex [38
 
 ]
 Cap\'{\i }tulo 6.
@@ -1114,10 +1134,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 211.
  ) 
 Here is how much of TeX's memory you used:
- 9080 strings out of 492895
- 135452 string characters out of 3123736
- 242255 words of memory out of 3000000
- 12647 multiletter control sequences out of 15000+200000
+ 9093 strings out of 492895
+ 135701 string characters out of 3123736
+ 242337 words of memory out of 3000000
+ 12657 multiletter control sequences out of 15000+200000
  10893 words of font info for 38 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,13n,43p,1011b,669s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1135,9 +1155,9 @@ onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/cmss_/AppData/Local/Programs/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/cmss_/AppData/Loca
 l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cmss_
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on proyecto.pdf (65 pages, 1057551 bytes).
+Output written on proyecto.pdf (65 pages, 1133449 bytes).
 PDF statistics:
- 729 PDF objects out of 1000 (max. 8388607)
- 159 named destinations out of 1000 (max. 500000)
- 405 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 737 PDF objects out of 1000 (max. 8388607)
+ 160 named destinations out of 1000 (max. 500000)
+ 415 words of extra memory for PDF output out of 10000 (max. 10000000)
 
