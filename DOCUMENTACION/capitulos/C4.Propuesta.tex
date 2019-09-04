@@ -51,7 +51,7 @@ Continuando con el ejemplo del credit scoring, a continuación veremos el árbol
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.55\textwidth]{imagenes/arbolBueno} 
-	\caption{Árbol creado con restricciones monotónicas sobre\cite{ref14}}
+	\caption{Árbol creado con restricciones monotónicas sobre un conjunto de datos monotónicos \cite{ref14}}
 \end{figure}
 
 \section{Algoritmos a comparar}
@@ -60,8 +60,8 @@ Como \textbf{algoritmo de comparación} utilizaremos aquél del cual la literatu
 
 Los \textbf{algoritmos que pretenden hacerle frente} en cuanto a los aspectos ya mencionados serán:
 \begin{itemize}
-	\item Adaptación de Hoeffding Tree con restricciones monotónicas mediante el uso del \textbf{método basado en matriz}.
-	\item Adaptación de Hoeffding Tree con restricciones monotónicas mediante el uso del \textbf{método de evaluación de monotonicidad de ramas}.
+	\item Adaptación de Hoeffding Tree con restricciones monotónicas mediante el uso del \textbf{método basado en matriz}, el cual sabemos que primeramente crea el árbol de decisión para, posteriormente, aplicarle sucesivas podas hasta conseguir un árbol monotónico en caso de ser posible.
+	\item Adaptación de Hoeffding Tree con restricciones monotónicas mediante el uso del \textbf{método de evaluación de monotonicidad de ramas} que, como bien hemos explicado anteriormente, en la propia construcción del árbol, a la hora de decidir si expandir una rama o no, se basará tanto en la medida usada para comprobar el nivel de accuracy como en la medida de monotonicidad de ramas(índice de no-monotonicidad).
 	\item Adaptación de Hoeffding Tree con restricciones monotónicas mediante el uso de\textbf{ ambos métodos al mismo tiempo}.
 \end{itemize}
 
