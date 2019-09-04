@@ -51,6 +51,12 @@ Imagen ciclo cvfdt.
 A survey on learning from data streams: current and future trends.
 \newblock \url{}.
 
+\bibitem{ref16}
+Y.H.~Pao A.~Ben-David, L.~Sterling.
+\newblock Learning and classification of monotonic ordinal concepts.
+\newblock
+  \url{https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8640.1989.tb00314.x}.
+
 \bibitem{ref14}
 Ben-David.
 \newblock Monotonicity maintenance in information-theoretic machine learning

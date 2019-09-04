@@ -4,13 +4,40 @@ Tras el análisis introductorio al contexto en el que nos situamos para hacer co
 
 \section{Framework}
 
-En esta sección, tal como hemos comentado, situaremos el marco de trabajo de nuestro experimento, formado por los conjuntos de datos que trataremos para este, junto con las medidas de precisión y monotonía que usaremos con los algoritmos con el fin de poder ser comparados por igual \cite{ref15}.
+En esta sección, tal como hemos comentado, situaremos el marco de trabajo de nuestro experimento, formado por los conjuntos de datos que trataremos para este, junto con las medidas de precisión y monotonía que usaremos con los algoritmos con el fin de poder ser comparados por igual.
 
 \subsection{Data sets}
 
+Primeramente comentaremos los conjuntos de datos a tratar con el fin de entender a que se enfrentarán nuestros algoritmos. Antes que nada cabe destacar que los data sets que vamos a utilizar son estáticos, es decir, no son datos que nos llegan en flujo (que es uno de los aspectos que queremos tratar en este documento), por tanto a la hora de realizar los experimentos habremos de simular la entrada de datos por un flujo en lugar de leerlos de forma directa. Los datos han sido sacados de \cite{ref16}
+
+
+
+\begin{table}[]
+	\begin{tabular}{|l|l|l|l|l|l|l|}
+		\hline
+		Data set & Instancias & Atributos & Numéricos & Nominales & Clases & NMI   \\ \hline
+		ERA      & 1000       & 4         & 4         & 0         & 9      & 0.016 \\ \hline
+		ESL      & 488        & 4         & 4         & 0         & 9      & 0.004 \\ \hline
+		LEV      & 1000       & 4         & 4         & 0         & 5      & 0.006 \\ \hline
+		SWD      & 1000       & 10        & 10        & 0         & 4      & 0.009 \\ \hline
+	\end{tabular}
+	\caption{Conjuntos de datos a utilizar en el experimento}
+\end{table}
+
+\subsubsection{Descripción de los data sets}
+
+\begin{itemize}
+	\item \textbf{ERA}: recopilación de datos tomados durante un experimento académico de toma de decisiones académicas con el objetivo de determinar las cualidades más importantes  de los candidatos para ciertos tipos de trabajo.
+	\item \textbf{ESL}: perfiles de aplicantes para ciertos trabajos en la industria. Psicólogos expertos determinaron los valores de los atributos de los datos basándose en resultados de tests psicométricos y entrevistas realizadas a los candidatos.
+	\item \textbf{LEV}: estos datos hacen referencia a ejemplos de evaluaciones anónimas de profesores realizadas al final de cursos MBA (Master of Business Administration). Antes de recibir las notas finales, se le pidió a los estudiantes que puntuaran a sus profesores en concordancia a cuatro atributos como las habilidades orales y la contribución a su conocimiento profesional o general. La salida es una evaluación total del rendimiento del profesor.
+	\item \textbf{SWD}: este conjunto de datos contiene evaluaciones reales de trabajadores sociales cualificados midiendo el riesgo de un grupo de niños al permanecer en casa con sus familias. Esta evaluación de riesgos se presenta a menudo en cortes judiciales para ayudar a decidir que le interesa más a un niño presuntamente maltratado o descuidado.
+\end{itemize}
+
+
+
 \subsection{Medidas}
 
-Primeramente abordaremos las medidas destinadas a valorar la precisión y, posteriormente, aquellas cuyo objetivo es medir la monotonicidad.
+Primeramente abordaremos las medidas destinadas a valorar la precisión y, posteriormente, aquellas cuyo objetivo es medir la monotonicidad \cite{ref15}.
 
 \subsubsection{Medidas de precisión}
 

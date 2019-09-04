@@ -52,9 +52,10 @@
 \contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{39}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Framework}{39}{section.6.1}% 
 \contentsline {subsection}{\numberline {6.1.1}Data sets}{39}{subsection.6.1.1}% 
-\contentsline {subsection}{\numberline {6.1.2}Medidas}{39}{subsection.6.1.2}% 
-\contentsline {subsubsection}{Medidas de precisi\IeC {\'o}n}{39}{section*.24}% 
-\contentsline {subsubsection}{Medidas de monotonicidad}{41}{section*.25}% 
-\contentsline {section}{\numberline {6.2}Resultados}{42}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{42}{section.6.3}% 
-\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{43}{chapter.7}% 
+\contentsline {subsubsection}{Descripci\IeC {\'o}n de los data sets}{40}{section*.24}% 
+\contentsline {subsection}{\numberline {6.1.2}Medidas}{40}{subsection.6.1.2}% 
+\contentsline {subsubsection}{Medidas de precisi\IeC {\'o}n}{40}{section*.25}% 
+\contentsline {subsubsection}{Medidas de monotonicidad}{42}{section*.26}% 
+\contentsline {section}{\numberline {6.2}Resultados}{43}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{43}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{45}{chapter.7}% 
