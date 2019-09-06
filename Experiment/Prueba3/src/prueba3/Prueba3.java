@@ -24,11 +24,107 @@ import java.io.InputStream;
 import static java.lang.Math.abs;
 import weka.core.converters.ArffLoader.ArffReader;
 import moa.streams.ArffFileStream;
+import weka.core.Instances;
 import weka.core.Utils;
 
 public class Prueba3 {
 
         public Prueba3(){
+        }
+        
+        public boolean instanciasRespetanMonotonía(weka.core.Instance a, weka.core.Instance b)
+        {
+            boolean aMayorQueB = true;
+            boolean bMayorQueA = true;
+            boolean iguales = true;
+            boolean sonMonotonicos = true;
+            
+           
+            // Comprobamos si todos los atributos de B son mayores que todos los de A
+            for(int i = 0; i<a.numAttributes()-1 && bMayorQueA;i++)
+            {
+                if(a.value(i) > b.value(i))
+                    bMayorQueA = false;  
+            }
+            
+            // Comprobamos si todos los atributos de A son mayores que todos los de B
+            for(int i = 0; i<a.numAttributes()-1 && aMayorQueB;i++)
+            {
+                if(a.value(i) < b.value(i))
+                    aMayorQueB = false;  
+            }
+            
+            // Comprobamos si son iguales
+            for(int i = 0; i<a.numAttributes()-1 && iguales;i++)
+            {
+                if(a.value(i) != b.value(i))
+                    iguales = false;  
+            }
+            
+            boolean condicion1 = (bMayorQueA && !aMayorQueB);
+            boolean condicion2 = (aMayorQueB && !bMayorQueA);
+            
+            
+            if(condicion1 || condicion2 || iguales)
+            {
+                sonMonotonicos = true;
+            }
+           
+           
+           if(bMayorQueA && (b.value(b.numAttributes()-1) < a.value(a.numAttributes()-1)))
+           {
+               sonMonotonicos = false;
+           }
+           else if(aMayorQueB && (b.value(b.numAttributes()-1) > a.value(a.numAttributes()-1)))
+           {
+               sonMonotonicos = false;
+           }
+           else if(iguales && (b.value(b.numAttributes()-1) != a.value(a.numAttributes()-1)))
+           {
+               sonMonotonicos = false;
+           }
+               
+            
+            //System.out.print("\n------------\n");
+            //System.out.print(a + "\n" + b + "\n" + sonMonotonicos);
+            
+            return sonMonotonicos;
+        }
+        
+        public double NMI(String dataset) throws FileNotFoundException, IOException
+        {            
+            BufferedReader reader = new BufferedReader(new FileReader("D:\\TFM-DataScience-DATCOM\\Experiment\\Data sets\\"+ dataset +"\\"+ dataset +".arff"));
+            ArffReader arff = new ArffReader(reader, 1000);
+            Instances data = arff.getStructure();
+            data.setClassIndex(data.numAttributes() - 1);
+            weka.core.Instance inst;
+            while ((inst = (weka.core.Instance)arff.readInstance(data)) != null) {
+              data.add((weka.core.Instance) inst);
+            }
+            
+            double cantidadChoques = 0.0;
+            int cantidadMonotonicos = 0;
+            for(int i = 0; i<data.numInstances();i++)
+            {
+                for(int e = i+1; e<data.numInstances();e++)
+                {
+                    if(!instanciasRespetanMonotonía(data.get(i), data.get(e)))
+                    {
+                        cantidadChoques++;
+                    }
+                    else
+                    {
+                        cantidadMonotonicos++;
+                    }
+                }
+            }
+            
+            
+            double paresDeEjemplos = data.numInstances()*(data.numInstances()-1);
+            //System.out.print("Choques/monotonicos/numInstancias/cantidadParejas: " +cantidadChoques+"/"+cantidadMonotonicos+"/"+data.numInstances()+"/"+paresDeEjemplos);
+            double result = (cantidadChoques/paresDeEjemplos);
+            //System.out.print(data.get(0).value(2));
+            return result;
         }
 
         public double runHT(String train, String test, int numAtributos) throws FileNotFoundException, IOException{
@@ -110,7 +206,7 @@ public class Prueba3 {
                         */
                     }
                 }
-                System.out.print("\nCantidad de aciertos: " + cantidadAciertos + "/" + cantidadInstanciasTest);
+                //System.out.print("\nCantidad de aciertos: " + cantidadAciertos + "/" + cantidadInstanciasTest);
                 double MAE = sumOfErrors/cantidadInstanciasTest;
                 
                 return MAE;
@@ -138,7 +234,8 @@ public class Prueba3 {
                 // indicamos el data set a usar, la cantidad de atributos
                 // (incluyendo al de clase) y el número de folds de la
                 // cross validation
-                double result = exp.HTCrossValidation("swd",10,10);
-                System.out.print("\n-----------\n10 fold CV MAE = "+result);
+                //double result = exp.HTCrossValidation("era",5,10);
+                //System.out.print("\n-----------\n10 fold CV MAE = "+result);
+                System.out.print("\nRESULTADO NMI:" + exp.NMI("swd"));
         }
 }
