@@ -21,6 +21,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import weka.core.converters.ArffLoader.ArffReader;
 import moa.streams.ArffFileStream;
+import weka.core.Utils;
 
 public class Prueba3 {
 
@@ -38,20 +39,8 @@ public class Prueba3 {
                 // inicializamos la cantidad de instancias a leer
                 int numInstances = 1000;
                 
-                // definimos el número de instancias por defecto
-               /* 
-                BufferedReader reader = new BufferedReader(new FileReader(nombreDataSet));
-                ArffReader arff = new ArffReader(reader, 1000);
-                Instances data = arff.getStructure();
-                data.setClassIndex(data.numAttributes()-1);
-                Instance inst;
-                while((inst=arff.readInstance(data)) != null){ data.add(inst);}
-                numInstances = data.numInstances();*/
-                //System.out.print(data);
                 
                 // declaramos el flujo de datos y lo dejamos listo para su uso
-                /*RandomRBFGenerator stream = new RandomRBFGenerator();
-                stream.prepareForUse();*/
                 ArffFileStream stream = new ArffFileStream(nombreDataSet,3);
                 stream.prepareForUse();
 
@@ -72,16 +61,18 @@ public class Prueba3 {
                 while (stream.hasMoreInstances() && numberSamples < numInstances) {
                         // tomamos el siguiente dato
                         Instance trainInst = stream.nextInstance().getData();
-                        //Instance trainInst = (Instance) data.get(numberSamples);
-                        //System.out.print(trainInst+"\n");
-                        // FASE TEST
-                        //if (isTesting) {
-                                // si lo clasifica de forma correcta sumamos
-                                // un acierto a las estadisticas
-                                if (learner.correctlyClassifies(trainInst)){
-                                        numberSamplesCorrect++;
-                                }
-                        //}
+
+                        // si lo clasifica de forma correcta sumamos
+                        // un acierto a las estadisticas
+                        if (learner.correctlyClassifies(trainInst)){
+                            numberSamplesCorrect++;
+                        }
+                        else
+                        {
+                            System.out.print(Utils.maxIndex(learner.getVotesForInstance(trainInst)) + "\n");
+                            System.out.print(trainInst.classValue()+ "\n");
+                            System.out.print("---------------------\n");
+                        }
                         numberSamples++;
                         
                         // FASE TRAIN
