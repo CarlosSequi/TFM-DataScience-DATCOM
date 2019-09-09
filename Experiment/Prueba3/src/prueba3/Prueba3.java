@@ -26,6 +26,7 @@ import java.io.InputStream;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import moa.core.Measurement;
@@ -320,7 +321,12 @@ public class Prueba3 {
                         if("=".equals(comparison))
                             attrValue = lines[i].substring(lines[i].indexOf("val ")+4,lines[i].indexOf("val ")+5);
                         else
-                            attrValue = lines[i].substring(lines[i].indexOf(comparison)+2,lines[i].indexOf(comparison)+7);
+                        {
+                            if(">".equals(comparison))
+                                attrValue = lines[i].substring(lines[i].indexOf(comparison)+2,lines[i].indexOf(comparison)+7);
+                            else
+                                attrValue = lines[i].substring(lines[i].indexOf(comparison)+3,lines[i].indexOf(comparison)+8);
+                        }
                         
                         node.add(attr);
                         node.add(comparison);
@@ -360,6 +366,76 @@ public class Prueba3 {
                     }*/
             return branches;
         }
+        
+        public boolean branchesRespectMonotonicity(List<List<String>> branchA, List<List<String>>branchB)
+        {
+            boolean respectConstraints = true;
+            
+            // significado de cada indice de una rama:
+            // 0: atributo
+            // 1: desigualdad
+            // 2: valor de la desigualdad
+            
+            // tomamos el tamaño de la rama mas corta para saber cuantas
+            // iteraciones hemos de dara para comaparar ambas ramas
+            int iteraciones = (branchA.size()>branchB.size()) ? branchB.size() : branchA.size();
+            
+            // obtenemos la rama mayor de las dos a comparar
+            // cuando haya un desvio entre ambas ramas, la que tenga el valor mas alto, esa es la mayor
+            int e = 0;
+            List<List<String>> ramaMayor = new ArrayList<>();     
+            List<List<String>> ramaMenor = new ArrayList<>(); 
+            while(e<iteraciones)
+            {
+                if(branchA.get(e) != branchB.get(e))
+                {
+                    ramaMayor = (">".equals(branchA.get(e).get(1))) ? branchA : branchB; 
+                    ramaMenor = (">".equals(branchA.get(e).get(1))) ? branchB : branchA;
+                }
+                e++;
+            }
+            
+            
+            System.out.print("\n------------------------------------------------------\n_");
+            System.out.print("Nueva comparacion entre 2 ramas:\n");
+            for(int i = 0; i<iteraciones; i++)
+            {
+                System.out.print("\n--------\nNodo "+i+"\n_");
+                System.out.print(ramaMenor.get(i).get(0) + "/" + ramaMayor.get(i).get(0) + "_\n_");
+                System.out.print(ramaMenor.get(i).get(1) + "/" + ramaMayor.get(i).get(1) + "_\n_");
+                System.out.print(ramaMenor.get(i).get(2) + "/" + ramaMayor.get(i).get(2) + "_\n");
+                
+                if(ramaMayor.get(i).get(0).equals(ramaMenor.get(i).get(0)) && ">".equals(ramaMenor.get(i).get(1)) && "<=".equals(ramaMayor.get(i).get(1)) && (ramaMayor.get(i).get(2).equals(ramaMenor.get(i).get(2))))
+                {
+                    System.out.print("COLISION");
+                    respectConstraints = false;
+                }
+                    
+            }
+            
+            
+            return respectConstraints;
+        }
+        
+        public ArrayList<Integer> getClashesMatrix(List<List<List<String>>> branches)
+        {
+            
+            ArrayList<Integer> clashes = new ArrayList<>(Collections.nCopies(branches.size(), 0));
+            for(int i=0; i<branches.size(); i++)
+            {
+                for(int e=i+1; e<branches.size(); e++)
+                {
+                    // en caso de que no sean monotonicas entre si
+                   if(!branchesRespectMonotonicity(branches.get(i),branches.get(e)))
+                   {
+                       // sumamos a cada rama un choque
+                       clashes.set(i, clashes.get(i)+1);
+                       clashes.set(e, clashes.get(e)+1);
+                   }
+                }
+            }
+            return clashes;
+        }
 
         public ArrayList<Double> runHT(String train, String test, int numAtributos, int algorithm) throws FileNotFoundException, IOException, Exception{
             
@@ -396,18 +472,21 @@ public class Prueba3 {
                     learner.trainOnInstance((com.yahoo.labs.samoa.instances.Instance)trainInst);
                 }
                 List<List<List<String>>> branches = getBranches(learner);
-                for(int i = 0; i<branches.size(); i++)
+                System.out.print("\nArray colisiones ramas: \n"+getClashesMatrix(branches));
+                /*for(int i = 0; i<branches.size(); i++)
                 {
                     System.out.print("\n----------------");
                     for(int e=0; e<branches.get(i).size(); e++)
                     {
                         System.out.print("\n" + branches.get(i).get(e));
                     }
-                }
+                }*/
+                
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //HT2.SplitNode
                 HT arbol = (HT) learner.getModel();
+                System.out.print("\n"+arbol+"\n");
                 //SplitNode nodaso = (SplitNode) arbol.treeRoot;
                 //getBranches(nodaso);
                 //System.out.print(arbol.findLearningNodes()+"\n");
