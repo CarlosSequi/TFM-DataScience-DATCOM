@@ -5,7 +5,7 @@
  */
 package prueba3;
  /*
-  *    HT3.java
+  *    HT2.java
   *    Copyright (C) 2007 University of Waikato, Hamilton, New Zealand
   *    @author Richard Kirkby (rkirkby@cs.waikato.ac.nz)
   *
@@ -54,7 +54,7 @@ import moa.core.SizeOf;
  import weka.core.Instance;
  import weka.core.Utils;
  
- public class HT extends AbstractClassifier {
+ public class HT2 extends AbstractClassifier {
  
      private static final long serialVersionUID = 1L;
  
@@ -109,7 +109,7 @@ import moa.core.SizeOf;
  
      public FloatOption tieThresholdOption = new FloatOption("tieThreshold",
              't', "Threshold below which a split will be forced to break ties.",
-             /*0.05*/1, 0.0, 1.0);
+             0.05/*0.05*/, 0.0, 1.0);
  
      public FlagOption binarySplitsOption = new FlagOption("binarySplits", 'b',
              "Only allow binary splits.");
@@ -172,7 +172,7 @@ import moa.core.SizeOf;
              return this.observedClassDistribution.getArrayCopy();
          }
  
-         public double[] getClassVotes(com.yahoo.labs.samoa.instances.Instance inst, HT ht) {
+         public double[] getClassVotes(com.yahoo.labs.samoa.instances.Instance inst, HT2 ht) {
              return this.observedClassDistribution.getArrayCopy();
          }
  
@@ -180,9 +180,10 @@ import moa.core.SizeOf;
              return this.observedClassDistribution.numNonZeroEntries() < 2;
          }
  
-         public void describeSubtree(HT ht, StringBuilder out,
+         public void describeSubtree(HT2 ht, StringBuilder out,
                  int indent) {
-             StringUtils.appendIndented(out, indent, "Leaf ");
+             //System.out.print("aquizi");
+             //StringUtils.appendIndented(out, indent, "Leaf ");
              out.append(ht.getClassNameString());
              out.append(" = ");
              out.append(ht.getClassLabelString(this.observedClassDistribution.maxIndex()));
@@ -256,7 +257,11 @@ import moa.core.SizeOf;
          }
  
          public int instanceChildIndex(com.yahoo.labs.samoa.instances.Instance inst) {
+             StringBuilder desc = new StringBuilder();
+             splitTest.getDescription(desc, 0);
+             //System.out.print("\n Rama a elegir: "+desc+"\n");// carlos
              return this.splitTest.branchForInstance((com.yahoo.labs.samoa.instances.Instance) inst);
+             
          }
  
          @Override
@@ -268,6 +273,8 @@ import moa.core.SizeOf;
          public FoundNode filterInstanceToLeaf(com.yahoo.labs.samoa.instances.Instance inst, SplitNode parent,
                  int parentBranch) {
              int childIndex = instanceChildIndex(inst);
+             
+             //System.out.print("\n"+ childIndex + "\n");
              if (childIndex >= 0) {
                  Node child = getChild(childIndex);
                  if (child != null) {
@@ -279,12 +286,13 @@ import moa.core.SizeOf;
          }
  
          @Override
-         public void describeSubtree(HT ht, StringBuilder out,
-                 int indent) {
+         public void describeSubtree(HT2 ht, StringBuilder out,
+                 int indent) { //System.out.print("qqqqqqqqqqqqqqqqqqqqqqqqqq");
              for (int branch = 0; branch < numChildren(); branch++) {
                  Node child = getChild(branch);
                  if (child != null) {
                      StringUtils.appendIndented(out, indent, "if ");
+                    // System.out.print("---------------------------------------------------"+this.splitTest.describeConditionForBranch(branch, ht.getModelContext()));
                      out.append(this.splitTest.describeConditionForBranch(branch,
                              ht.getModelContext()));
                      out.append(": ");
@@ -317,7 +325,7 @@ import moa.core.SizeOf;
              super(initialClassObservations);
          }
  
-         public abstract void learnFromInstance(com.yahoo.labs.samoa.instances.Instance inst, HT ht);
+         public abstract void learnFromInstance(com.yahoo.labs.samoa.instances.Instance inst, HT2 ht);
      }
  
      public static class InactiveLearningNode extends LearningNode {
@@ -329,7 +337,7 @@ import moa.core.SizeOf;
          }
  
          @Override
-         public void learnFromInstance(com.yahoo.labs.samoa.instances.Instance inst, HT ht) {
+         public void learnFromInstance(com.yahoo.labs.samoa.instances.Instance inst, HT2 ht) {
              this.observedClassDistribution.addToValue((int) inst.classValue(),
                      inst.weight());
          }
@@ -355,7 +363,7 @@ import moa.core.SizeOf;
          }
  
          @Override
-         public void learnFromInstance(com.yahoo.labs.samoa.instances.Instance inst, HT ht) {
+         public void learnFromInstance(com.yahoo.labs.samoa.instances.Instance inst, HT2 ht) {
              this.observedClassDistribution.addToValue((int) inst.classValue(),
                      inst.weight());
              for (int i = 0; i < inst.numAttributes() - 1; i++) {
@@ -382,7 +390,7 @@ import moa.core.SizeOf;
          }
  
          public AttributeSplitSuggestion[] getBestSplitSuggestions(
-                 SplitCriterion criterion, HT ht) {
+                 SplitCriterion criterion, HT2 ht) {
              List<AttributeSplitSuggestion> bestSuggestions = new LinkedList<AttributeSplitSuggestion>();
              double[] preSplitDist = this.observedClassDistribution.getArrayCopy();
              if (!ht.noPrePruneOption.isSet()) {
@@ -574,6 +582,10 @@ import moa.core.SizeOf;
                          this.splitConfidenceOption.getValue(), node.getWeightSeen());
                  AttributeSplitSuggestion bestSuggestion = bestSplitSuggestions[bestSplitSuggestions.length - 1];
                  AttributeSplitSuggestion secondBestSuggestion = bestSplitSuggestions[bestSplitSuggestions.length - 2];
+                 //System.out.print("\nxxxxxxx"+bestSplitSuggestions.length+"xxxxxxxx\n");
+                 //System.out.print("\n||||||||||_"+bestSuggestion.merit+"_||||||||||\n");
+                 //System.out.print("\n||||||||||_"+secondBestSuggestion.merit+"_||||||||||\n");
+                 //System.out.print("\n||||||||||_"+this.tieThresholdOption.getValue()+"_||||||||||\n");
                  if ((bestSuggestion.merit - secondBestSuggestion.merit > hoeffdingBound)
                          || (hoeffdingBound < this.tieThresholdOption.getValue())) {
                      shouldSplit = true; // AQUI CARLOS SEQUI DECIDIR SI RAMIFICAR
@@ -618,7 +630,7 @@ import moa.core.SizeOf;
                      deactivateLearningNode(node, parent, parentIndex);
                  } else {
                      SplitNode newSplit = newSplitNode(splitDecision.splitTest,
-                             node.getObservedClassDistribution());
+                             node.getObservedClassDistribution()); 
                      for (int i = 0; i < splitDecision.numSplits(); i++) {
                          Node newChild = newLearningNode(splitDecision.resultingClassDistributionFromSplit(i));
                          newSplit.setChild(i, newChild);
@@ -794,7 +806,7 @@ import moa.core.SizeOf;
          }
  
          @Override
-         public double[] getClassVotes(com.yahoo.labs.samoa.instances.Instance inst, HT ht) {
+         public double[] getClassVotes(com.yahoo.labs.samoa.instances.Instance inst, HT2 ht) {
              if (getWeightSeen() >= ht.nbThresholdOption.getValue()) {
                  return NaiveBayes.doNaiveBayesPrediction((com.yahoo.labs.samoa.instances.Instance) inst,
                          this.observedClassDistribution,
@@ -822,7 +834,7 @@ import moa.core.SizeOf;
          }
  
          @Override
-         public void learnFromInstance(com.yahoo.labs.samoa.instances.Instance inst, HT ht) {
+         public void learnFromInstance(com.yahoo.labs.samoa.instances.Instance inst, HT2 ht) {
              int trueClass = (int) inst.classValue();
              if (this.observedClassDistribution.maxIndex() == trueClass) {
                  this.mcCorrectWeight += inst.weight();
@@ -835,7 +847,7 @@ import moa.core.SizeOf;
          }
  
          @Override
-         public double[] getClassVotes(com.yahoo.labs.samoa.instances.Instance inst, HT ht) {
+         public double[] getClassVotes(com.yahoo.labs.samoa.instances.Instance inst, HT2 ht) {
              if (this.mcCorrectWeight > this.nbCorrectWeight) {
                  return this.observedClassDistribution.getArrayCopy();
              }

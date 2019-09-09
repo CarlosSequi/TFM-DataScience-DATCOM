@@ -6,7 +6,7 @@
 package prueba3;
 
 // Para usar el clasificador HoeffdingTree directamente sin hacer
-// uso de la clase HT(que es lo mismo pero modificada para el uso de
+// uso de la clase HT3(que es lo mismo pero modificada para el uso de
 // restricciones monotónicas)
 //import moa.classifiers.trees.HoeffdingTree;
 import com.yahoo.labs.samoa.instances.DenseInstance;
@@ -28,8 +28,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import moa.core.Measurement;
 import weka.core.converters.ArffLoader.ArffReader;
 import moa.streams.ArffFileStream;
+import prueba3.HT2.FoundNode;
+import prueba3.HT2.Node;
+import prueba3.HT2.SplitNode;
 import weka.core.Instances;
 import weka.core.Utils;
 import weka.core.converters.ArffSaver;
@@ -219,6 +223,7 @@ public class Prueba3 {
                 data.add(instancia);
             }
             
+            // CONTAMOS LA CANTIDAD DE CHOQUES QUE HAY ENTRE INSTANCIAS
             double cantidadChoques = 0.0;
             int cantidadMonotonicos = 0;
             for(int i = 0; i<data.size();i++)
@@ -243,12 +248,132 @@ public class Prueba3 {
             //System.out.print(data.get(0).value(2));
             return result;
         }
+        
+        /*public double getBranches(SplitNode nodo, HT2 arbol)
+        {
+            for(int i = 0; i<nodo.numChildren(); i++)
+            {
+                if(!nodo.getChild(i).isLeaf())
+                {
+                    getBranches((SplitNode) nodo.getChild(i),arbol);
+                }
+                
+                //nodo.splitTest.describeConditionForBranch(nodo., arbol.getModelContext());
+            }
+            return 3;
+        }*/
+        
+        public List<List<List<String>>> getBranches(Classifier learner)
+        {
+            String learnerDescription = learner.toString();
+            System.out.print(learnerDescription);
+            String[] lines = learnerDescription.split(System.getProperty("line.separator"));
+           List<List<List<String>>> branches = new ArrayList<>();
+            boolean claseAlmacenada = false;
+            //ArrayList<ArrayList<String>> branch = new ArrayList<>();
+            List<List<String>> branch = new ArrayList<>();
+            //ArrayList<String> node = new ArrayList<>();
+            //List<String> node =  new ArrayList<>();
+            for(int i = 0; i<lines.length; i++)
+            {                
+                    // obtenemos los valores del arbol
+                    while(lines[i].contains("if"))
+                    {
+                        List<String> node = new ArrayList<>();
+                        if(lines[i].indexOf("if") != 0)
+                        {
+                            //System.out.print("\nRemind\n");
+                           if(claseAlmacenada)
+                           {
+                               //System.out.print("\nMenosUno\n");
+                               claseAlmacenada = false;
+                               List<List<String>> aux = branch;
+                               branch = new ArrayList<>();
+                               for(int e=0;e<aux.size()-1;e++)
+                               {
+                                   //System.out.print(branch.get(e));
+                                  branch.add(aux.get(e));
+                               }
+                               //branch.remove(branch.size()-1);
+                               /*System.out.print("\n||||||||||\n");
+                               System.out.print(branch);
+                               System.out.print("\n||||||||||\n");*/
+                           }
+                           //branch = previousBranch;
+                        }
+                        else
+                        {
+                            //System.out.print("\nForget\n");
+                            List<List<String>> aux = new ArrayList<>();
+                            branch = aux;
+                            claseAlmacenada=false;
+                        }
+                       // System.out.print(lines[i]+"\n"+lines[i].contains("<")+"\n");
+                        String attr = lines[i].substring(lines[i].indexOf("att "), lines[i].indexOf("att ")+5);
+                        String comparison = "";
+                        if(lines[i].contains(" = "))
+                            comparison = "=";
+                        else
+                            comparison = (lines[i].contains("="))? "<=" : ">";
+                        
+                        String attrValue="";
+                        if("=".equals(comparison))
+                            attrValue = lines[i].substring(lines[i].indexOf("val ")+4,lines[i].indexOf("val ")+5);
+                        else
+                            attrValue = lines[i].substring(lines[i].indexOf(comparison)+2,lines[i].indexOf(comparison)+7);
+                        
+                        node.add(attr);
+                        node.add(comparison);
+                        node.add(attrValue);
+                        
+                        
+                        branch.add(node);
+                        
+                        //System.out.print("\n----------------");
+                        //System.out.print("\nA: " + branch.get(0) + "\nC: "+ branch.get(1)+ "\nV: "+branch.get(2)+"\n" );
+                        i++;
+                    }
+                    if(lines[i].contains("class"))
+                    {
+                        // para eliminar un nodo del previousBranch
+                        claseAlmacenada = true;
+                        
+                        // almacenamos la rama tomada antes
+                        // en el vector de ramas
+                        branches.add(branch);
+                        /*if(branches.size()>1)
+                            System.out.print("\n"+branches.get(branches.size()-2));*/
+                        
+                        // Limpiamos la rama entera
+                        //branch = new ArrayList<>();
+                        
+                        // aqui cogemos la clase de esa rama
+                        //System.out.print("\nCLASE");
+                    }
+                   
+            }
+             /*for(int a=0;a<branches.size();a++)
+                    {
+                        
+                            System.out.print(branches.get(a)+"\n");
+                        
+                    }*/
+            return branches;
+        }
 
-        public double runHT(String train, String test, int numAtributos, int indiceFold) throws FileNotFoundException, IOException, Exception{
+        public ArrayList<Double> runHT(String train, String test, int numAtributos, int algorithm) throws FileNotFoundException, IOException, Exception{
             
                 // declaramos el clasificador que queremos utilizar
-                Classifier learner = new HT();
-                
+                Classifier learner;
+                switch(algorithm) {
+                    case 2:
+                      learner = new HT2();
+                      break;
+                    default:
+                      learner = new HT();
+                  }
+                learner = new HT();
+                HT arbolito = new HT();
                 // declaramos un flujo de datos para train y otro para test
                 ArffFileStream trainStream = new ArffFileStream(train,numAtributos);
                 ArffFileStream testStream = new ArffFileStream(test,numAtributos);
@@ -259,7 +384,7 @@ public class Prueba3 {
                 // contexto del clasificador, para dejarlo listo para su uso
                 learner.setModelContext(trainStream.getHeader());
                 learner.prepareForUse();
-                
+               // learner.getOptions().addOption(arbolito.tieThresholdOption.setValue(0.35));
                 //--------------------------------------------------------------
                 // TRAIN
                 // primero entrenamos con los datos de train
@@ -267,9 +392,65 @@ public class Prueba3 {
                     // tomamos el siguiente dato
                     Instance trainInst = trainStream.nextInstance().getData();
                     // aprendemos de él
+                    //arbolito.trainOnInstance(trainInst);
                     learner.trainOnInstance((com.yahoo.labs.samoa.instances.Instance)trainInst);
                 }
+                List<List<List<String>>> branches = getBranches(learner);
+                for(int i = 0; i<branches.size(); i++)
+                {
+                    System.out.print("\n----------------");
+                    for(int e=0; e<branches.get(i).size(); e++)
+                    {
+                        System.out.print("\n" + branches.get(i).get(e));
+                    }
+                }
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //HT2.SplitNode
+                HT arbol = (HT) learner.getModel();
+                //SplitNode nodaso = (SplitNode) arbol.treeRoot;
+                //getBranches(nodaso);
+                //System.out.print(arbol.findLearningNodes()+"\n");
+                //HT.FoundNode [] nods = arbol.findLearningNodes();
+                /*for(int i =0;i<nods.length;i++)
+                {
+                    StringBuilder out = new StringBuilder();
+                    System.out.print("\nInfo rama " + i + "\n");
+                    FoundNode nodoActual = nods[i];
+                    int e = 1;
+                    while(e < 3)
+                    {
+                        System.out.print("\n\tInfo nodo " + e + " ------------- " + nodoActual.node+"\n");
+                        System.out.print(nodoActual.parent.splitTest.describeConditionForBranch(nodoActual.parentBranch, arbol.getModelContext()) + "\n");
+                        nodoActual = arbol.get
+                        
+                        nodoActual.node = nodoActual.parent;
+                        e++;
+                    }
+                    //nods[i].node.describeSubtree(arbol, out, 0);
+                    //System.out.print("\n::::\n");
+                    //System.out.print("\n"+nods[i].parent.subtreeDepth()+"\n");
+                    //System.out.print("\n" + arbol);
+                    if(nods[i].node.isLeaf() && i == 1 && nods[i].node instanceof HT2.ActiveLearningNode)
+                    {
+                        //System.out.print(nods[i].node.observedClassDistribution + "\n");
+                        //System.out.print(nods[i].parent.observedClassDistribution + "\n");
+                        //nods[i].node = nods[i].parent;
+                        //nods[i].node.
+                        //System.out.print(n.observedClassDistribution);
+                        //System.out.print("AQUI LERANINNNNNNNNNNNNN");
+                        //System.out.print("nodo hoja!\n");
+                        //System.out.print(nods[i].node.observedClassDistribution);
+                        //nods[i].node.
+                        //arbol.deactivateLearningNode(new HT2.ActiveLearningNode(nods[i].node.getObservedClassDistribution()) , nods[i].parent, nods[i].parentBranch);
+                    }
+                }*/
+                //arbol.deactivateAllLeaves();
                 
+                //System.out.print("\n??????"+nods.length+"??????\n");
+               // arbol.getVotesForInstance(inst)
+               ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //--------------------------------------------------------------
                 // TEST
                 // Preparamos ahora el learner para el testStream
@@ -295,7 +476,7 @@ public class Prueba3 {
                     // sumamos la nueva instancia al contador de instancias
                     cantidadInstanciasTest++;
                     // tomamos el siguiente dato
-                    Instance testInst = testStream.nextInstance().getData();
+                    Instance testInst = testStream.nextInstance().getData(); //System.out.print(nods); //System.out.print(testInst.);
                     //System.out.print(testInst+"\n"+testInst.classValue()+"\n");
                     // sumamos los errores haciendo la diferencia entre ellos
                     if(!learner.correctlyClassifies(testInst))
@@ -327,42 +508,59 @@ public class Prueba3 {
                         System.out.print("\nIndice de clase predicho: "+Utils.maxIndex(learner.getVotesForInstance(testInst)) + "\nIndice de clase real:" + testInst.classValue());
                         */
                     }
-                    
+                    double [] a = learner.getVotesForInstance(testInst);
+                    /*System.out.print("INSTANCIA ----> "+testInst+"\n");
+                    for(int i = 0; i<a.length; i++)
+                    {
+                        System.out.print(a[i]+"\n");
+                    }
+                    System.out.print("---------\n");*/
                     // añadimos la clase predicha al vector de predicciones
                     // para poder sacar el NMI más tarde haciendo uso de él
                     predictedClasses.add((double)Utils.maxIndex(learner.getVotesForInstance(testInst)));
                 }
+                
                 //System.out.print("\nCantidad de aciertos: " + cantidadAciertos + "/" + cantidadInstanciasTest);
                 double MAE = sumOfErrors/cantidadInstanciasTest;
                 double NMI = NMI(test,predictedClasses,numAtributos);
                 double total = MAE + NMI;
-                System.out.print("\n-------------------\n");
-                System.out.print("MAE = " + MAE);
-                System.out.print("\nNMI = " + NMI);
+                //System.out.print(learner.getPredictionForInstance(testInst).numOutputAttributes()+"\n");
+                /*StringBuilder s = new StringBuilder();
+                learner.getDescription(s, 0);
+                System.out.print(s);*/
+                //System.out.print("\n============================================\n");
+                //System.out.print("MAE = " + MAE);
+                //System.out.print("\nNMI = " + NMI);
+                ArrayList<Double> result = new ArrayList<>(0);
+                result.add(MAE);
+                result.add(NMI);
+
                 
-                
-                // creamos el archivo de predicciones nuevo para poder evaluar el NMI
-               /* saver.setInstances(predictedData);
-                saver.setFile(new File("D:\\TFM-DataScience-DATCOM\\Experiment\\Data sets\\"+ dataset +"\\"+ dataset +"PREDICTED.arff"));*/
-                
-                return total;
+                return result;
         }
         
-        public double HTCrossValidation(String dataset,int numAtributos, int numFolds) throws IOException, Exception
+        public double HTCrossValidation(String dataset,int numAtributos, int numFolds, int algorithm) throws IOException, Exception
         {
             // Almacenamos la suma de resultados de cada partición
-            double sumOfAccuracies = 0;
+            double MAEsum = 0;
+            double NMIsum = 0;
             for(int i=1; i <= numFolds; i++)
             {
                 // declaramos los conjuntos de train y de test
                 String train = "D:\\TFM-DataScience-DATCOM\\Experiment\\Data sets\\"+ dataset +"\\"+ dataset +"-10-"+i+"tra.dat";
                 String test = "D:\\TFM-DataScience-DATCOM\\Experiment\\Data sets\\"+ dataset +"\\"+ dataset +"-10-"+i+"tst.dat";
-                double MAEandNMI = runHT(train, test, numAtributos,i);
+                ArrayList<Double> MAEandNMI;
+                MAEandNMI = runHT(train, test, numAtributos,algorithm);
                 //System.out.print(MAE);
-                sumOfAccuracies += MAEandNMI;
+                MAEsum += MAEandNMI.get(0);
+                NMIsum += MAEandNMI.get(1);
             }
             
-            return sumOfAccuracies / numFolds;      
+            //System.out.print("\nMAE = " + MAEsum/numFolds);
+            //System.out.print("\nNMI = " + NMIsum/numFolds);
+            
+            
+            return MAEsum / numFolds;      
         }
 
         public static void main(String[] args) throws IOException, Exception {
@@ -370,11 +568,11 @@ public class Prueba3 {
                 // indicamos el data set a usar, la cantidad de atributos
                 // (incluyendo al de clase) y el número de folds de la
                 // cross validation
-                double result = exp.HTCrossValidation("lev",5,10);
-                System.out.print("\n10 fold CV: MAE + NMI = "+result+"\n-----------\n");
+                double result = exp.HTCrossValidation("era",5,1,2);
+                //System.out.print("\n10 fold CV: MAE + NMI = "+result+"\n-----------\n");
                 
                 
-                //Prueba del NMI
+                //Prueba del NMI sobre data sets individuales
                 //System.out.print("\nRESULTADO NMI:" + exp.NMI("swd"));
         }
 }

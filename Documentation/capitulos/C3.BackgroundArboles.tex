@@ -27,7 +27,7 @@
 \begin{itemize}
 	\item \textbf{Nodo raíz}: Es el primero de los nodos del árbol y forma la población completa.
 	\item \textbf{Ramificación}: Son las ramas que conectan todos los nodos del árbol por donde pasan las muestras para ser clasificadas.
-	\item \textbf{Nodo de decisión}: Son aquellos donde las muestras se evaluan para decidir por qué rama continuar el camino hacia la solución.
+	\item \textbf{Nodo de decisión}: Son aquellos donde las muestras se evalúan para decidir por qué rama continuar el camino hacia la solución.
 	\item \textbf{Nodo terminal/hoja}: Estos son los nodos solución, una vez la muestra llega a este tipo de nodo, el proceso de evaluación de esta ya ha finalizado, por lo que habrá sido clasificada en alguno de los grupos categóricos existentes.
 	\item \textbf{Poda}: Consiste en cortar u obviar una rama del árbol en la creación de un árbol, basándonos en cierta propiedad escogida, para evitar el recorrido del árbol completo y ahorrar de esta forma costos computacionales, así como para hacer frente al sobreajuste.
 	\item \textbf{Rama/subárbol}: Es el conjunto de nodos y ramas completo que queda estrictamente por debajo de un nodo escogido del árbol total.
@@ -113,7 +113,7 @@ Ya sabemos que buscamos nodos con una distribución de clase lo más homogénea 
 		\caption{Recursive Binary Splitting in classification trees (gini) \cite{ref8}}
 	\end{figure}
 	Donde $\widehat{\pi}$mc nos indica la proporción \textbf{$\widehat{\pi}$} de items pertenecientes a la misma clase \textbf{c} en la región/nodo \textbf{m}.
-	\item \textbf{Entropía (E-score)}: Se encarga también de la medida de homogeneidad de un nodo. En este caso, los resultados obtenidos al aplicar la siguiente fórmula a cada nodo para observar el nivel de entropía, quedan más visibles con respecto a la medida Gini (es decir, se ve de forma más clara el nivel de homogeneidad de un nodo). Una entropía = 0 significa homogeneidad total, una entropia = 1 significa homogeneidad nula.
+	\item \textbf{Entropía (E-score)}: Se encarga también de la medida de homogeneidad de un nodo. En este caso, los resultados obtenidos al aplicar la siguiente fórmula a cada nodo para observar el nivel de entropía, quedan más visibles con respecto a la medida Gini (es decir, se ve de forma más clara el nivel de homogeneidad de un nodo). Una entropía = 0 significa homogeneidad total, una entropía = 1 significa homogeneidad nula.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.5\textwidth]{imagenes/entropia} 
@@ -174,10 +174,10 @@ Ante estos problemas se plantea\textbf{ Hoeffding-tree} ya que:
 \subsubsection{Hoeffding bound.}
 
 Hulten y Domingos presentan un método general para aprender de bases de datos grandes y arbitrarias.
-Este método consiste en derivar un límite superior para la pérdida del learner en función del número de ejemplos usados en cada paso del algoritmo. De esta forma, se minimiza el número de ejemplos requeridos en cada paso del algoritmo, a la vez que se garantiza que el modelo obtenido no difiere de forma significante de aquel que se obtendría con todos los datos. Esta metodologia de datos se ha aplicado de forma exitosa en k-means, clustering jerárquico de variables, árboles de decision, etc.
+Este método consiste en derivar un límite superior para la pérdida del learner en función del número de ejemplos usados en cada paso del algoritmo. De esta forma, se minimiza el número de ejemplos requeridos en cada paso del algoritmo, a la vez que se garantiza que el modelo obtenido no difiere de forma significante de aquel que se obtendría con todos los datos. Esta metodología de datos se ha aplicado de forma exitosa en k-means, clustering jerárquico de variables, árboles de decisión, etc.
 
 Con el fin de cumplir con los requisitos establecidos al principio de este apartado para el tratamiento de flujos de datos, los autores proponen la cota Hoeffding para ser capaces de decidir la cantidad de instancias necesarias a evaluar para alcanzar un cierto nivel de confianza a partir del cual sabemos que no es necesario evaluar más ejemplos para seleccionar un atributo mediante el cual realizar la partición del árbol en el nodo actual.\\
-Es decir, una vez alcanzada la cota de Hoeffding, el atributo que seleccionemos para el particionamiento del espacio de predictores, sera el mismo que seleccionariamos si analizásemos una infinidad de ejemplos con el clasificador (evidentemente, con cierto nivel de confianza).
+Es decir, una vez alcanzada la cota de Hoeffding, el atributo que seleccionemos para el particionamiento del espacio de predictores, sera el mismo que seleccionaríamos si analizásemos una infinidad de ejemplos con el clasificador (evidentemente, con cierto nivel de confianza).
 
 La idea básica consiste en usar un conjunto pequeño de ejemplos para seleccionar el test de divisón para colocar en un nodo del árbol de decisión.
 Si tras ver un conjunto de ejemplos, la diferencia en resultados entre ambos test de división no satisface un test estadístico (Hoeffding bound), entonces VFDT procede a examinar más ejemplos.
@@ -204,7 +204,12 @@ Teniendo n variables independientes $r_{1}...r_{n}$ con un rango R y una media $
 	\caption{Cálculo del límite de Hoeffding \cite{ref10}}
 \end{figure}
 
-Sabiendo que $\delta$ es la tolerancia al fallo a la hora de escoger un atributo en un nodo dado.
+Sabiendo que $\delta$ es la tolerancia al fallo a la hora de escoger un atributo en un nodo dado.\\
+Una vez calculado el Hoeffding bound, se realizará la división si sucede una de las siguientes ocurrencias:
+\begin{itemize}
+	\item La diferencia entre la ganancia ofrecida por el mejor atributo para la división y la ganancia ofrecida por el segundo mejor atributo, es mayor que el Hoeffding bound.
+	\item El Hoeffding bound es menor que un parámetro de desempate (tie-breaking) establecido para cuando se dé el caso de que el Hoeffding bound es lo suficientemente pequeño pero los dos mejores atributos escogidos para la división son demasiado similares como para que se cumpla la condición anterior, lo que podría llevar a un estancamiento del árbol. El parámetro de desempate, según la literatura, suele establecerse a un valor de 0.05, que se suele alcanzar con unas 3.400 instancias analizadas.
+\end{itemize}
 
 \subsection{Otros algoritmos de data streaming}
 
@@ -235,14 +240,14 @@ Cada uno de los nodos de decisión ha de tener las estadísticas suficientes par
 
 \subsubsection{HATT}
 
-Otro algoritmo que implementa una solución más eficiente a la presentada por Hoeffding tree es el \textbf{Hoeffding Anytime Tree} \cite{ref10}, el cual asegura conseguir mejores resultados explotando la información conforme le llega al modelo en lugar de esperar a traspasar el Hoeffding bound y, realizando correciones sobre estas decisiones de elección de atributo para la división siempre que sea necesario.
+Otro algoritmo que implementa una solución más eficiente a la presentada por Hoeffding tree es el \textbf{Hoeffding Anytime Tree} \cite{ref10}, el cual asegura conseguir mejores resultados explotando la información conforme le llega al modelo en lugar de esperar a traspasar el Hoeffding bound y, realizando correcciones sobre estas decisiones de elección de atributo para la división siempre que sea necesario.
 Por tanto, en cuanto se detecte una división útil en cualquiera de las hojas del árbol, se realizará de forma inmediata y esta, será reemplazada tan pronto como otra alternativa mejor sea identificada.
 
 Además de esto, algunos experimentos muestran que el algoritmo, aún no habiendo sido tratado para ello, muestra algunas características de tratamiento de concept drift.
 
 \subsubsection{Option trees}
 
-Con el objetivo de introducir a Hoeffding tree mayor estabilidad y romper la barrera que posse VFDT para mirar hacia adelante, surje Option trees\cite{ref13}.\\
+Con el objetivo de introducir a Hoeffding tree mayor estabilidad y romper la barrera que posee VFDT para mirar hacia adelante, surje Option trees\cite{ref13}.\\
 Consiste en una estructura que representa a múltiples árboles en lugar de a uno solo como hace VFDT. Una instancia nueva puede bajar por varios caminos del árbol contribuyendo de diferentes maneras en diferentes opciones. La clase de un ejemplo de test se determina por un comité(mayoría de voto o pesos) hecho por las predicciones de todas los nodos hoja alcanzados. El concepto es crear múltiples opciones pero de la misma forma que lo hace Hoeffding tree.\\
 Esta nueva representación de un árbol difiere únicamente de la representación hecha para VFDT en que contienen unos nodos llamados \textbf{nodos opción} que se encargarán de evaluar a los ejemplos que pasen por ellos mediante múltiples tests para determinar por qué ramas dejarle pasar.\\
 En este nuevo método, un ejemplo que entra al árbol puede influir en varios nodos hoja distinto, mientras que en el Hoeffding tree, un solo ejemplo tan solo puede influir en un solo nodo hoja.
@@ -267,13 +272,15 @@ Aún no siendo una tarea simple, existen \textbf{métodos de creación de estos 
 
 \subsubsection{Método basado en matriz}
 
-Uno de estos métodos es el \textbf{basado en matriz}. Teniendo ya construido un árbol con k ramas, construimos una matriz simétric M de tamaño k x k donde el valor $m_{ij}$ es un 1 en caso de que la rama de la fila i no guarde una relación de monotonía con la rama de la columna j y un 0 en caso contrario. Cada columna (y fila) está asociada con un contador que hace referencia a la suma de los unos que contiene, de esta forma sabemos con qué cantidad de ramas no guarda la relación de monotonía. Comenzamos eliminando (podando) aquellas ramas del árbol que tienen un contador mayor de no-monotonía y actualizando los contadores del resto de ramas hasta llegar a obtener una matriz llena de ceros o hasta llegar a una matriz 1 x 1, en cuyo caso M sería una matriz de no-monotonicidad.
+Uno de estos métodos es el \textbf{basado en matriz}. Teniendo ya construido un árbol con k ramas, construimos una matriz simétrica M de tamaño k x k donde el valor $m_{ij}$ es un 1 en caso de que la rama de la fila i no guarde una relación de monotonía con la rama de la columna j y un 0 en caso contrario. Cada columna (y fila) está asociada con un contador que hace referencia a la suma de los unos que contiene, de esta forma sabemos con qué cantidad de ramas no guarda la relación de monotonía. Comenzamos eliminando (podando) aquellas ramas del árbol que tienen un contador mayor de no-monotonía y actualizando los contadores del resto de ramas hasta llegar a obtener una matriz llena de ceros o hasta llegar a una matriz 1 x 1, en cuyo caso M sería una matriz de no-monotonicidad.
+
+\subsubsection{Método aleatorio}
 
 Otro método más rápido a la hora de ejecutar es tomar inicialmente de forma aleatoria una rama del árbol y declararla como monotónica. A partir de aquí ir tomando siempre de forma aleatoria cada una de las demás ramas del árbol, compararlas con las ramas ya declaradas monotónicas y, o bien descartarlas (en caso de no guardar relación de monotonía con las ya declaradas monotónicas) o bien introducirlas en el conjunto de ramas declaradas monotónicas.
 
 \subsubsection{Método de evaluación de monotonicidad y precisión}
 
-Describimos en este apartado una métrica para que tenga en cuenta tanto el error como las restricciónes monotónicas a la hora de decidir si expandir un nodo del árbol de decisión, lo que lo convierte en el segundo de los métodos que describiremos para la creación de árboles de decisión montónicos.
+Describimos en este apartado una métrica para que tenga en cuenta tanto el error como las restricciones monotónicas a la hora de decidir si expandir un nodo del árbol de decisión, lo que lo convierte en el tercero de los métodos que describiremos para la creación de árboles de decisión montónicos.
 
 Primeramente definimos una medida de no-monotonicidad para los árboles de decisión:\\
 El \textbf{índice de no-monotonicidad} nos dice el ratio entre el número real de pares de ramas no monotónicas de un árbol de decisión y el número máximo de pares que podrían no haber sido monotónicos con respecto a otras en el mismo árbol.

@@ -36,14 +36,15 @@
 \contentsline {subsection}{\numberline {3.2.1}Hoeffding tree (VFDT)}{24}{subsection.3.2.1}% 
 \contentsline {subsubsection}{Hoeffding bound.}{25}{section*.18}% 
 \contentsline {subsection}{\numberline {3.2.2}Otros algoritmos de data streaming}{26}{subsection.3.2.2}% 
-\contentsline {subsubsection}{CVFDT}{26}{section*.19}% 
+\contentsline {subsubsection}{CVFDT}{27}{section*.19}% 
 \contentsline {subsubsection}{HATT}{28}{section*.20}% 
 \contentsline {subsubsection}{Option trees}{28}{section*.21}% 
 \contentsline {section}{\numberline {3.3}\IeC {\'A}rboles de decisi\IeC {\'o}n monot\IeC {\'o}nicos}{29}{section.3.3}% 
 \contentsline {subsection}{\numberline {3.3.1}Problema:}{29}{subsection.3.3.1}% 
-\contentsline {subsection}{\numberline {3.3.2}\IeC {\textquestiondown }C\IeC {\'o}mo creamos un \IeC {\'a}rbol de decisi\IeC {\'o}n monot\IeC {\'o}nico?}{29}{subsection.3.3.2}% 
-\contentsline {subsubsection}{M\IeC {\'e}todo basado en matriz}{29}{section*.22}% 
-\contentsline {subsubsection}{M\IeC {\'e}todo de evaluaci\IeC {\'o}n de monotonicidad y precisi\IeC {\'o}n}{30}{section*.23}% 
+\contentsline {subsection}{\numberline {3.3.2}\IeC {\textquestiondown }C\IeC {\'o}mo creamos un \IeC {\'a}rbol de decisi\IeC {\'o}n monot\IeC {\'o}nico?}{30}{subsection.3.3.2}% 
+\contentsline {subsubsection}{M\IeC {\'e}todo basado en matriz}{30}{section*.22}% 
+\contentsline {subsubsection}{M\IeC {\'e}todo aleatorio}{30}{section*.23}% 
+\contentsline {subsubsection}{M\IeC {\'e}todo de evaluaci\IeC {\'o}n de monotonicidad y precisi\IeC {\'o}n}{30}{section*.24}% 
 \contentsline {chapter}{\numberline {4}Cap\IeC {\'\i }tulo 4. Propuesta}{33}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Introducci\IeC {\'o}n}{33}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}Propuesta y resultados esperados}{35}{section.4.2}% 
@@ -52,10 +53,10 @@
 \contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{39}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Framework}{39}{section.6.1}% 
 \contentsline {subsection}{\numberline {6.1.1}Data sets}{39}{subsection.6.1.1}% 
-\contentsline {subsubsection}{Descripci\IeC {\'o}n de los data sets}{40}{section*.24}% 
+\contentsline {subsubsection}{Descripci\IeC {\'o}n de los data sets}{40}{section*.25}% 
 \contentsline {subsection}{\numberline {6.1.2}Medidas}{40}{subsection.6.1.2}% 
-\contentsline {subsubsection}{Medidas de precisi\IeC {\'o}n}{40}{section*.25}% 
-\contentsline {subsubsection}{Medidas de monotonicidad}{42}{section*.26}% 
+\contentsline {subsubsection}{Medidas de precisi\IeC {\'o}n}{40}{section*.26}% 
+\contentsline {subsubsection}{Medidas de monotonicidad}{42}{section*.27}% 
 \contentsline {section}{\numberline {6.2}Resultados}{43}{section.6.2}% 
 \contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{43}{section.6.3}% 
 \contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{45}{chapter.7}% 

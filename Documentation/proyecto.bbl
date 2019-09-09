@@ -72,6 +72,11 @@ Bartosz Krawczyk Michal Wozniak Salvador~García José-Ramón~Cano, Pedro
 \newblock Monotonic classification: An overview on algorithms, performance
   measures and data sets, 2019.
 
+\bibitem{ref17}
+Wojciech Korlowski and Roman Slowinski.
+\newblock On nonparametric ordinal classification with monotonicity
+  constriaints, 2013.
+
 \bibitem{ref3}
 R.~Lior and M.O. Z.
 \newblock Data mining with decision trees: Theory and applications, 2007.
