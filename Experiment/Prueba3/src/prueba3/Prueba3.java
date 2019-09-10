@@ -33,9 +33,9 @@ import java.util.Objects;
 import moa.core.Measurement;
 import weka.core.converters.ArffLoader.ArffReader;
 import moa.streams.ArffFileStream;
-import prueba3.HT2.FoundNode;
-import prueba3.HT2.Node;
-import prueba3.HT2.SplitNode;
+import prueba3.HT.FoundNode;
+import prueba3.HT.Node;
+import prueba3.HT.SplitNode;
 import weka.core.Instances;
 import weka.core.Utils;
 import weka.core.converters.ArffSaver;
@@ -480,59 +480,25 @@ public class Prueba3 {
             return classAttributeValues;
         }
 
-        public ArrayList<Double> runHT(String train, String test, int numAtributos) throws FileNotFoundException, IOException, Exception{
+        public void poda(Classifier learner)
+        {
+            HT arbol = (HT) learner.getModel();
+            HT.FoundNode [] nodosHoja = arbol.findLearningNodes();
+            nodosHoja[0].parent.children.remove(0);
+        }
+        
+        public void pruebasVarias(Classifier learner)
+        {
+            HT arbol = (HT) learner.getModel();
+            //SplitNode nodaso = (SplitNode) arbol.treeRoot;
             
-                // declaramos el clasificador que queremos utilizar
-                Classifier learner;
-                learner = new HT();
-               
-                // Cambiamos si queremos el valor de desempate (tie-threshold)
-                // changeTieThreshold(learner,1);
-                
-                // declaramos un flujo de datos para train y otro para test
-                ArffFileStream trainStream = new ArffFileStream(train,numAtributos);
-                ArffFileStream testStream = new ArffFileStream(test,numAtributos);
-                trainStream.prepareForUse();
-                testStream.prepareForUse();
-                
-                // establecemos la cabecera de los datos de streaming en el
-                // contexto del clasificador, para dejarlo listo para su uso
-                learner.setModelContext(trainStream.getHeader());
-                learner.prepareForUse();
-               // learner.getOptions().addOption(arbolito.tieThresholdOption.setValue(0.35));
-                //--------------------------------------------------------------
-                // TRAIN
-                // primero entrenamos con los datos de train
-                // obtenemos el vector de valores del atributo clase (la distribucion)
-                ArrayList<Double> classAttributeValues = trainFromData(trainStream,learner);
-                
-                
-                // vemos la proporcion de instancias de cada clase
-                //cantidadInstanciasCadaClase(classAtributeValues);
-                
-                // comprobamos la cantidad de colisiones que hay entre ramas
-                //List<List<List<String>>> branches = getBranches(learner);
-                //System.out.print("\nArray colisiones ramas: \n"+getClashesMatrix(branches));
-                
-                // vemos las ramas que tiene el arbol
-                //List<List<List<String>>> branches = getBranches(learner);
-                // mostrarRamasArbol(branches);
-                
-                
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //HT2.SplitNode
-                HT arbol = (HT) learner.getModel();
-                HT.FoundNode [] no = arbol.findLearningNodes();
-                //no[0].node.
-                System.out.print("\n"+arbol+"\n");
-                no[0].parent.children.remove(0);
-                System.out.print("\n---------------------------------\n"+arbol+"\n");
-                //SplitNode nodaso = (SplitNode) arbol.treeRoot;
-                //getBranches(nodaso);
-                //System.out.print(arbol.findLearningNodes()+"\n");
-                //HT.FoundNode [] nods = arbol.findLearningNodes();
-                /*for(int i =0;i<nods.length;i++)
+            
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            
+            HT.FoundNode [] nods = arbol.findLearningNodes();
+                for(int i =0;i<nods.length;i++)
                 {
                     StringBuilder out = new StringBuilder();
                     System.out.print("\nInfo rama " + i + "\n");
@@ -542,7 +508,6 @@ public class Prueba3 {
                     {
                         System.out.print("\n\tInfo nodo " + e + " ------------- " + nodoActual.node+"\n");
                         System.out.print(nodoActual.parent.splitTest.describeConditionForBranch(nodoActual.parentBranch, arbol.getModelContext()) + "\n");
-                        nodoActual = arbol.get
                         
                         nodoActual.node = nodoActual.parent;
                         e++;
@@ -551,7 +516,7 @@ public class Prueba3 {
                     //System.out.print("\n::::\n");
                     //System.out.print("\n"+nods[i].parent.subtreeDepth()+"\n");
                     //System.out.print("\n" + arbol);
-                    if(nods[i].node.isLeaf() && i == 1 && nods[i].node instanceof HT2.ActiveLearningNode)
+                    if(nods[i].node.isLeaf() && i == 1 && nods[i].node instanceof HT.ActiveLearningNode)
                     {
                         //System.out.print(nods[i].node.observedClassDistribution + "\n");
                         //System.out.print(nods[i].parent.observedClassDistribution + "\n");
@@ -562,22 +527,15 @@ public class Prueba3 {
                         //System.out.print("nodo hoja!\n");
                         //System.out.print(nods[i].node.observedClassDistribution);
                         //nods[i].node.
-                        //arbol.deactivateLearningNode(new HT2.ActiveLearningNode(nods[i].node.getObservedClassDistribution()) , nods[i].parent, nods[i].parentBranch);
+                        //arbol.deactivateLearningNode(new HT.ActiveLearningNode(nods[i].node.getObservedClassDistribution()) , nods[i].parent, nods[i].parentBranch);
                     }
-                }*/
-                //arbol.deactivateAllLeaves();
-                
-                //System.out.print("\n??????"+nods.length+"??????\n");
-               // arbol.getVotesForInstance(inst)
-               ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //--------------------------------------------------------------
-                // TEST
-                // Preparamos ahora el learner para el testStream
-                learner.setModelContext(testStream.getHeader());
-                learner.prepareForUse();
-                
-                // almacenamos la suma de errores en test
+                }
+            
+        }
+        
+        public ArrayList<Double> testFromData(ArffFileStream testStream, Classifier learner, int numAtributos, String test) throws IOException
+        {
+            // almacenamos la suma de errores en test
                 double sumOfErrors = 0;
                 // creamos el contador de instancias del data set
                 int cantidadInstanciasTest = 0;
@@ -639,24 +597,71 @@ public class Prueba3 {
                     // para poder sacar el NMI más tarde haciendo uso de él
                     predictedClasses.add((double)Utils.maxIndex(learner.getVotesForInstance(testInst)));
                 }
-                
                 //System.out.print("\nCantidad de aciertos: " + cantidadAciertos + "/" + cantidadInstanciasTest);
                 double MAE = sumOfErrors/cantidadInstanciasTest;
                 double NMI = NMI(test,predictedClasses,numAtributos);
-                double total = MAE + NMI;
-                //System.out.print(learner.getPredictionForInstance(testInst).numOutputAttributes()+"\n");
-                /*StringBuilder s = new StringBuilder();
-                learner.getDescription(s, 0);
-                System.out.print(s);*/
-                //System.out.print("\n============================================\n");
-                //System.out.print("MAE = " + MAE);
-                //System.out.print("\nNMI = " + NMI);
-                ArrayList<Double> result = new ArrayList<>(0);
+                
+                ArrayList<Double> result = new ArrayList<>();
                 result.add(MAE);
                 result.add(NMI);
-
                 
                 return result;
+        }
+        
+        public ArrayList<Double> runHT(String train, String test, int numAtributos) throws FileNotFoundException, IOException, Exception{
+            
+                // declaramos el clasificador que queremos utilizar
+                Classifier learner;
+                learner = new HT();
+               
+                // Cambiamos si queremos el valor de desempate (tie-threshold)
+                // changeTieThreshold(learner,1);
+                
+                // declaramos un flujo de datos para train y otro para test
+                ArffFileStream trainStream = new ArffFileStream(train,numAtributos);
+                ArffFileStream testStream = new ArffFileStream(test,numAtributos);
+                trainStream.prepareForUse();
+                testStream.prepareForUse();
+                
+                // establecemos la cabecera de los datos de streaming en el
+                // contexto del clasificador, para dejarlo listo para su uso
+                learner.setModelContext(trainStream.getHeader());
+                learner.prepareForUse();
+               // learner.getOptions().addOption(arbolito.tieThresholdOption.setValue(0.35));
+                //--------------------------------------------------------------
+                // TRAIN
+                // primero entrenamos con los datos de train
+                // obtenemos el vector de valores del atributo clase (la distribucion)
+                ArrayList<Double> classAttributeValues = trainFromData(trainStream,learner);
+                //--------------------------------------------------------------
+                
+                // vemos la proporcion de instancias de cada clase
+                //cantidadInstanciasCadaClase(classAtributeValues);
+                
+                // comprobamos la cantidad de colisiones que hay entre ramas
+                //List<List<List<String>>> branches = getBranches(learner);
+                //System.out.print("\nArray colisiones ramas: \n"+getClashesMatrix(branches));
+                
+                // vemos las ramas que tiene el arbol
+                //List<List<List<String>>> branches = getBranches(learner);
+                // mostrarRamasArbol(branches);
+
+                // Probamos la poda
+                //poda(learner);
+                
+                // diversas pruebas con el clasificador
+                //pruebasVarias(learner);
+                
+                //--------------------------------------------------------------
+                // TEST
+                // Preparamos ahora el learner para el testStream
+                learner.setModelContext(testStream.getHeader());
+                learner.prepareForUse();
+                // Obtenemos los resultados
+                ArrayList<Double> MAEandNMI = testFromData(testStream,learner,numAtributos,test);
+                //--------------------------------------------------------------
+                
+                return MAEandNMI;
         }
         
         public void HTCrossValidation(String dataset,int numAtributos, int numFolds) throws IOException, Exception
