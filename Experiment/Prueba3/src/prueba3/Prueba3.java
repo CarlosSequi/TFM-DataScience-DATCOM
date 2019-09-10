@@ -462,7 +462,7 @@ public class Prueba3 {
             HT arbolito = (HT) learner.getModel();
             FloatOption opcion  = new FloatOption("tieThreshold",
                     't', "Threshold below which a split will be forced to break ties.",
-                    0.05, 0.0, 1.0);
+                    1, 0.0, 1.0);
                 arbolito.tieThresholdOption = opcion;
         }
         
@@ -478,59 +478,6 @@ public class Prueba3 {
                     learner.trainOnInstance((com.yahoo.labs.samoa.instances.Instance)trainInst);
                 }
             return classAttributeValues;
-        }
-
-        public void poda(Classifier learner)
-        {
-            HT arbol = (HT) learner.getModel();
-            HT.FoundNode [] nodosHoja = arbol.findLearningNodes();
-            nodosHoja[0].parent.children.remove(0);
-        }
-        
-        public void pruebasVarias(Classifier learner)
-        {
-            HT arbol = (HT) learner.getModel();
-            //SplitNode nodaso = (SplitNode) arbol.treeRoot;
-            
-            
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            
-            
-            HT.FoundNode [] nods = arbol.findLearningNodes();
-                for(int i =0;i<nods.length;i++)
-                {
-                    StringBuilder out = new StringBuilder();
-                    System.out.print("\nInfo rama " + i + "\n");
-                    FoundNode nodoActual = nods[i];
-                    int e = 1;
-                    while(e < 3)
-                    {
-                        System.out.print("\n\tInfo nodo " + e + " ------------- " + nodoActual.node+"\n");
-                        System.out.print(nodoActual.parent.splitTest.describeConditionForBranch(nodoActual.parentBranch, arbol.getModelContext()) + "\n");
-                        
-                        nodoActual.node = nodoActual.parent;
-                        e++;
-                    }
-                    //nods[i].node.describeSubtree(arbol, out, 0);
-                    //System.out.print("\n::::\n");
-                    //System.out.print("\n"+nods[i].parent.subtreeDepth()+"\n");
-                    //System.out.print("\n" + arbol);
-                    if(nods[i].node.isLeaf() && i == 1 && nods[i].node instanceof HT.ActiveLearningNode)
-                    {
-                        //System.out.print(nods[i].node.observedClassDistribution + "\n");
-                        //System.out.print(nods[i].parent.observedClassDistribution + "\n");
-                        //nods[i].node = nods[i].parent;
-                        //nods[i].node.
-                        //System.out.print(n.observedClassDistribution);
-                        //System.out.print("AQUI LERANINNNNNNNNNNNNN");
-                        //System.out.print("nodo hoja!\n");
-                        //System.out.print(nods[i].node.observedClassDistribution);
-                        //nods[i].node.
-                        //arbol.deactivateLearningNode(new HT.ActiveLearningNode(nods[i].node.getObservedClassDistribution()) , nods[i].parent, nods[i].parentBranch);
-                    }
-                }
-            
         }
         
         public ArrayList<Double> testFromData(ArffFileStream testStream, Classifier learner, int numAtributos, String test) throws IOException
@@ -607,7 +554,65 @@ public class Prueba3 {
                 
                 return result;
         }
+
+        public void poda(Classifier learner)
+        {
+            HT arbol = (HT) learner.getModel();
+            HT.FoundNode [] nodosHoja = arbol.findLearningNodes();
+            
+            System.out.print("\n-------------------");
+            System.out.print("\n"+arbol+"\n");
+            nodosHoja[0].parent.children.remove(0);
+            System.out.print("\n"+arbol+"\n");
+        }
         
+        public void pruebasVarias(Classifier learner)
+        {
+            HT arbol = (HT) learner.getModel();
+            //SplitNode nodaso = (SplitNode) arbol.treeRoot;
+            
+            
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            
+            HT.FoundNode [] nods = arbol.findLearningNodes();
+                for(int i =0;i<nods.length;i++)
+                {
+                    StringBuilder out = new StringBuilder();
+                    System.out.print("\nInfo rama " + i + "\n");
+                    FoundNode nodoActual = nods[i];
+                    int e = 1;
+                    while(e < 3)
+                    {
+                        System.out.print("\n\tInfo nodo " + e + " ------------- " + nodoActual.node+"\n");
+                        System.out.print(nodoActual.parent.splitTest.describeConditionForBranch(nodoActual.parentBranch, arbol.getModelContext()) + "\n");
+                        
+                        nodoActual.node = nodoActual.parent;
+                        e++;
+                    }
+                    //nods[i].node.describeSubtree(arbol, out, 0);
+                    //System.out.print("\n::::\n");
+                    //System.out.print("\n"+nods[i].parent.subtreeDepth()+"\n");
+                    //System.out.print("\n" + arbol);
+                    if(nods[i].node.isLeaf() && i == 1 && nods[i].node instanceof HT.ActiveLearningNode)
+                    {
+                        //System.out.print(nods[i].node.observedClassDistribution + "\n");
+                        //System.out.print(nods[i].parent.observedClassDistribution + "\n");
+                        //nods[i].node = nods[i].parent;
+                        //nods[i].node.
+                        //System.out.print(n.observedClassDistribution);
+                        //System.out.print("AQUI LERANINNNNNNNNNNNNN");
+                        //System.out.print("nodo hoja!\n");
+                        //System.out.print(nods[i].node.observedClassDistribution);
+                        //nods[i].node.
+                        //arbol.deactivateLearningNode(new HT.ActiveLearningNode(nods[i].node.getObservedClassDistribution()) , nods[i].parent, nods[i].parentBranch);
+                    }
+                }
+            
+        }
+        
+
         public ArrayList<Double> runHT(String train, String test, int numAtributos) throws FileNotFoundException, IOException, Exception{
             
                 // declaramos el clasificador que queremos utilizar
@@ -615,7 +620,7 @@ public class Prueba3 {
                 learner = new HT();
                
                 // Cambiamos si queremos el valor de desempate (tie-threshold)
-                // changeTieThreshold(learner,1);
+                 changeTieThreshold(learner,1);
                 
                 // declaramos un flujo de datos para train y otro para test
                 ArffFileStream trainStream = new ArffFileStream(train,numAtributos);
@@ -691,7 +696,7 @@ public class Prueba3 {
                 // indicamos el data set a usar, la cantidad de atributos
                 // (incluyendo al de clase) y el número de folds de la
                 // cross validation
-                int dataset = 0;
+                int dataset = 3;
                 switch(dataset) {
                     case 0:
                       exp.HTCrossValidation("era",5,10);
