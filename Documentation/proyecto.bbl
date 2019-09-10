@@ -24,20 +24,29 @@ Fórmula rss, gini y entropía.
 Imagen ciclo cvfdt.
 \newblock \url{https://studylib.net/doc/9462259/cvfdt-algorithm}.
 
-\bibitem{ref16}
-Y.H.~Pao A.~Ben-David, L.~Sterling.
-\newblock Learning and classification of monotonic ordinal concepts.
-\newblock
-  \url{https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8640.1989.tb00314.x}.
+\bibitem{ref13}
+Pfahringer b., holmes g., kirkby r. (2007) new options for hoeffding trees. in:
+  Orgun m.a., thornton j. (eds) ai 2007: Advances in artificial intelligence.
+  ai 2007. lecture notes in computer science, vol 4830. springer, berlin,
+  heidelberg.
 
 \bibitem{ref14}
 Ben-David.
-\newblock Monotonicity maintenance in information-theoretic machine learning
-  algorithms, 1995.
+\newblock Monotonicity maintenance in information-theoretic machinie learning
+  algorithms.
+\newblock {\em Issue 1}, Vol.19:29--43, 1995.
 
-\bibitem{ref13}
-Geoffrey~Holmes Bernhard~Pfahringer and Richard Kirkby.
-\newblock New options for hoeffding trees, 2007.
+\bibitem{ref16}
+A.~Ben-David, L.~Sterling, and Y.H. Pao.
+\newblock Learning and classification of monotonic ordinal concepts.
+\newblock {\em Computational Intelligence}, Vol.5, Issue 1, 1989.
+
+\bibitem{ref15}
+José-Ramón Cano, Pedro~Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak,
+  and Salvador García.
+\newblock Monotonic classification: An overview on algorithms, performance
+  measures and data sets.
+\newblock {\em Neurocomputing}, Vol.341:168--182, 2019.
 
 \bibitem{ref1}
 João Gama.
@@ -49,12 +58,6 @@ Shubhangi.~A. Jadhav and S.P. Kosbatwar.
 \newblock {\em Concept-adapting very Fast Decision Tree with Misclassification
   Error}, volume~5.
 \newblock IJARCET, 2016.
-
-\bibitem{ref15}
-Bartosz Krawczyk Michal Wozniak Salvador~García José-Ramón~Cano, Pedro
-  Antonio~Gutiérrez.
-\newblock Monotonic classification: An overview on algorithms, performance
-  measures and data sets, 2019.
 
 \bibitem{ref17}
 Wojciech Kotlowski and Roman Slowinski.

@@ -3,20 +3,9 @@ The style file: plain.bst
 Database file #1: citas.bib
 Warning--to sort, need author or key in ref4
 Warning--to sort, need author or key in ref11
-Too many commas in name 1 of "José-Ramón Cano, Pedro Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak, Salvador García" for entry ref15
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "José-Ramón Cano, Pedro Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak, Salvador García" for entry ref15
-while executing---line 1049 of file plain.bst
 Warning--to sort, need author or key in ref6
 Warning--to sort, need author or key in ref7
 Warning--to sort, need author or key in ref9
-Name 1 in "Bernhard Pfahringer, Geoffrey Holmes, and Richard Kirkby" has a comma at the end for entry ref13
-while executing---line 1049 of file plain.bst
-Name 1 in "Bernhard Pfahringer, Geoffrey Holmes, and Richard Kirkby" has a comma at the end for entry ref13
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "José-Ramón Cano, Pedro Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak, Salvador García" for entry ref15
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "José-Ramón Cano, Pedro Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak, Salvador García" for entry ref15
-while executing---line 1090 of file plain.bst
+Warning--to sort, need author or key in ref13
 Warning--empty booktitle in ref5
-(There were 6 error messages)
+(There were 7 warnings)

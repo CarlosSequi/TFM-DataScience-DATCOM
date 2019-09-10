@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  10 SEP 2019 21:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.9)  10 SEP 2019 21:38
 entering extended mode
 **./proyecto.tex
 (proyecto.tex
@@ -1316,10 +1316,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 217.
  ) 
 Here is how much of TeX's memory you used:
- 10267 strings out of 492895
- 151457 string characters out of 3123736
+ 10263 strings out of 492895
+ 151397 string characters out of 3123736
  261788 words of memory out of 3000000
- 13786 multiletter control sequences out of 15000+200000
+ 13782 multiletter control sequences out of 15000+200000
  11866 words of font info for 42 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,13n,43p,1011b,676s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1341,9 +1341,9 @@ Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmti10.pfb><C:/Users/cmss_/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmtt10.pfb>
-Output written on proyecto.pdf (71 pages, 1239128 bytes).
+Output written on proyecto.pdf (71 pages, 1239480 bytes).
 PDF statistics:
- 772 PDF objects out of 1000 (max. 8388607)
+ 770 PDF objects out of 1000 (max. 8388607)
  168 named destinations out of 1000 (max. 500000)
  466 words of extra memory for PDF output out of 10000 (max. 10000000)
 
