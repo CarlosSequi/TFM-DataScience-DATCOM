@@ -103,14 +103,14 @@ Por desgracia esta medida de error no es lo suficientemente sensible conforme el
 
 Ya sabemos que buscamos nodos con una distribución de clase lo más homogénea posible. Con el fin de medir esa pureza en cada nodo, podremos utilizar los siguientes métodos ya mencionados:
 \begin{itemize}
-	\item \textbf{Índice GINI}: nos indica como de pura es una región del espacio\cite{ref8}. En este caso la pureza la definimos como la proporción de items de la región que pertenecen a una misma clase. Si la región contiene un índice
+	\item \textbf{Índice GINI}: nos indica como de pura es una región del espacio\cite{ref6}. En este caso la pureza la definimos como la proporción de items de la región que pertenecen a una misma clase. Si la región contiene un índice
 	alto de pureza, entonces el índice Gini será bajo (muy próximo a 0), siguiendo la siguiente fórmula:
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.5\textwidth]{imagenes/gini} 
 	\end{figure}
 	Donde $\widehat{\pi}$mc nos indica la proporción \textbf{$\widehat{\pi}$} de items pertenecientes a la misma clase \textbf{c} en la región/nodo \textbf{m}.
-	\item \textbf{Entropía (E-score)}: Se encarga también de la medida de homogeneidad de un nodo\cite{ref8}. En este caso, los resultados obtenidos al aplicar la siguiente fórmula a cada nodo para observar el nivel de entropía, quedan más visibles con respecto a la medida Gini (es decir, se ve de forma más clara el nivel de homogeneidad de un nodo). Una entropía = 0 significa homogeneidad total, una entropía = 1 significa homogeneidad nula.
+	\item \textbf{Entropía (E-score)}: Se encarga también de la medida de homogeneidad de un nodo\cite{ref6}. En este caso, los resultados obtenidos al aplicar la siguiente fórmula a cada nodo para observar el nivel de entropía, quedan más visibles con respecto a la medida Gini (es decir, se ve de forma más clara el nivel de homogeneidad de un nodo). Una entropía = 0 significa homogeneidad total, una entropía = 1 significa homogeneidad nula.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.5\textwidth]{imagenes/entropia} 
@@ -214,7 +214,7 @@ Ante este problema, surgen técnicas como el uso de una \textbf{ventana deslizan
 
 \subsubsection{CVFDT}
 
-Un algoritmo que utiliza este concepto de ventana deslizante es el llamado\textbf{ Concept-adapting Very Fast Decision Tree (CVFDT)} que, evidentemente, contiene además las características del VFDT. A continuación la explicación de su funcionamiento\cite{ref12}:
+Un algoritmo que utiliza este concepto de ventana deslizante es el llamado\textbf{ Concept-adapting Very Fast Decision Tree (CVFDT)} que, evidentemente, contiene además las características del VFDT. A continuación la explicación de su funcionamiento\cite{refff12}:
 
 \begin{figure}[H]
 	\centering

@@ -1,32 +1,14 @@
 \begin{thebibliography}{10}
 
-\bibitem{ref2}
-Computer society digital library.
-\newblock \url{http://doi.ieeecomputersociety.org/10.1109/TKDE.2012.204}.
-
 \bibitem{ref4}
 Decision tree basics.
 \newblock
   \url{https://bookdown.org/content/2031/arboles-de-decision-parte-i.html#que-son-los-arboles-de-decision}.
 
-\bibitem{ref5}
-Decision tree terminology.
-\newblock
-  \url{https://www.researchgate.net/figure/a-describes-the-components-of-a-decision-tree-the-Nodes-represent-the-possible_fig2_303773171}.
-
-\bibitem{ref10}
-Definición hoeffding bound.
-\newblock \url{https://arxiv.org/pdf/1802.08780.pdf}.
-
 \bibitem{ref9}
 Definición hoeffding tree.
 \newblock
   \url{http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/HoeffdingTree.html}.
-
-\bibitem{ref12}
-Explicación cvfdt.
-\newblock
-  \url{https://pdfs.semanticscholar.org/a1a4/97e7e6845bfb81ecb5fa02fc80a47001afec.pdf}.
 
 \bibitem{ref7}
 Fórmula cer.
@@ -34,22 +16,13 @@ Fórmula cer.
   \url{https://towardsdatascience.com/everything-you-need-to-know-about-decision-trees-8fcd68ecaa71}.
 
 \bibitem{ref6}
-Fórmula rss.
-\newblock
-  \url{https://www.quantstart.com/articles/Beginners-Guide-to-Decision-Trees-for-Supervised-Machine-Learning}.
-
-\bibitem{ref8}
-Fórmulas gini y entropía.
+Fórmula rss, gini y entropía.
 \newblock
   \url{https://www.quantstart.com/articles/Beginners-Guide-to-Decision-Trees-for-Supervised-Machine-Learning}.
 
 \bibitem{ref11}
 Imagen ciclo cvfdt.
 \newblock \url{https://studylib.net/doc/9462259/cvfdt-algorithm}.
-
-\bibitem{ref1}
-A survey on learning from data streams: current and future trends.
-\newblock \url{}.
 
 \bibitem{ref16}
 Y.H.~Pao A.~Ben-David, L.~Sterling.
@@ -66,6 +39,17 @@ Ben-David.
 Geoffrey~Holmes Bernhard~Pfahringer and Richard Kirkby.
 \newblock New options for hoeffding trees, 2007.
 
+\bibitem{ref1}
+João Gama.
+\newblock A survey on learning from data streams: current and future trends.
+\newblock {\em Progress in Artificial Intelligence}, Vol. 1:45–55, 2012.
+
+\bibitem{refff12}
+Shubhangi.~A. Jadhav and S.P. Kosbatwar.
+\newblock {\em Concept-adapting very Fast Decision Tree with Misclassification
+  Error}, volume~5.
+\newblock IJARCET, 2016.
+
 \bibitem{ref15}
 Bartosz Krawczyk Michal Wozniak Salvador~García José-Ramón~Cano, Pedro
   Antonio~Gutiérrez.
@@ -73,12 +57,29 @@ Bartosz Krawczyk Michal Wozniak Salvador~García José-Ramón~Cano, Pedro
   measures and data sets, 2019.
 
 \bibitem{ref17}
-Wojciech Korlowski and Roman Slowinski.
+Wojciech Kotlowski and Roman Slowinski.
 \newblock On nonparametric ordinal classification with monotonicity
-  constriaints, 2013.
+  constraints.
+\newblock {\em Progress in Artificial Intelligence}, Vol. 25:2576--2589, 2013.
 
 \bibitem{ref3}
-R.~Lior and M.O. Z.
-\newblock Data mining with decision trees: Theory and applications, 2007.
+Rokarch Lior and Maimon Oded~Z Z.
+\newblock {\em Data Mining With Decision Trees: Theory And Applications},
+  volume~69 of {\em Series In Machine Perception And Artificial Intelligence}.
+\newblock World Scientific Publishing Co. Pte. Ldt, 2007.
+
+\bibitem{ref10}
+Chaitanya Manapragada, Geoffrey~I. Webb, and Mahsa Salehi.
+\newblock Extremely fast decision tree.
+\newblock In {\em Proceedings of the 24th ACM SIGKDD International Conference
+  on Knowledge Discovery \&\#38; Data Mining}, KDD '18, pages 1953--1962, New
+  York, NY, USA, 2018. ACM.
+
+\bibitem{ref5}
+José Sá, Arthur Almeida, Brigida Pereira~da Rocha, Maria Mota, Jose~Ricardo
+  De~Souza, and Laure Dentel.
+\newblock Lightning forecast using data mining techniques on hourly evolution
+  of the convective available potential energy.
+\newblock pages 1--5, 03 2016.
 
 \end{thebibliography}
