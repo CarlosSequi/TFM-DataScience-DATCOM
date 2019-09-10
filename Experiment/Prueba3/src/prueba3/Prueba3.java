@@ -9,6 +9,7 @@ package prueba3;
 // uso de la clase HT3(que es lo mismo pero modificada para el uso de
 // restricciones monotónicas)
 //import moa.classifiers.trees.HoeffdingTree;
+import com.github.javacliparser.FloatOption;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
 import moa.classifiers.Classifier;
@@ -249,25 +250,11 @@ public class Prueba3 {
             //System.out.print(data.get(0).value(2));
             return result;
         }
-        
-        /*public double getBranches(SplitNode nodo, HT2 arbol)
-        {
-            for(int i = 0; i<nodo.numChildren(); i++)
-            {
-                if(!nodo.getChild(i).isLeaf())
-                {
-                    getBranches((SplitNode) nodo.getChild(i),arbol);
-                }
-                
-                //nodo.splitTest.describeConditionForBranch(nodo., arbol.getModelContext());
-            }
-            return 3;
-        }*/
-        
+               
         public List<List<List<String>>> getBranches(Classifier learner)
         {
             String learnerDescription = learner.toString();
-            System.out.print(learnerDescription);
+            //System.out.print(learnerDescription);
             String[] lines = learnerDescription.split(System.getProperty("line.separator"));
            List<List<List<String>>> branches = new ArrayList<>();
             boolean claseAlmacenada = false;
@@ -396,18 +383,18 @@ public class Prueba3 {
             }
             
             
-            System.out.print("\n------------------------------------------------------\n_");
-            System.out.print("Nueva comparacion entre 2 ramas:\n");
+            //System.out.print("\n------------------------------------------------------\n_");
+            //System.out.print("Nueva comparacion entre 2 ramas:\n");
             for(int i = 0; i<iteraciones; i++)
             {
-                System.out.print("\n--------\nNodo "+i+"\n_");
+                /*System.out.print("\n--------\nNodo "+i+"\n_");
                 System.out.print(ramaMenor.get(i).get(0) + "/" + ramaMayor.get(i).get(0) + "_\n_");
                 System.out.print(ramaMenor.get(i).get(1) + "/" + ramaMayor.get(i).get(1) + "_\n_");
-                System.out.print(ramaMenor.get(i).get(2) + "/" + ramaMayor.get(i).get(2) + "_\n");
+                System.out.print(ramaMenor.get(i).get(2) + "/" + ramaMayor.get(i).get(2) + "_\n");*/
                 
                 if(ramaMayor.get(i).get(0).equals(ramaMenor.get(i).get(0)) && ">".equals(ramaMenor.get(i).get(1)) && "<=".equals(ramaMayor.get(i).get(1)) && (ramaMayor.get(i).get(2).equals(ramaMenor.get(i).get(2))))
                 {
-                    System.out.print("COLISION");
+                    //System.out.print("COLISION");
                     respectConstraints = false;
                 }
                     
@@ -436,20 +423,72 @@ public class Prueba3 {
             }
             return clashes;
         }
+        
+        public void cantidadInstanciasCadaClase(ArrayList<Double> vectorValoresClase)
+        {
+             ArrayList<Double> vistos = new ArrayList<>();
+                int contador = 0;
+                for(int i = 0; i<vectorValoresClase.size();i++)
+                {
+                    if(!vistos.contains(vectorValoresClase.get(i)))
+                    {
+                        vistos.add(vectorValoresClase.get(i));
+                        for(int e=0;e<vectorValoresClase.size();e++)
+                        {
+                            if(Objects.equals(vectorValoresClase.get(i), vectorValoresClase.get(e)))
+                                contador++;
+                        }
+                        System.out.print("Clase " + vectorValoresClase.get(i)+": "+contador+"\n");
+                    }
+                    
+                    contador = 0;
+                }
+        }
+        
+        public void mostrarRamasArbol(List<List<List<String>>> branches)
+        {
+            for(int i = 0; i<branches.size(); i++)
+                {
+                    System.out.print("\n----------------");
+                    for(int e=0; e<branches.get(i).size(); e++)
+                    {
+                        System.out.print("\n" + branches.get(i).get(e));
+                    }
+                }
+        }
+        
+        public void changeTieThreshold(Classifier learner, double nuevoValor)
+        {
+            HT arbolito = (HT) learner.getModel();
+            FloatOption opcion  = new FloatOption("tieThreshold",
+                    't', "Threshold below which a split will be forced to break ties.",
+                    0.05, 0.0, 1.0);
+                arbolito.tieThresholdOption = opcion;
+        }
+        
+        public ArrayList<Double> trainFromData(ArffFileStream stream, Classifier learner)
+        {
+            ArrayList<Double> classAttributeValues = new ArrayList<>();
+            while (stream.hasMoreInstances()) {
+                    // tomamos el siguiente dato
+                    Instance trainInst = stream.nextInstance().getData();
+                    classAttributeValues.add(trainInst.classValue());
+                    // aprendemos de él
+                    //arbolito.trainOnInstance(trainInst);
+                    learner.trainOnInstance((com.yahoo.labs.samoa.instances.Instance)trainInst);
+                }
+            return classAttributeValues;
+        }
 
-        public ArrayList<Double> runHT(String train, String test, int numAtributos, int algorithm) throws FileNotFoundException, IOException, Exception{
+        public ArrayList<Double> runHT(String train, String test, int numAtributos) throws FileNotFoundException, IOException, Exception{
             
                 // declaramos el clasificador que queremos utilizar
                 Classifier learner;
-                switch(algorithm) {
-                    case 2:
-                      learner = new HT2();
-                      break;
-                    default:
-                      learner = new HT();
-                  }
                 learner = new HT();
-                HT arbolito = new HT();
+               
+                // Cambiamos si queremos el valor de desempate (tie-threshold)
+                // changeTieThreshold(learner,1);
+                
                 // declaramos un flujo de datos para train y otro para test
                 ArffFileStream trainStream = new ArffFileStream(train,numAtributos);
                 ArffFileStream testStream = new ArffFileStream(test,numAtributos);
@@ -464,29 +503,31 @@ public class Prueba3 {
                 //--------------------------------------------------------------
                 // TRAIN
                 // primero entrenamos con los datos de train
-                while (trainStream.hasMoreInstances()) {
-                    // tomamos el siguiente dato
-                    Instance trainInst = trainStream.nextInstance().getData();
-                    // aprendemos de él
-                    //arbolito.trainOnInstance(trainInst);
-                    learner.trainOnInstance((com.yahoo.labs.samoa.instances.Instance)trainInst);
-                }
-                List<List<List<String>>> branches = getBranches(learner);
-                System.out.print("\nArray colisiones ramas: \n"+getClashesMatrix(branches));
-                /*for(int i = 0; i<branches.size(); i++)
-                {
-                    System.out.print("\n----------------");
-                    for(int e=0; e<branches.get(i).size(); e++)
-                    {
-                        System.out.print("\n" + branches.get(i).get(e));
-                    }
-                }*/
+                // obtenemos el vector de valores del atributo clase (la distribucion)
+                ArrayList<Double> classAttributeValues = trainFromData(trainStream,learner);
+                
+                
+                // vemos la proporcion de instancias de cada clase
+                //cantidadInstanciasCadaClase(classAtributeValues);
+                
+                // comprobamos la cantidad de colisiones que hay entre ramas
+                //List<List<List<String>>> branches = getBranches(learner);
+                //System.out.print("\nArray colisiones ramas: \n"+getClashesMatrix(branches));
+                
+                // vemos las ramas que tiene el arbol
+                //List<List<List<String>>> branches = getBranches(learner);
+                // mostrarRamasArbol(branches);
+                
                 
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //HT2.SplitNode
                 HT arbol = (HT) learner.getModel();
+                HT.FoundNode [] no = arbol.findLearningNodes();
+                //no[0].node.
                 System.out.print("\n"+arbol+"\n");
+                no[0].parent.children.remove(0);
+                System.out.print("\n---------------------------------\n"+arbol+"\n");
                 //SplitNode nodaso = (SplitNode) arbol.treeRoot;
                 //getBranches(nodaso);
                 //System.out.print(arbol.findLearningNodes()+"\n");
@@ -618,7 +659,7 @@ public class Prueba3 {
                 return result;
         }
         
-        public double HTCrossValidation(String dataset,int numAtributos, int numFolds, int algorithm) throws IOException, Exception
+        public void HTCrossValidation(String dataset,int numAtributos, int numFolds) throws IOException, Exception
         {
             // Almacenamos la suma de resultados de cada partición
             double MAEsum = 0;
@@ -629,17 +670,15 @@ public class Prueba3 {
                 String train = "D:\\TFM-DataScience-DATCOM\\Experiment\\Data sets\\"+ dataset +"\\"+ dataset +"-10-"+i+"tra.dat";
                 String test = "D:\\TFM-DataScience-DATCOM\\Experiment\\Data sets\\"+ dataset +"\\"+ dataset +"-10-"+i+"tst.dat";
                 ArrayList<Double> MAEandNMI;
-                MAEandNMI = runHT(train, test, numAtributos,algorithm);
+                MAEandNMI = runHT(train, test, numAtributos);
                 //System.out.print(MAE);
                 MAEsum += MAEandNMI.get(0);
                 NMIsum += MAEandNMI.get(1);
             }
             
-            //System.out.print("\nMAE = " + MAEsum/numFolds);
-            //System.out.print("\nNMI = " + NMIsum/numFolds);
-            
-            
-            return MAEsum / numFolds;      
+            System.out.print("\nMAE = " + MAEsum/numFolds);
+            System.out.print("\nNMI = " + NMIsum/numFolds);
+                  
         }
 
         public static void main(String[] args) throws IOException, Exception {
@@ -647,9 +686,21 @@ public class Prueba3 {
                 // indicamos el data set a usar, la cantidad de atributos
                 // (incluyendo al de clase) y el número de folds de la
                 // cross validation
-                double result = exp.HTCrossValidation("era",5,1,2);
-                //System.out.print("\n10 fold CV: MAE + NMI = "+result+"\n-----------\n");
-                
+                int dataset = 0;
+                switch(dataset) {
+                    case 0:
+                      exp.HTCrossValidation("era",5,10);
+                      break;
+                    case 1:
+                      exp.HTCrossValidation("lev",5,10);
+                      break;
+                    case 2:
+                      exp.HTCrossValidation("esl",5,10);
+                      break;
+                    case 3:
+                      exp.HTCrossValidation("swd",11,10);
+                      break;
+                  }
                 
                 //Prueba del NMI sobre data sets individuales
                 //System.out.print("\nRESULTADO NMI:" + exp.NMI("swd"));

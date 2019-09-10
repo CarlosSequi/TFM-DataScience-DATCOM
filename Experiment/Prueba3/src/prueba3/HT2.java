@@ -109,7 +109,7 @@ import moa.core.SizeOf;
  
      public FloatOption tieThresholdOption = new FloatOption("tieThreshold",
              't', "Threshold below which a split will be forced to break ties.",
-             0.05/*0.05*/, 0.0, 1.0);
+             1/*0.05*/, 0.0, 1.0);
  
      public FlagOption binarySplitsOption = new FlagOption("binarySplits", 'b',
              "Only allow binary splits.");
