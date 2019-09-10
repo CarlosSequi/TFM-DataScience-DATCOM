@@ -558,11 +558,30 @@ public class Prueba3 {
         public void poda(Classifier learner)
         {
             HT arbol = (HT) learner.getModel();
+            
+            // obtenemos los nodos hoja
             HT.FoundNode [] nodosHoja = arbol.findLearningNodes();
             
+            // Observamos el arbol inicial
             System.out.print("\n-------------------");
-            System.out.print("\n"+arbol+"\n");
-            nodosHoja[0].parent.children.remove(0);
+            System.out.print("\n"+arbol.getModel()+"\n");
+            
+            // obtenemos la matriz de colisiones
+            List<List<List<String>>> branches = getBranches(learner);
+            ArrayList<Integer> matrizColisiones = getClashesMatrix(branches);
+            //System.out.print("\nArray colisiones ramas: \n"+matrizColisiones);
+            
+            // buscamos cual es la hoja que hay que podar
+            int ramaAPodar = matrizColisiones.indexOf(Collections.max(matrizColisiones));
+            
+            // realizamos la poda
+            arbol.deactivateLearningNode((HT.ActiveLearningNode) nodosHoja[ramaAPodar].node, nodosHoja[ramaAPodar].parent, nodosHoja[ramaAPodar].parentBranch);
+            nodosHoja[ramaAPodar].parent.children.remove(ramaAPodar);
+            // IMPRIMIR CADA UNO DE LOS INDICES DE RAMA
+            HT.FoundNode [] nodosHojaTrasPoda = arbol.findLearningNodes();
+            //if(nodosHojaTrasPoda.length == nodosHoja.length)
+                //arbol.activateLearningNode((HT.InactiveLearningNode) nodosHojaTrasPoda[ramaAPodar].node, nodosHojaTrasPoda[ramaAPodar].parent, nodosHojaTrasPoda[ramaAPodar].parentBranch);            
+            
             System.out.print("\n"+arbol+"\n");
         }
         
@@ -639,7 +658,8 @@ public class Prueba3 {
                 // obtenemos el vector de valores del atributo clase (la distribucion)
                 ArrayList<Double> classAttributeValues = trainFromData(trainStream,learner);
                 //--------------------------------------------------------------
-                
+                HT arbol = (HT) learner.getModel();
+                System.out.print(arbol);
                 // vemos la proporcion de instancias de cada clase
                 //cantidadInstanciasCadaClase(classAtributeValues);
                 
