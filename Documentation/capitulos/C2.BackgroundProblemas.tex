@@ -1,6 +1,6 @@
 \chapter[Capítulo 2. Background en problemas]{Background en problemas}
 
-\section{Data streaming classification}
+\section{Clasificación sobre flujos de datos}
 
 Los sistemas tradicionales basados en el uso de memoria, entrenados de una forma fija mediante conjuntos de entrenamiento y los cuales generan modelos estáticos, no están
 preparados para procesar los datos altamente detallados disponibles en procesos como, por ejemplo, el continuo análisis de datos generados por los sensores de una máquina que trabaja sin descanso, lo cual crea una gran cantidad de datos que ha de ser procesada de forma rápida con el fin de generar modelos predictivos consistentes
@@ -19,7 +19,7 @@ Desde este punto de vista, en estos casos conviene modelar los datos como flujos
 
 
 
-\subsection{Tipos de algoritmos para data stream}
+\subsection{Tipos de algoritmos para flujos de datos}
 
 Existen dos tipos distintos de algoritmos que trabajan sobre flujos de datos:
 \begin{itemize}
@@ -68,7 +68,7 @@ estadísticamente consistente con la hipótesis de que no haya habido un cambio 
 si hay alguna evidencia de que tiene un valor distinto al del resto de la ventana.
 
 
-\subsection{Sampling}
+\subsection{Muestreo}
 
 El sampling (o muestreo) consiste en la selección del subconjunto de datos a analizar en intervalos periódicos, utilizado para calcular estadísticas del flujo (valores esperados).\\
 Este tipo de técnicas reduce la cantidad de datos a procesar, por tanto, el coste computacional.\\
@@ -138,7 +138,7 @@ con los cambios de concepto acaecidos.
 
 
 
-\subsection{Requisitos y funcionamiento de data streams.}
+\subsection{Requisitos y funcionamiento de flujos de datos}
 
 A modo de resumen, planteamos los requisitos primordiales para la clasificación de data streams de la siguiente forma:
 \begin{enumerate}
@@ -180,7 +180,7 @@ de que ayuda a crear una representación más visual de la evolución de la prec
 
 
 
-\section{Ordinal and monotonic classification}
+\section{Clasificación ordinal y monotónica}
 
 Comenzamos este apartado definiendo primeramente un par de conceptos básicos para adentrarnos de forma correcta en el significado
 de la clasificación ordinal y monotónica: \cite{ref17}
@@ -190,9 +190,9 @@ de la clasificación ordinal y monotónica: \cite{ref17}
 	valor de la clase a la que se asigna dicha instancia.
 	Usando el termino de ''relación de dominancia'' decimos que una instancia x domina a
 	otra instancia x' cuando cada una de las variables de entrada de x (atributos de x)
-	son mayores o iguales que cada uno de los de x', se denota x$>$=x' y por tanto
+	son mayores o iguales que cada uno de los de x', se denota x$\geq$x' y por tanto
 	x tendrá asignada una etiqueta de clase mayor que x'.
-	\item \textbf{Función monótona}: una función es monótona si x$>$=x' -$>$ h(x)$>$=h(x'). Es decir, si x domina a x', la
+	\item \textbf{Función monótona}: una función es monótona si x$\geq$x' $\rightarrow$ h(x)$\ge$h(x') . Es decir, si x domina a x', la
 	inferencia de clase de x ha de ser superior a la de x'.
 \end{itemize}
 
@@ -254,19 +254,23 @@ restricciones.
 
 Decimos entonces que, siendo 'k' una de las posibles clases a tomar en el 
 dominio por una instancia 'x', y siendo 'y' la etiqueta asignada a dicha
-instancia 'x', si la restricción monótona nos dice que x$>$=x', entonces
-la dominancia estocástica nos dice que P(y$<$=k|x)$<$=P(y$<$=k|x').
+instancia 'x', si la restricción monótona nos dice que x$\ge$x', entonces
+la dominancia estocástica nos dice que P(y$\le$k|x)$\le$P(y$\le$k|x').
 Es decir, que la probabilidad de que el valor asignado (y) a la instancia 
 dominante (x) sea mayor que cierto valor fijado de la clase (k), es mayor
 que la probabilidad de que el valor asignado (y) a la instancia dominada(x')
 sea mayor que ese mismo cierto valor de la clase fijado.
 
-La relación de dominancia estocástica entre distribuciones se denota así:
+La relación de dominancia estocástica entre distribuciones se denota así:\\
+
+%x \geq x' \Longrightarrow{P(y$|$x) \geq  P(y$|$x')} 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{imagenes/f1}
 \end{figure}
+
+
 
 Donde P(y$|$x) y P(y$|$x') denotan las distribuciones condicionales de la clase en x y x'. 
 
@@ -285,7 +289,7 @@ Bayes, han de imponerse las siguientes restricciones a la función de perdida
 (L):
 
 \begin{itemize}
-	\item L(y,k+1)-L(y,k) $>$= L(y+1,k+1)-L(y+1,k) \\
+	\item L(y,k+1)-L(y,k) $\ge$ L(y+1,k+1)-L(y+1,k) \\
 	Esta característica de la función de pérdida es necesaria
 	en la clasificación con restricciones monotónicas, si no no
 	tendría sentido minimizar el riesgo dentro de la clase de las funciones monótonas.\\
@@ -295,7 +299,7 @@ Bayes, han de imponerse las siguientes restricciones a la función de perdida
 		\begin{itemize}
 			\item Siendo L(y,k) = c(y-k) (con c(0)=0)
 			\item La función c(k) es convexa si, para todo k entre -(k-1) y (k-1):\\
-			c(k) $<$= (c(k-1)+c(k+1))/2
+			c(k) $\le$ (c(k-1)+c(k+1))/2
 			\item El clasificador de Bayes es monótono si y solo si c(k) (que es
 			la V-shaped loss function) es convexa.
 		\end{itemize}
@@ -329,8 +333,8 @@ condicional p = (p1,....,pn), el cual es una regresión isotónica del vector de
 etiquetas y = (y1,...,yn). Es decir, p nos da la probabilidad de que x 
 pertenezca a cada una de las clases existentes en y.
 
-Dicho vector p es la solución del problema: SUM((yi-pi)\^2) sujeto a las restricciones de
-monotonicidad (Xi$>$=Xj -$>$ pi$>$=pj). Por ello p minimiza el error cuadrático en 
+Dicho vector p es la solución del problema: $\sum_{i=1}^n{(yi-pi)^2}$  sujeto a las restricciones de
+monotonicidad (Xi$\ge$Xj $\rightarrow$ pi$\ge$pj). Por ello p minimiza el error cuadrático en 
 el conjunto de los vectores monótonos p=(p1,..,pn) para cada x.
 
 La elección de la función de error (función de perdida de error cuadrático)
@@ -364,7 +368,7 @@ Una función monótona minimizando el riesgo empírico puede obtenerse resolvien
 el siguiente problema de optimización:
 
 \begin{itemize}
-	\item Minimizar: SUM(L(yi,di)).
+	\item Minimizar: $\sum_{i=1}^n{L(y_i,d_i)}$.
 	\item Teniendo en cuenta las restricciones de monotonía.
 	\item Donde di son variables del problema (valores de la función monótona óptima
 	en puntos de D)

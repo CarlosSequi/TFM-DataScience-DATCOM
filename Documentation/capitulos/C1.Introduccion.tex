@@ -23,7 +23,9 @@ Es bien sabido también que, toda ayuda que el ser humano pueda poner de su part
 
 \section{Motivación}
 
-Tras el estudio a lo largo del máster de todo lo detallado en el apartado anterior y tras ver ejemplos y ejemplos de uso de los citados árboles de decisión, técnicas de data streaming y técnicas de uso de restricciones monotónicas, no he sido capaz de encontrar artículos ni ejemplos donde se haga uso de estos tres elementos de forma conjunta con el fin de obtener mejores resultados sobre flujos de datos con capacidades de obedecer restricciones monotónicas mediante el uso de árboles de decisión.\\
+Tras el estudio a lo largo del máster de todo lo detallado en el apartado anterior y tras ver ejemplos y ejemplos de uso de los citados árboles de decisión, técnicas de data streaming y técnicas de uso de restricciones monotónicas, no he sido capaz de encontrar artículos ni ejemplos donde se haga uso de estos tres elementos de forma conjunta con el fin de obtener mejores resultados sobre flujos de datos con capacidades de obedecer restricciones monotónicas mediante el uso de árboles de decisión.
+
+ En particular, con respecto a las técnicas de flujos de datos, se puede observar en la literatura la inexistencia del tratamiento de estos usando árboles de decisión con restricciones de monotonía.\\
 
 Como bien he dicho anteriormente, toda ayuda que el ser humano pueda aportar a los algoritmos que se encargan de la resolución de cualquier problema, será bien recibida, por tanto, pienso que incluir conocimiento mediante restricciones de monotonía sobre los datos a un algoritmo que utiliza árboles de decisión para resolver problemas de data streaming hará que se obtengan mejores resultados.\\\\
 
@@ -32,7 +34,7 @@ De esta manera, la motivación principal es aportar a la comunidad científica u
 \section{Objetivos y estructuración de la memoria}
 
 
-El objetivo incial de este documento es dotar al lector de los conocimientos y el contexto necesarios sobre las distintas técnicas a utilizar para que logre entender la finalidad de la propuesta. En esta primera parte del documento se explicarán en profundidad los elementos ya mencionados a formar parte de objeto de estudio:
+El objetivo inicial de este documento es dotar al lector de los conocimientos y el contexto necesarios sobre las distintas técnicas a utilizar para que logre entender la finalidad de la propuesta (Capítulos 2 y 3). En esta primera parte del documento se explicarán en profundidad los elementos ya mencionados a formar parte de objeto de estudio:
 
 \begin{itemize}
 	\item Clasificación sobre flujos de datos.
@@ -41,10 +43,11 @@ El objetivo incial de este documento es dotar al lector de los conocimientos y e
 \end{itemize}
 
 
-Una vez hayamos dotado al lector de la contextualización del problema, el siguiente objetivo es la descripción detallada de la propuesta con el fin de hacer entender las ideas necesarias para la creación del nuevo algoritmo, los pasos a seguir para lograrlo y los resultados esperados con ello, seguido de la explicación del software utilizado para tal propósito, así como su uso.\\
+Una vez hayamos dotado al lector de la contextualización del problema, el siguiente objetivo (Capítulo 4) es la descripción detallada de la propuesta con el fin de hacer entender las ideas necesarias para la creación del nuevo algoritmo, los pasos a seguir para lograrlo y los resultados esperados con ello, seguido de la explicación del software utilizado para tal propósito (Capítulo 5), así como su uso.\\
 
-Finalmente, aparecerá en este documento una exposición de los experimentos realizados con la propuesta, además de comparaciones de sus resultados con los de los algoritmos que citaremos más adelante, con el propósito de observar si la propuesta cumple el cometido de resultar ser mejor en los aspectos que deseemos.\\
-Acompañado de estas comparaciones y para finalizar el documento, presentaremos también una serie de conclusiones y trabajos futuros a desarrollar para continuar con esta línea de trabajo.
+Finalmente, aparecerá en este documento una exposición de los experimentos realizados con la propuesta (Capítulo 6), así como la descripción del marco de trabajo en el que lo situaremos, además de comparaciones de sus resultados con los de los algoritmos que citaremos más adelante, con el propósito de observar si la propuesta cumple el cometido de resultar ser mejor en los aspectos que deseemos.\\
+
+Acompañado de estas comparaciones y para finalizar el documento, presentaremos también una serie de conclusiones y trabajos futuros a desarrollar para continuar con esta línea de trabajo (Capítulo 7).
 
 \newpage
 

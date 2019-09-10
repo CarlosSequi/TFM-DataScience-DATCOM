@@ -54,6 +54,64 @@ Continuando con el ejemplo del credit scoring, a continuación veremos el árbol
 	\caption{Árbol creado con restricciones monotónicas sobre un conjunto de datos monotónicos \cite{ref14}}
 \end{figure}
 
+A continuación podemos ver el pseudocódigo de la propuesta, el mismo que se ha utilizado para la implementación de los experimentos
+a nivel de programación:
+
+\begin{algorithm}[H]
+	\caption{Árboles de clasificación monotónica sobre flujos de datos. Método de matriz de colisiones.}\label{euclid}
+	\begin{algorithmic}[1]
+		\Procedure{ENTRENAMIENTO}{}
+		\While {$lleganDatosEntrenamiento$}
+			\State $modelo \gets entrenarHoeffdingTree(nuevaInstancia)$
+			\If {$IteracionesParaPoda$}
+						\State -Crear matriz de colisiones entre ramas
+						\State -Podar ramas con mayor indice de colisión
+				   \EndIf
+		\EndWhile
+		\EndProcedure
+		
+		\Procedure{VALIDACIÓN}{}
+		\While {$lleganDatosTest$}
+		\State $resultados \gets validar(nuevaInstancia, modelo)$
+		\EndWhile
+		
+		\State $MAE \gets resultados.accuracy$
+		\State $NMI \gets resultados.indiceNoMonotonicidad$
+		
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+	\caption{Árboles de clasificación monotónica sobre flujos de datos. Método de evaluación a la hora de expandir.}\label{euclid}
+	\begin{algorithmic}[2]
+		\Procedure{entrenarhoeffdingTree(nuevaInstancia)}{}
+			\State Bajar instancia hasta nodo hoja
+			\State Calcular cota Hoeffding
+			\State Calcular mejores atributos para la división del nodo en varios hijos
+			\State Calcular NMI para dicho nodo hoja
+			\If{SuperadaCotaHoeffding \& obedeceMonotonicidad} 
+				\State Expandir nodo en varios hijos \EndIf
+		\EndProcedure
+		
+		\Procedure{ENTRENAMIENTO}{}
+		\While {$lleganDatosEntrenamiento$}
+		\State $modelo \gets entrenarHoeffdingTree(nuevaInstancia)$
+		\EndWhile
+		\EndProcedure
+		
+		\Procedure{VALIDACIÓN}{}
+		\While {$lleganDatosTest$}
+		\State $resultados \gets validar(nuevoDato, modelo)$
+		\EndWhile
+		
+		\State $MAE \gets resultados.accuracy$
+		\State $NMI \gets resultados.indiceNoMonotonicidad$
+		
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
 \section{Algoritmos a comparar}
 
 Como \textbf{algoritmo de comparación} utilizaremos aquél del cual la literatura ha hecho más uso para la realización de estudios comparativos y mejoras de otros aspectos, es decir: \textbf{Hoeffding Tree}, la base de la que parten gran cantidad de algoritmos de árboles de decisión para el tratamiento de data streaming.\\
