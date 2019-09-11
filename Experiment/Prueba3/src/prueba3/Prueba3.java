@@ -10,6 +10,7 @@ package prueba3;
 // restricciones monotónicas)
 //import moa.classifiers.trees.HoeffdingTree;
 import com.github.javacliparser.FloatOption;
+import com.github.javacliparser.IntOption;
 import com.yahoo.labs.samoa.instances.DenseInstance;
 import com.yahoo.labs.samoa.instances.Instance;
 import moa.classifiers.Classifier;
@@ -110,7 +111,8 @@ public class Prueba3 {
             boolean aMayorQueB = true;
             boolean bMayorQueA = true;
             boolean iguales = true;
-            boolean sonMonotonicos = true;            
+            boolean sonMonotonicos = true;        
+            
            
             // Comprobamos si todos los atributos de B son mayores o iguales que todos los de A
             for(int i = 0; i<a.size()-1 && bMayorQueA;i++)
@@ -354,6 +356,29 @@ public class Prueba3 {
             return branches;
         }
         
+         public List<String> getBranchesClasses(Classifier learner)
+        {
+            String learnerDescription = learner.toString();
+            //System.out.print(learnerDescription);
+            String[] lines = learnerDescription.split(System.getProperty("line.separator"));
+            List<String> branches = new ArrayList<>();
+           
+            for(int i = 0; i<lines.length; i++)
+            {
+                    if(lines[i].contains("class"))
+                    {
+                       // almacenamos el valor de la clase de esa rama
+                        branches.add(lines[i].substring(lines[i].indexOf("class ")+6,lines[i].indexOf("class ")+7));
+                    }
+                   
+            }
+             /*for(int a=0;a<branches.size();a++)
+             {    
+                System.out.print(branches.get(a)+"\n");      
+             }*/
+            return branches;
+        }
+        
         public boolean branchesRespectMonotonicity(List<List<String>> branchA, List<List<String>>branchB)
         {
             boolean respectConstraints = true;
@@ -404,6 +429,7 @@ public class Prueba3 {
             return respectConstraints;
         }
         
+        
         public ArrayList<Integer> getClashesMatrix(List<List<List<String>>> branches)
         {
             
@@ -414,6 +440,26 @@ public class Prueba3 {
                 {
                     // en caso de que no sean monotonicas entre si
                    if(!branchesRespectMonotonicity(branches.get(i),branches.get(e)))
+                   {
+                       // sumamos a cada rama un choque
+                       clashes.set(i, clashes.get(i)+1);
+                       clashes.set(e, clashes.get(e)+1);
+                   }
+                }
+            }
+            return clashes;
+        }
+        
+        public ArrayList<Integer> getClassClashesMatrix(List<String> branches)
+        {
+            
+            ArrayList<Integer> clashes = new ArrayList<>(Collections.nCopies(branches.size(), 0));
+            for(int i=0; i<branches.size(); i++)
+            {
+                for(int e=i+1; e<branches.size(); e++)
+                {
+                    // en caso de que no sean monotonicas entre si
+                   if(Double.parseDouble(branches.get(i))>Double.parseDouble(branches.get(e)))
                    {
                        // sumamos a cada rama un choque
                        clashes.set(i, clashes.get(i)+1);
@@ -466,10 +512,40 @@ public class Prueba3 {
                 arbolito.tieThresholdOption = opcion;
         }
         
-        public ArrayList<Double> trainFromData(ArffFileStream stream, Classifier learner)
+        public void changeGracePeriodOption(Classifier learner, int nuevoValor)
+        {
+            HT arbolito = (HT) learner.getModel();
+            IntOption opcion  = new IntOption("gracePeriod",
+             'g',
+             "The number of instances a leaf should observe between split attempts.",
+             nuevoValor, 0, Integer.MAX_VALUE);
+             arbolito.gracePeriodOption = opcion;
+        }
+        
+        public ArrayList<Double> trainFromData(ArffFileStream stream, Classifier learner, int cantidadIteracionesReaprendizaje,boolean podaActivada)
         {
             ArrayList<Double> classAttributeValues = new ArrayList<>();
+            int contadorIteraciones = 0;
             while (stream.hasMoreInstances()) {
+                    contadorIteraciones++;
+                    if(contadorIteraciones == cantidadIteracionesReaprendizaje)
+                    {
+                        contadorIteraciones = 0;
+                        System.out.print("\n---------------------\n");
+                /*HT arbol = (HT) learner.getModel();
+                System.out.print(arbol);*/
+                        // vemos las ramas que tiene el arbol
+                        List<String> branches = getBranchesClasses(learner);
+                        System.out.print("\nArray colisiones ramas A: "+getClassClashesMatrix(branches));
+                        if(podaActivada)
+                            poda(learner);
+                /*HT arbol2 = (HT) learner.getModel();
+                System.out.print(arbol2);*/
+                        List<String> branches2 = getBranchesClasses(learner);
+                        System.out.print("\nArray colisiones ramas B: "+getClassClashesMatrix(branches2));
+                        
+                    }
+                        
                     // tomamos el siguiente dato
                     Instance trainInst = stream.nextInstance().getData();
                     classAttributeValues.add(trainInst.classValue());
@@ -563,31 +639,41 @@ public class Prueba3 {
             HT.FoundNode [] nodosHoja = arbol.findLearningNodes();
             
             // Observamos el arbol inicial
-            System.out.print("\n-------------------");
-            System.out.print("\n"+arbol.getModel()+"\n");
+            //System.out.print("\n-------------------");
+            //System.out.print("\n"+arbol.getModel()+"\n");
             
             // obtenemos la matriz de colisiones
-            List<List<List<String>>> branches = getBranches(learner);
-            ArrayList<Integer> matrizColisiones = getClashesMatrix(branches);
+            List<String> branches = getBranchesClasses(learner);
+            ArrayList<Integer> matrizColisiones = getClassClashesMatrix(branches);
             //System.out.print("\nArray colisiones ramas: \n"+matrizColisiones);
             
             // buscamos cual es la hoja que hay que podar
-            int ramaAPodar = matrizColisiones.indexOf(Collections.max(matrizColisiones));
+            if(Collections.max(matrizColisiones)>0)
+            {
+                int ramaAPodar = matrizColisiones.indexOf(Collections.max(matrizColisiones));
+                //System.out.print("\nRAMA A PODAR\n"+ramaAPodar);
+                
+                // realizamos la poda       
+                arbol.prune((HT.ActiveLearningNode) nodosHoja[ramaAPodar].node, nodosHoja[ramaAPodar].parent, nodosHoja[ramaAPodar].parentBranch);
+            }
             
-            // realizamos la poda
-            arbol.deactivateLearningNode((HT.ActiveLearningNode) nodosHoja[ramaAPodar].node, nodosHoja[ramaAPodar].parent, nodosHoja[ramaAPodar].parentBranch);
-            nodosHoja[ramaAPodar].parent.children.remove(ramaAPodar);
+            
+            
+            
+            //nodosHoja[ramaAPodar].node.;
             // IMPRIMIR CADA UNO DE LOS INDICES DE RAMA
-            HT.FoundNode [] nodosHojaTrasPoda = arbol.findLearningNodes();
+            //HT.FoundNode [] nodosHojaTrasPoda = arbol.findLearningNodes();
             //if(nodosHojaTrasPoda.length == nodosHoja.length)
                 //arbol.activateLearningNode((HT.InactiveLearningNode) nodosHojaTrasPoda[ramaAPodar].node, nodosHojaTrasPoda[ramaAPodar].parent, nodosHojaTrasPoda[ramaAPodar].parentBranch);            
             
-            System.out.print("\n"+arbol+"\n");
+            //System.out.print("\n"+arbol+"\n");
         }
         
         public void pruebasVarias(Classifier learner)
         {
             HT arbol = (HT) learner.getModel();
+            HT.FoundNode [] nodosHoja = arbol.findLearningNodes();
+            System.out.print(nodosHoja[0] + " |||");
             //SplitNode nodaso = (SplitNode) arbol.treeRoot;
             
             
@@ -595,7 +681,7 @@ public class Prueba3 {
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
             
-            HT.FoundNode [] nods = arbol.findLearningNodes();
+            /*HT.FoundNode [] nods = arbol.findLearningNodes();
                 for(int i =0;i<nods.length;i++)
                 {
                     StringBuilder out = new StringBuilder();
@@ -627,19 +713,23 @@ public class Prueba3 {
                         //nods[i].node.
                         //arbol.deactivateLearningNode(new HT.ActiveLearningNode(nods[i].node.getObservedClassDistribution()) , nods[i].parent, nods[i].parentBranch);
                     }
-                }
+                }*/
             
         }
         
 
-        public ArrayList<Double> runHT(String train, String test, int numAtributos) throws FileNotFoundException, IOException, Exception{
+        public ArrayList<Double> runHT(String train, String test, int numAtributos, int itersReaprendizaje, double tieThreshold,boolean podaActiva) throws FileNotFoundException, IOException, Exception{
             
                 // declaramos el clasificador que queremos utilizar
                 Classifier learner;
                 learner = new HT();
                
                 // Cambiamos si queremos el valor de desempate (tie-threshold)
-                 changeTieThreshold(learner,1);
+                 changeTieThreshold(learner,tieThreshold);
+                 
+                // Cambiamos tambien el valore del gracePeriodOption
+                // para generar árboles más grandes o más pequeños
+                changeGracePeriodOption(learner,itersReaprendizaje);
                 
                 // declaramos un flujo de datos para train y otro para test
                 ArffFileStream trainStream = new ArffFileStream(train,numAtributos);
@@ -656,16 +746,19 @@ public class Prueba3 {
                 // TRAIN
                 // primero entrenamos con los datos de train
                 // obtenemos el vector de valores del atributo clase (la distribucion)
-                ArrayList<Double> classAttributeValues = trainFromData(trainStream,learner);
+                ArrayList<Double> classAttributeValues = trainFromData(trainStream,learner,itersReaprendizaje,podaActiva);
                 //--------------------------------------------------------------
+                
+                /*System.out.print("\n---------------------\n");
                 HT arbol = (HT) learner.getModel();
-                System.out.print(arbol);
+                System.out.print(arbol);*/
+                
                 // vemos la proporcion de instancias de cada clase
                 //cantidadInstanciasCadaClase(classAtributeValues);
                 
                 // comprobamos la cantidad de colisiones que hay entre ramas
-                //List<List<List<String>>> branches = getBranches(learner);
-                //System.out.print("\nArray colisiones ramas: \n"+getClashesMatrix(branches));
+                //List<String> branches = getBranchesClasses(learner);
+                //System.out.print("\nArray colisiones ramas antes de poda: \n"+getClassClashesMatrix(branches));
                 
                 // vemos las ramas que tiene el arbol
                 //List<List<List<String>>> branches = getBranches(learner);
@@ -673,7 +766,8 @@ public class Prueba3 {
 
                 // Probamos la poda
                 //poda(learner);
-                
+                //List<String> branches2 = getBranchesClasses(learner);
+                //System.out.print("\nArray colisiones ramas despues de poda: \n"+getClassClashesMatrix(branches2));
                 // diversas pruebas con el clasificador
                 //pruebasVarias(learner);
                 
@@ -689,7 +783,7 @@ public class Prueba3 {
                 return MAEandNMI;
         }
         
-        public void HTCrossValidation(String dataset,int numAtributos, int numFolds) throws IOException, Exception
+        public void HTCrossValidation(String dataset,int numAtributos, int numFolds, int itersReaprendizaje, double tieThreshold,boolean podaActiva) throws IOException, Exception
         {
             // Almacenamos la suma de resultados de cada partición
             double MAEsum = 0;
@@ -700,7 +794,7 @@ public class Prueba3 {
                 String train = "D:\\TFM-DataScience-DATCOM\\Experiment\\Data sets\\"+ dataset +"\\"+ dataset +"-10-"+i+"tra.dat";
                 String test = "D:\\TFM-DataScience-DATCOM\\Experiment\\Data sets\\"+ dataset +"\\"+ dataset +"-10-"+i+"tst.dat";
                 ArrayList<Double> MAEandNMI;
-                MAEandNMI = runHT(train, test, numAtributos);
+                MAEandNMI = runHT(train, test, numAtributos, itersReaprendizaje,tieThreshold,podaActiva);
                 //System.out.print(MAE);
                 MAEsum += MAEandNMI.get(0);
                 NMIsum += MAEandNMI.get(1);
@@ -717,18 +811,22 @@ public class Prueba3 {
                 // (incluyendo al de clase) y el número de folds de la
                 // cross validation
                 int dataset = 3;
+                boolean activarPoda = true;
+                int cantidadIteracionesReaprendizaje = 20;
+                int cantidadFoldsCrossValidation = 10;
+                double tieThreshold = 1;
                 switch(dataset) {
                     case 0:
-                      exp.HTCrossValidation("era",5,10);
+                      exp.HTCrossValidation("era",5,cantidadFoldsCrossValidation,cantidadIteracionesReaprendizaje,tieThreshold,activarPoda);
                       break;
                     case 1:
-                      exp.HTCrossValidation("lev",5,10);
+                      exp.HTCrossValidation("lev",5,cantidadFoldsCrossValidation,cantidadIteracionesReaprendizaje,tieThreshold,activarPoda);
                       break;
                     case 2:
-                      exp.HTCrossValidation("esl",5,10);
+                      exp.HTCrossValidation("esl",5,cantidadFoldsCrossValidation,cantidadIteracionesReaprendizaje,tieThreshold,activarPoda);
                       break;
                     case 3:
-                      exp.HTCrossValidation("swd",11,10);
+                      exp.HTCrossValidation("swd",11,cantidadFoldsCrossValidation,cantidadIteracionesReaprendizaje,tieThreshold,activarPoda);
                       break;
                   }
                 

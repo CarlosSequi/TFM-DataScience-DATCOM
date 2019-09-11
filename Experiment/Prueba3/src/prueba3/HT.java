@@ -737,6 +737,45 @@ import moa.core.SizeOf;
          this.activeLeafNodeCount--;
          this.inactiveLeafNodeCount++;
      }
+     
+     public void prune(ActiveLearningNode toDeactivate,
+             SplitNode parent, int parentBranch) {
+         Node newLeaf = new InactiveLearningNode(toDeactivate.getObservedClassDistribution());
+         /*if (parent == null) {
+             this.treeRoot = newLeaf;
+         } else {
+             parent.setChild(parentBranch, newLeaf);
+         }*/
+         if(parent != null)
+         {
+             if(parent.children.size() == 2)
+            {
+                System.out.print("BORRAMOS A LOS DOS HIJOS");
+                for(int i = 0; i<parent.children.size();i++)
+               {
+                   parent.children.remove(i);
+                   //decisionNodeCount--;
+                   //activeLeafNodeCount--;
+               }
+            }
+            else
+            {
+                 for(int i = 0; i<parent.children.size();i++)
+                {
+                    if(parent.children.get(i) == newLeaf)
+                    {
+                        System.out.print("\nborramos hijo ------------------" + i);
+                        parent.children.remove(i);
+                    }
+
+                }
+            }
+            
+         }
+         
+         this.activeLeafNodeCount--;
+         this.inactiveLeafNodeCount++;
+     }
  
      protected void activateLearningNode(InactiveLearningNode toActivate,
              SplitNode parent, int parentBranch) {
@@ -850,6 +889,7 @@ import moa.core.SizeOf;
  
      protected LearningNode newLearningNode(double[] initialClassObservations) {
          LearningNode ret;
+         //System.out.print("\nClasess: "+ Utils.maxIndex(initialClassObservations));
          int predictionOption = this.leafpredictionOption.getChosenIndex();
          if (predictionOption == 0) { //MC
              ret = new ActiveLearningNode(initialClassObservations);
