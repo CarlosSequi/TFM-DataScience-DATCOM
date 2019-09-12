@@ -50,13 +50,13 @@
 \contentsline {section}{\numberline {4.2}Propuesta y resultados esperados}{35}{section.4.2}% 
 \contentsline {section}{\numberline {4.3}Algoritmos a comparar}{37}{section.4.3}% 
 \contentsline {chapter}{\numberline {5}Cap\IeC {\'\i }tulo 5. Software desarrollado y uso}{39}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{41}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Marco de trabajo}{41}{section.6.1}% 
-\contentsline {subsection}{\numberline {6.1.1}Conjuntos de datos}{41}{subsection.6.1.1}% 
-\contentsline {subsubsection}{Descripci\IeC {\'o}n de los conjuntos de datos}{42}{section*.25}% 
-\contentsline {subsection}{\numberline {6.1.2}Medidas}{42}{subsection.6.1.2}% 
-\contentsline {subsubsection}{Medidas de precisi\IeC {\'o}n}{42}{section*.26}% 
-\contentsline {subsubsection}{Medidas de monotonicidad}{44}{section*.27}% 
-\contentsline {section}{\numberline {6.2}Resultados}{45}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{45}{section.6.3}% 
-\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{47}{chapter.7}% 
+\contentsline {chapter}{\numberline {6}Cap\IeC {\'\i }tulo 6. Experimentos}{43}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Marco de trabajo}{43}{section.6.1}% 
+\contentsline {subsection}{\numberline {6.1.1}Conjuntos de datos}{43}{subsection.6.1.1}% 
+\contentsline {subsubsection}{Descripci\IeC {\'o}n de los conjuntos de datos}{44}{section*.25}% 
+\contentsline {subsection}{\numberline {6.1.2}Medidas}{44}{subsection.6.1.2}% 
+\contentsline {subsubsection}{Medidas de precisi\IeC {\'o}n}{44}{section*.26}% 
+\contentsline {subsubsection}{Medidas de monotonicidad}{46}{section*.27}% 
+\contentsline {section}{\numberline {6.2}Resultados}{47}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}An\IeC {\'a}lisis}{49}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Cap\IeC {\'\i }tulo 7. Conclusiones y trabajo futuro}{51}{chapter.7}% 

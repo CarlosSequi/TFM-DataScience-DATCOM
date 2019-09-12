@@ -131,17 +131,78 @@ Y esta será la medida que utilicemos finalmente para la evaluación de la monot
 
 \section{Resultados}
 
+A continuación muestro las condiciones bajo las que se han ejecutado todas las tablas de resultados que mostraré a continuación. Estas condiciones son los parámetros de Hoeffding Tree ajustados para obtener un árboles lo suficientemente representativos de los datos.
+\begin{itemize}
+	\item Parámetro de desempate: 1
+	\item Parámetro grace period:
+	\begin{itemize}
+		\item ERA = 20
+		\item ESL = 45
+		\item LEV = 20
+		\item SWD = 20
+	\end{itemize}
+\end{itemize}
+
+Como era de esperar, el conjunto de datos ESL, al ser bastante más pequeño que los demás, necesita un aumento del parámetro grace period.
+
+Para el segundo algoritmo, el que trata los índices de monotonicidad de los nodos para decidir si hacer una expansión de este o no, posee además un parámetro de tolerancia de no-monotonicidad para evitar intentar conseguir árboles muy monótonos a costa de la pérdida de precisión. El parámetro es un simple factor del NMI calculado en cada nodo con respecto a las demás ramas. Los ajustes de este parámetro para los experimentos han sido calculados de forma empírica hasta obtener unos resultados óptimos. Estos son:
+\begin{itemize}
+	\item ERA = 0.5
+	\item ESL = 0.45
+	\item LEV = 1
+	\item SWD = 0.45
+\end{itemize}
+
 \begin{table}[H]
 	\begin{tabular}{|c|l|l|l|l|}
 		\hline
-		HOEFFDING TREE & ERA    & ESL    & LEV &  SWD \\ \hline
-		MAE & 1.5110 & 0.6616 & 0.546                      & 0.6349                     \\ \hline
-		NMI & 0.4028 & 0.2945 & 0.3338                     & 0.3227                     \\ \hline
+		HF & ERA    & ESL    & LEV &  SWD \\ \hline
+		MAE & 1.673 & 0.580 & 0.612                      & 0.625                     \\ \hline
+		NMI & 0.4060 & 0.3856 & 0.3473                     & 0.3510                     \\ \hline
 	\end{tabular}
 \caption{Resultados de accuracy y monotonicidad para los 4 data sets descritos mediante el uso de Hoeffding Tree algorithm.}
 \end{table}
 
+\begin{table}[H]
+	\begin{tabular}{|c|l|l|l|l|}
+		\hline
+		HF + Poda & ERA    & ESL    & LEV &  SWD \\ \hline
+		MAE & 1.88 & 0.576 & 0.636                      & 0.66                     \\ \hline
+		NMI & 0.3892 & 0.3849 & 0.3382                     & 0.342                     \\ \hline
+	\end{tabular}
+	\caption{Resultados de accuracy y monotonicidad para los 4 data sets descritos mediante el uso de Hoeffding Tree algorithm junto con poda.}
+\end{table}
+
+\begin{table}[H]
+	\begin{tabular}{|c|l|l|l|l|}
+		\hline
+		HF + Decisión & ERA    & ESL    & LEV &  SWD \\ \hline
+		MAE & 1.65 & 0.642 & 0.562                      & 0.62                     \\ \hline
+		NMI & 0.3957 & 0.3791 & 0.3369                     & 0.3458                     \\ \hline
+	\end{tabular}
+	\caption{Resultados de accuracy y monotonicidad para los 4 data sets descritos mediante el uso de Hoeffding Tree algorithm junto con el algoritmo de toma de decisión a la hora de expandir.}
+\end{table}
+
+\begin{table}[H]
+	\begin{tabular}{|c|l|l|l|l|}
+		\hline
+		HF + Poda + Decisión & ERA    & ESL    & LEV &  SWD \\ \hline
+		MAE & 1.67 & 0.64 & 0.664                      & 0.629                     \\ \hline
+		NMI & 0.3815 & 0.3790 & 0.3451                     & 0.3447                     \\ \hline
+	\end{tabular}
+	\caption{Resultados de accuracy y monotonicidad para los 4 data sets descritos mediante el uso de Hoeffding Tree algorithm junto con ambos algoritmos creados.}
+\end{table}
+\newpage
+
 \section{Análisis}
+
+A la vista de los resultados podemos observar que, aunque no en gran medida, la adición de restricciones monotónicas a los algoritmos de flujos de datos con árboles de decisión resulta ser exitosa, ya que el índice de no-monotonicidad desciende al aplicar cualquiera de los algoritmos creados, ya sea el de poda, el de toma de decisión a la hora de expandir los nodos o ambos al mismo tiempo.\\
+
+Hemos de tener en cuenta también que los conjuntos de datos que estamos tratando en los experimentos son muy pequeños, el entorno de flujos de datos real ofrece cantidades masivas de datos que permiten a los algoritmos un aprendizaje más fiel del problema, quizá este sea el motivo de que el índice de monotonicidad descienda tan poco entre el algoritmo sin las restricciones y los que sí las tienen. Al no tener tantos datos hemos debido de modificar los parámetros de Hoeffding Tree para poder crear árboles lo suficientemente grandes que nos sirvan para poder probar nuestros algoritmos.\\
+
+Por contra, podemos observar cómo en algunas ocasiones, un descenso de la monotonicidad viene acarreado de sanciones en la precisión del algoritmo, por lo que el índice MAE puede verse ligeramente mayor a la hora de aplicar estas restricciones monotónicas. Como dijimos capítulos atrás, el objetivo del presente documento era la disminución de la monotonicidad de los resultados predichos por nuestros algoritmos. Es probable que el algoritmo base, sin las restricciones de monotonía, alcance una precisión más alta pero que la interpretabilidad de los resultados predichos sea inferior a la de los resultados obtenidos por los algoritmos que sí aplican dichas restricciones.\\
+
+En definitiva, teniendo en cuenta que el factor que hace que los resultados no sean tan significativos es el volumen de los conjuntos de datos tratado, podemos concluir que los resultados han sido exitosos ya que, aunque hemos obtenido mayor error en la predicción, la interpretabilidad de los resultados es mayor debido a la bajada de la no-monotonicidad en las predicciones.
 
 \newpage
 

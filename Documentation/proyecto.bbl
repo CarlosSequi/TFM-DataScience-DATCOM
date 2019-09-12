@@ -10,6 +10,10 @@ Definición hoeffding tree.
 \newblock
   \url{http://weka.sourceforge.net/doc.dev/weka/classifiers/trees/HoeffdingTree.html}.
 
+\bibitem{ref31}
+Definición moa.
+\newblock \url{https://moa.cms.waikato.ac.nz/}.
+
 \bibitem{ref7}
 Fórmula cer.
 \newblock
@@ -24,65 +28,64 @@ Fórmula rss, gini y entropía.
 Imagen ciclo cvfdt.
 \newblock \url{https://studylib.net/doc/9462259/cvfdt-algorithm}.
 
-\bibitem{ref13}
-Pfahringer b., holmes g., kirkby r. (2007) new options for hoeffding trees. in:
-  Orgun m.a., thornton j. (eds) ai 2007: Advances in artificial intelligence.
-  ai 2007. lecture notes in computer science, vol 4830. springer, berlin,
-  heidelberg.
+\bibitem{ref16}
+A.~Ben-David.
+\newblock Learning and classification of monotonic ordinal concepts.
+\newblock {\em Computational Intelligence}, 5:45--49, 1989.
 
 \bibitem{ref14}
-Ben-David.
+A.~Ben-David.
 \newblock Monotonicity maintenance in information-theoretic machinie learning
   algorithms.
-\newblock {\em Issue 1}, Vol.19:29--43, 1995.
-
-\bibitem{ref16}
-A.~Ben-David, L.~Sterling, and Y.H. Pao.
-\newblock Learning and classification of monotonic ordinal concepts.
-\newblock {\em Computational Intelligence}, Vol.5, Issue 1, 1989.
+\newblock {\em Machine Learning. Issue 1}, Vol.19:29--43, 1995.
 
 \bibitem{ref15}
-José-Ramón Cano, Pedro~Antonio Gutiérrez, Bartosz Krawczyk, Michal Wozniak,
-  and Salvador García.
+J.R. Cano, P.A. Gutiérrez, B.~Krawczyk, M.~Wozniak, and S.~García.
 \newblock Monotonic classification: An overview on algorithms, performance
   measures and data sets.
 \newblock {\em Neurocomputing}, Vol.341:168--182, 2019.
 
 \bibitem{ref1}
-João Gama.
+J.~Gama.
 \newblock A survey on learning from data streams: current and future trends.
 \newblock {\em Progress in Artificial Intelligence}, Vol. 1:45–55, 2012.
 
 \bibitem{refff12}
-Shubhangi.~A. Jadhav and S.P. Kosbatwar.
+S.A. Jadhav and S.P. Kosbatwar.
 \newblock {\em Concept-adapting very Fast Decision Tree with Misclassification
   Error}, volume~5.
 \newblock IJARCET, 2016.
 
 \bibitem{ref17}
-Wojciech Kotlowski and Roman Slowinski.
+W.~Kotlowski and R.~Slowinski.
 \newblock On nonparametric ordinal classification with monotonicity
   constraints.
 \newblock {\em Progress in Artificial Intelligence}, Vol. 25:2576--2589, 2013.
 
 \bibitem{ref3}
-Rokarch Lior and Maimon Oded~Z Z.
+R.~Lior and O.Z. Maimon.
 \newblock {\em Data Mining With Decision Trees: Theory And Applications},
   volume~69 of {\em Series In Machine Perception And Artificial Intelligence}.
 \newblock World Scientific Publishing Co. Pte. Ldt, 2007.
 
 \bibitem{ref10}
-Chaitanya Manapragada, Geoffrey~I. Webb, and Mahsa Salehi.
+C.~Manapragada, G.~I. Webb, and M.~Salehi.
 \newblock Extremely fast decision tree.
 \newblock In {\em Proceedings of the 24th ACM SIGKDD International Conference
   on Knowledge Discovery \&\#38; Data Mining}, KDD '18, pages 1953--1962, New
   York, NY, USA, 2018. ACM.
 
+\bibitem{ref13}
+B.~Pfahringer, G.~Holmes, and R.~Kirkby.
+\newblock New options for hoeffding trees.
+\newblock {\em Lecture Notes in Computer Science. AI 2007:Advances in
+  Artificial Intelligence}, Vol. 4830:90--99, 2007.
+
 \bibitem{ref5}
-José Sá, Arthur Almeida, Brigida Pereira~da Rocha, Maria Mota, Jose~Ricardo
-  De~Souza, and Laure Dentel.
+J.~Sá, A.~Almeida, B.~Pereira~da Rocha, M.~Mota, J.S. De~Souza, and L.~Dentel.
 \newblock Lightning forecast using data mining techniques on hourly evolution
   of the convective available potential energy.
-\newblock pages 1--5, 03 2016.
+\newblock {\em Brazilian Congress on Computational Intelligence, Fortaleza},
+  pages 1--5, 03 2016.
 
 \end{thebibliography}

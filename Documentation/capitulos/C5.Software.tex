@@ -1,6 +1,45 @@
 \chapter[Capítulo 5. Software desarrollado y uso]{Software desarrollado y uso}
 
-aqui softwareee
+El software para la realización de los experimentos ha sido creado mediante el IDE de programación Netbeans con Java como lenguaje de programación.
+
+Los datos empleados son estáticos, por lo que ha sido necesario adaptar el código fuente a un entorno de flujo de datos para poder realizar los experimentos.
+
+Como ya se ha comentado, el algoritmo de partida de los experimentos es el Hoeffding Tree, el cual se basa en una adaptación de árboles de decisión para flujos de datos. Este código ha sido tomado de la API de MOA.
+
+MOA (Massive Online Analisys) \cite{ref31} es un entorno de trabajo open-source relacionado con el proyecto WEKA (Waikato Environment for Knowledge Analysis) para el tratamiento o minería de flujos de datos de evolución masiva conteniendo una gran colección de algoritmos de machine
+learning como son: clasificación, regresión, clustering, detección de outliers, detección de concept drift y sistemas de recomendación, así como herramientas de evaluación. 
+
+Los \textbf{algoritmos implementados} son los descritos en la propuesta:
+\begin{itemize}
+	\item Algoritmo 1: Árboles de clasificación monotónica sobre flujos de datos. Método de matriz de colisiones.
+	\item Algoritmo 2: Árboles de clasificación monotónica sobre flujos de datos. Método de evaluación a la hora de expandir el árbol.
+\end{itemize}
+
+Para la obtención de resultados y la posible comparativa de estos entre los distintos modelos, para ambos algoritmos ha sido necesario modificar algunos de los parámetros de Hoeffding Tree:
+\begin{itemize}
+	\item \textbf{Desempate(tie-breaking)}: este parámetro ayuda, tal como su propio nombre indica, a evitar estancamientos en las expansiones de los árboles acaecidos por la similitud entre la ganancia ofrecida por dos atributos a la hora de decidirse por alguno para expandir. Si son muy similares, la diferencia entre ellos sera pequeña, por tanto será imposible que supere la cota Hoeffding, lo cual es necesario para poder expandir. Gracias a su modificación, he podido obtener árboles más extensos, ya que sin tocarlo, el pequeño volumen de datos manejado no lo permitía.
+	\item \textbf{Grace period option}: con él indicamos la cantidad de instancias necesarias para la generación de nodos nuevos en el árbol.
+\end{itemize}
+
+Dichos han sido creados adaptando el código y resultados de Hoeffding Tree a las necesidades de cada uno y, los resultados de estos han sido sometidos a\textbf{ validación cruzada de 10 iteraciones} para obtener resultados más fieles al comportamiento de cada algoritmo. Para obtener los resultados de cada iteración de la validación cruzada he creado mis propias\textbf{ funciones de evaluación} de la medida de \textbf{accuracy (MAE en este caso)} y del \textbf{índice de no-monotonicidad (NMI).}
+
+\textbf{Para la obtención de} la medida \textbf{MAE}, como ya hemos visto, simplemente divido la suma de errores de cada iteración entre la cantidad de elementos en el conjuntos de datos. 
+
+\textbf{Para obtener el NMI} hago uso de los datos predichos por el algoritmo de la siguiente forma:
+\begin{enumerate}
+	\item Detecto las colisiones entre las distintas instancias (es decir, compruebo con cuantas instancias no aguarda monotonía respecto a atributos y clase cada una de las instancias del conjunto de datos).
+	\item Realizo la suma de dichas colisiones.
+	\item Dividio entre la cantidad máxima de colisiones que podrían ocurrir en dicho conjunto de datos.
+\end{enumerate}
+
+El \textbf{proceso de aprendizaje del modelo y validación del mismo} para cada iteración de la validación cruzada es el siguiente:
+\begin{enumerate}
+	\item Entrenamiento del modelo con el algoritmo escogido de los tres implementados haciendo uso de los datos de entrenamiento a modo de flujo de datos.
+	\item Generación de predicciones con los datos de test.
+	\item Validación de las predicciones en cuanto a accuracy (MAE) y monotonicidad (NMI).
+\end{enumerate}
+
+Estos resultados obtenidos son los que se expondrán más adelante en la comparativa de algoritmos.
 
 \newpage
 

@@ -28,6 +28,8 @@ import com.github.javacliparser.FlagOption;
 import com.github.javacliparser.FloatOption;
 import com.github.javacliparser.IntOption;
 import com.github.javacliparser.MultiChoiceOption;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
+import java.util.ArrayList;
  import java.util.Arrays;
  import java.util.Comparator;
  import java.util.HashSet;
@@ -37,6 +39,7 @@ import com.github.javacliparser.MultiChoiceOption;
  
  import moa.AbstractMOAObject;
  import moa.classifiers.AbstractClassifier;
+import moa.classifiers.Classifier;
  import moa.classifiers.bayes.NaiveBayes;
  import moa.classifiers.core.attributeclassobservers.AttributeClassObserver;
  import moa.classifiers.core.AttributeSplitSuggestion;
@@ -57,7 +60,9 @@ import moa.core.SizeOf;
  public class HT extends AbstractClassifier {
  
      private static final long serialVersionUID = 1L;
- 
+     public static boolean NMIsplitActivo = false;
+     public HT arbolCopia;
+     public ActiveLearningNode copiaA;public FoundNode copiaB;
      @Override
      public String getPurposeString() {
          return "Hoeffding Tree or VFDT.";
@@ -182,13 +187,13 @@ import moa.core.SizeOf;
  
          public void describeSubtree(HT ht, StringBuilder out,
                  int indent) {
-             StringUtils.appendIndented(out, indent, "Leaf ");
+             //StringUtils.appendIndented(out, indent, "Leaf ");
+             //System.out.print("\n------------\n"+ht.getClassNameString()+" = "+ht.getClassLabelString(this.observedClassDistribution.maxIndex())+" weights ");
              out.append(ht.getClassNameString());
              out.append(" = ");
              out.append(ht.getClassLabelString(this.observedClassDistribution.maxIndex()));
              out.append(" weights: ");
-             this.observedClassDistribution.getSingleLineDescription(out,
-                     ht.treeRoot.observedClassDistribution.numValues());
+             this.observedClassDistribution.getSingleLineDescription(out,ht.treeRoot.observedClassDistribution.numValues());
              StringUtils.appendNewline(out);
          }
  
@@ -413,13 +418,13 @@ import moa.core.SizeOf;
         
      }
  
-     protected Node treeRoot;
+     public Node treeRoot;
  
-     protected int decisionNodeCount;
+     public int decisionNodeCount;
  
-     protected int activeLeafNodeCount;
+     public int activeLeafNodeCount;
  
-     protected int inactiveLeafNodeCount;
+     public int inactiveLeafNodeCount;
  
      protected double inactiveLeafByteSizeEstimate;
  
@@ -454,6 +459,36 @@ import moa.core.SizeOf;
          this.growthAllowed = true;
          if (this.leafpredictionOption.getChosenIndex()>0) { 
              this.removePoorAttsOption = null;
+         }
+     }
+     
+     public void repeat(HT aux, com.yahoo.labs.samoa.instances.Instance inst)
+     {
+         if (aux.treeRoot == null) {
+             aux.treeRoot = newLearningNode();
+             aux.activeLeafNodeCount = 1;
+         }
+         FoundNode foundNode = aux.treeRoot.filterInstanceToLeaf(inst, null, -1);
+         Node leafNode = foundNode.node;
+         if (leafNode == null) {
+             leafNode = newLearningNode();
+             foundNode.parent.setChild(foundNode.parentBranch, leafNode);
+             aux.activeLeafNodeCount++;
+         }
+         if (leafNode instanceof LearningNode) {
+             LearningNode learningNode = (LearningNode) leafNode;
+             learningNode.learnFromInstance(inst, aux);
+             if (aux.growthAllowed
+                     && (learningNode instanceof ActiveLearningNode)) {
+                 ActiveLearningNode activeLearningNode = (ActiveLearningNode) learningNode;
+                 double weightSeen = activeLearningNode.getWeightSeen();
+                 if (weightSeen
+                         - activeLearningNode.getWeightSeenAtLastSplitEvaluation() >= aux.gracePeriodOption.getValue()) {
+                     
+                        
+                                          
+                 }
+             }
          }
      }
  
@@ -559,9 +594,145 @@ import moa.core.SizeOf;
          AttributeClassObserver numericClassObserver = (AttributeClassObserver) getPreparedClassOption(this.numericEstimatorOption);
          return (AttributeClassObserver) numericClassObserver.copy();
      }
+     
+     public ArrayList<Integer> hacerSplit(ActiveLearningNode node, SplitNode parent,int parentIndex,AttributeSplitSuggestion[] bestSplitSuggestions,Classifier copiaLearner)
+     {
+         ArrayList<Integer> resultado = new ArrayList<>();
+         
+         
+         System.out.print("\n-----------------------------------------------------\n");
+         FoundNode[] nods1 = this.findLearningNodes();
+         for(int i =0; i<nods1.length;i++)
+                     {
+                         //System.out.print(this.getClassLabelString(nods1[i].node.observedClassDistribution.maxIndex())+"\n");
+                         if(node.observedClassDistribution == nods1[i].node.observedClassDistribution)
+                         {
+                             
+                             resultado.add(i);
+                             System.out.print("\nEl nodo que se pretende expandir es el nodo hoja del arbol actual="+i+"\n");
+                         }
+                     }
+         HT aux = (HT) copiaLearner;
+         AttributeSplitSuggestion splitDecision = bestSplitSuggestions[bestSplitSuggestions.length - 1];
+                 if (splitDecision.splitTest == null) {
+                     // preprune - null wins
+                     deactivateLearningNode(node, parent, parentIndex);
+                 } else {
+                     SplitNode newSplit = newSplitNode(splitDecision.splitTest,
+                             node.getObservedClassDistribution());
+                     //System.out.print("\n-------\n");
+                     for (int i = 0; i < splitDecision.numSplits(); i++) {
+                         
+                         
+                         Node newChild = newLearningNode(splitDecision.resultingClassDistributionFromSplit(i));
+                         //System.out.print(newChild.observedClassDistribution);
+                         //System.out.print(newChild.observedClassDistribution.getValue(newChild.observedClassDistribution.maxIndex()));
+                         //System.out.print(splitDecision.resultingClassDistributionFromSplit(i).length);
+                         
+                         //System.out.print(this.getClassLabelString(newChild.observedClassDistribution.maxIndex())+"\n");
+                         String nuevoValorHijo = this.getClassLabelString(newChild.observedClassDistribution.maxIndex());
+                         //System.out.print(nuevoValorHijo.substring(7,8));
+                         resultado.add(Integer.parseInt(nuevoValorHijo.substring(7,8)));
+                         //System.out.print(Integer.parseInt(nuevoValorHijo.substring(7,8)));
+                         //System.out.print(newChild.observedClassDistribution.maxIndex());
+                         //parent.children.get(i).
+                         StringBuilder a = new StringBuilder();
+                         //newChild.describeSubtree(this, a, i);
+                         //System.out.print(newChild.getc);
+                                 //System.out.print(this.getClassLabelString(0));
+                         newSplit.setChild(i, newChild);
+                     }
+                    /* System.out.print("\n-------\n");
+                     FoundNode[] nods = this.findLearningNodes();
+                     for(int i =0; i<nods.length;i++)
+                     {
+                         System.out.print(this.getClassLabelString(nods[i].node.observedClassDistribution.maxIndex())+"\n");
+                     }*/
+                     /////////////////////////////////////
+                     /*HT aux = (HT) copiaLearner;
+                     aux.activeLeafNodeCount = this.activeLeafNodeCount;
+                     aux.decisionNodeCount = this.decisionNodeCount;*/
+                     
+                     ////////////////////////////////////
+                     /*aux.activeLeafNodeCount--;
+                     aux.decisionNodeCount++;
+                     aux.activeLeafNodeCount += splitDecision.numSplits();
+                     if (parent == null) {
+                         aux.treeRoot = newSplit;
+                     } else {
+                         parent.setChild(parentIndex, newSplit);
+                     }*/
+                }
+                 
+                 return resultado;
+     }
+     
+     public double calcularNMI(List<String> nodosHoja)
+     {
+         double NMI = 0;
+         
+         double denominador = nodosHoja.size()*(nodosHoja.size()-1);
+         double numerador = 0;
+         for(int i = 0; i<nodosHoja.size();i++)
+             numerador += Double.parseDouble(nodosHoja.get(i));
+         
+         NMI = numerador/denominador;
+         
+         return NMI;
+     }
+     
+     public double calcularMonotonicidad(ActiveLearningNode node, SplitNode parent, int parentIndex, AttributeSplitSuggestion[] bestSplitSuggestions,Classifier copiaLearner)
+     {
+         double monotonicidad = 0;
+         //copiaLearner.setModelContext(this.getModelContext());
+         // hago el split sobre el original
+         ArrayList<Integer> indicePadreValoresHijos = hacerSplit(node, parent, parentIndex, bestSplitSuggestions,this);
+         
+         // creamos los vectores de nodos hoja de cada uno
+         List<String> nodosHojaLearnerOriginal = new ArrayList<String>();
+         List<String> nodosHojaLearnerCopia = Prueba3.getBranchesClasses(copiaLearner);
+         
+         // obtengo el array de nodos hoja del learner inicial
+         FoundNode[] nods1 = this.findLearningNodes();
+         for(int i =0; i<nods1.length;i++)
+                     {
+                         String nuevoValorHoja = this.getClassLabelString(nods1[i].node.observedClassDistribution.maxIndex()).substring(7,8);
+                         //System.out.print(this.getClassLabelString(nods1[i].node.observedClassDistribution.maxIndex())+"\n");
+                         if(i == indicePadreValoresHijos.get(0))
+                         {
+                             nodosHojaLearnerOriginal.add(indicePadreValoresHijos.get(1).toString());
+                             nodosHojaLearnerOriginal.add(indicePadreValoresHijos.get(2).toString());
+                         }
+                         else
+                         {
+                             nodosHojaLearnerOriginal.add(nuevoValorHoja);
+                         }
+                     }
+         
+         //System.out.print("\n---------------------------------------------------\n");
+         System.out.print(nodosHojaLearnerOriginal);
+         System.out.print("\n----------\n");
+         System.out.print(nodosHojaLearnerCopia);
+         
+         // evaluo el NMI de ambos
+         double NMIcopia = calcularNMI(nodosHojaLearnerCopia);
+         double NMIoriginal = calcularNMI(nodosHojaLearnerOriginal);
+         
+         /*System.out.print("\nMonotonicidad original = " + NMIoriginal);
+         System.out.print("\nMonotonicidad copia = " + NMIcopia);*/
+         
+         monotonicidad = NMIoriginal-NMIcopia;
+         System.out.print("\nMONOTONICIDAD = "+monotonicidad);
+         
+         // hacemos el split en una copia del arbol original para calcular
+         // la monotonicidad que este tendria si realizaramos el split
+         //hacerSplit(node, parent,parentIndex,bestSplitSuggestions);
+         
+         return monotonicidad;
+     }
  
-     protected void attemptToSplit(ActiveLearningNode node, SplitNode parent,
-             int parentIndex) {
+     protected void attemptToSplit(ActiveLearningNode node, SplitNode parent,int parentIndex) {
+ 
          if (!node.observedClassDistributionIsPure()) {
              SplitCriterion splitCriterion = (SplitCriterion) getPreparedClassOption(this.splitCriterionOption);
              AttributeSplitSuggestion[] bestSplitSuggestions = node.getBestSplitSuggestions(splitCriterion, this);
@@ -574,7 +745,23 @@ import moa.core.SizeOf;
                          this.splitConfidenceOption.getValue(), node.getWeightSeen());
                  AttributeSplitSuggestion bestSuggestion = bestSplitSuggestions[bestSplitSuggestions.length - 1];
                  AttributeSplitSuggestion secondBestSuggestion = bestSplitSuggestions[bestSplitSuggestions.length - 2];
-                 if ((bestSuggestion.merit - secondBestSuggestion.merit > hoeffdingBound)
+                 
+                 
+                 
+                 
+                 double monotonicidad = 0;
+                 Classifier copiaArbol = this.copy();
+                 if(NMIsplitActivo)
+                 {
+                     monotonicidad = calcularMonotonicidad(node, parent, parentIndex, bestSplitSuggestions, copiaArbol);
+                 }
+                 
+                 
+                 
+                 
+                 
+                 
+                 if ((bestSuggestion.merit - secondBestSuggestion.merit > (hoeffdingBound+(0.45*monotonicidad)))
                          || (hoeffdingBound < this.tieThresholdOption.getValue())) {
                      shouldSplit = true; // AQUI CARLOS SEQUI DECIDIR SI RAMIFICAR
                  }
@@ -748,28 +935,28 @@ import moa.core.SizeOf;
          }*/
          if(parent != null)
          {
-             if(parent.children.size() == 2)
+            /*if(parent.children.size() == 2)
             {
                 System.out.print("BORRAMOS A LOS DOS HIJOS");
                 for(int i = 0; i<parent.children.size();i++)
                {
                    parent.children.remove(i);
-                   //decisionNodeCount--;
-                   //activeLeafNodeCount--;
+                   //this.decisionNodeCount--;
+                   //this.activeLeafNodeCount--;
                }
             }
             else
-            {
+            {*/
                  for(int i = 0; i<parent.children.size();i++)
                 {
-                    if(parent.children.get(i) == newLeaf)
+                    if(parent.children.get(i).observedClassDistribution.getValue(parent.children.get(i).observedClassDistribution.maxIndex()) == newLeaf.observedClassDistribution.getValue(newLeaf.observedClassDistribution.maxIndex()))
                     {
                         System.out.print("\nborramos hijo ------------------" + i);
                         parent.children.remove(i);
                     }
 
                 }
-            }
+            //} 
             
          }
          
