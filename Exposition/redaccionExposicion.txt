@@ -76,6 +76,26 @@
 		-calificacion de trabajadores de una empresa donde se evaluan ciertos aspectos asi como puntualidad, meritos alcanzados o comportamiento y sus etiquetas de clase son malo,bueno,excelente.
 
 
+-arboles de decision
+	-algoritmos de aprendizaje supervisado
+	-forma de arbol para representar y categorizar una serie de condiciones que ocurren de manera sucesiva
+	-divide el espacio de los predictores en regiones distintas no superpuestas. Estas regiones pretenden
+	 ser lo mas homogeneas posibles internamente y lo mas heterogeneas entre las distintas regiones
+	-terminologia
+		-nodo raiz
+		-nodo decision
+		-nodo hoja
+	-regresion vs clasificacion: el valor de la clase
+		-para regresion usamos la media de los valores que caen en las hojas, para clasificacion usamos la moda como valor de las hojas
 
-
+	-ventajas
+		-facilmente interpretables
+		-es no parametrico
+		-es util para conocer la relevancia de los predictores a la hora de expandir el arbol
+		-no les influyen outliers ni valores perdidos en gran medida -> requieren menor limpieza de datos
+	-inconvenientes
+		-producen sobreajuste: hay que usar metodos como la poda o el uso de restricciones (niveles maximos del arbol...)
+		-no resultan tan efectivos como SVM o ensambladores
+	-funcionamiento del arbol:
+		-
 
