@@ -1,0 +1,45 @@
+-flujos de datos:
+	-a que nos referimos cuando hablamos de flujos de datos en el contexto de la ciencia de datos?
+	 Como definición, a rasgos generales podemos decir que es una generación constante de datos por parte de una fuente de información los cuales, en este contexto,
+	 habrán de ser analizados de una forma distinta a la que usaríamos para analizar tablas de datos estáticos, es decir, ya generados atrás en el tiempo y
+	 almacenados en tablas persistentes de información.
+	 Mas precisamente, a diferencia del procesamiento de información para bases de datos estaticas, en el procesamiento para flujos de datos son deseadas las siguientes
+	 caracteristicas:
+	 	-aprendizaje online, es decir, que al recibir un nuevo dato ha de realizar el proceso de aprendizaje con ese nuevo dato
+	 	-un tiempo restringido de actuación frente a un dato nuevo/conjuto de datos.
+	 	-memoria limitada: solo se puede procesar una vez un dato, no se almacena
+	 	-hay que tener en cuenta el concept drift (cambio de concepto), ya que es complicado asumir en flujos de datos que estamos trabajando con una distribucion
+	 	 de los datos estacionaria, es decir, asumir que la función objetivo no varía con el tiempo en el análisis de datos que llegan de forma constante.
+
+
+	-metodos para lidiar con las características deseables de data streaming:
+		-muestreo: para tratar las restricciones asociadas al tiempo de procesamiento de dato y a la memoria limitada. Tipos:
+			-random sampling
+			-reservoir sampling
+			-load shedding
+		 Lo malo del muestreo es la dificultad de obtener una muestra representativa de la población, ya que podemos
+		 estar tomando anomalias o valores extremos.
+		-Algoritmos de flujos de datos adaptativos o métodos como el de ventana de tiempo: para lidiar con el concept drift
+			Con este último método(ventana de tiempo) podemos conseguir olvidar los datos antiguos entendiendo que los más ercientemente procesados son los que mejor
+	 	 	explican el modelo actual al que nos enfrentamos, pudiendo detectar de esta forma los cambios de concepto. Los hay de dos tipos:
+	 	 		-basada en secuencia: tamaño de ventana en función de la cantidad de observaciones del conjunto de datos
+	 	 		-basad en marca de tiempo: tamaño de ventana preestablecido a un valor de tiempo que mide la duración de la instancia en el modelo.
+	 	-existen problemas de que requieren técnicas de procesamiento no exactas para poder evaluar un flujo continuo de datos que requiere cantidad ilimitada de 
+	 	 memoria. Estos algortimos producen soluciones aproximadas a dichos problemas para poder mediar con dichas cantidades de datos. Las técnicas de 
+	 	 tratamiento de estos se basan en la compactación de información mediante alguno de los siguientes métodos:
+	 			-sinopsis - estructuras de compactación de información que resumen datos para ser consultados posteriormente
+	 			-bocetos - mapeo aleatorio de datos en cierta dimensión a una más reducida
+	 			-resumenes - usado para aproximaciones (e,d) para resolver consultas de rango, consultas puntuales y consultas innerproduct
+
+	 -ciclo de clasificacion para flujos de datos:
+	 	1-algoritmo toma siguiente ejemplo del flujo
+	 	2-se procesa el ejemplo actualizando sus estructuras de datos
+	 	3-el algoritmo esta listo para aceptar el siguiente ejemplo
+
+	 Ejemplos:
+	 	-Una compañía de juegos en línea recopila datos de streaming acerca de las interacciones de los jugadores con el juego y los envía a su plataforma de juegos. A continuación, analiza los datos en tiempo real, ofrece incentivos y experiencias dinámicas que involucran a los jugadores.
+	 	-Los sensores de los vehículos de transporte, el equipo industrial y la maquinaria agrícola envían datos a una aplicación de streaming. La aplicación supervisa el rendimiento, detecta cualquier posible defecto de forma anticipada y envía el pedido de un recambio automáticamente, lo que evita el tiempo de inactividad del equipo.
+
+	-que tipos de algoritmos para el tratamiento de estos flujos de datos existen?
+		-modelo insert-only: entran los datos de forma secuencial, se tratan tal cual vienen y ahi se queda la información sobre cada dato (ESTE ES EL MODELO QUE USO YO)
+		-modelo insert-delete: donde los datos que entran pueden ser eliminados en el tiempo o actualizados a nuevos valores

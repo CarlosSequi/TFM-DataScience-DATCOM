@@ -1,0 +1,64 @@
+
+-Introduccion:
+	-como ya sabemos la ciencia de datos tiene infinidad de aplicaciones en la vida real, desde (EJEMPLOS), hasta (EJEMPLOS). 
+	Todos estos ejemplos, debido a la naturaleza de los datos, la forma en la que nos llegan o a la forma de la que queramos extraer conocimiento de ellos...............
+	-conectar esto con flujos de datos
+
+	-¿De que se trata mi trabajo de fin de master? Basicamente es la mejora de un algoritmo existente 
+
+_____________________________________________________________________________________________________________
+
+-La propuesta se basa en 3 pilares fundamentales, los cuales vamos a tratar para entender la finalidad del proyecto:
+
+		-explicar flujos de datos
+			-tipos y ejemplos de cada tipo? (si no solo ejemplos genericos)
+			-aproximacion y aleatorizacion
+			-ventanas de tiempo: explicar aqui el parametro usado en hoeffding para podar cada X?   	tecnicas para data streaming?????????
+			-Muestreo              																		tecnicas para data streaming?????????
+			-sinopsis bocetos y resumentes             													tecnicas para data streaming?????????
+			-problemas
+			-requisitos y funcionamiento
+		-explicar clasificacion monotonica
+			-principio de dominancia
+			-funcion monotona
+			-que es la clasificacion monotonica
+			-cuando viene bien usar la clasificacion monotonica?
+			-dominancia estocastica
+			-clasificador monotono de bayes?
+			-metodos no parametricos: los dos tipos que hay
+			-ejemplos
+		-explicar arboles de decision y clasificacion
+			-explicar arboles de decision
+			-dibujar en pizarra y explicar terminologia?
+			-regresion vs clasificacion
+			-ventajas e inconvenientes de arboles de decision
+			-funcionamiento a nivel interno:
+				-como se va creando el arbol
+				-medidas de homogeneidad
+				-pruning?
+
+		-Arboles de decision:
+			-para flujos de datos:	
+				-Hoeffding tree:
+					-que es
+					-funcionamiento
+					-ventajas
+					-explicar algoritmos mejorados que tienen en cuenta el concept drift?????
+					-por que hemos cogido este y no otro que tenga en cuenta el cambio de concepto? por la literatura y porque es la base sobre la que trabajn los demas.
+			-monotonicos:
+				-problema: arbol monotonico no garantiza predicciones monotonicas
+				-como crear arbol de decision monotonico: (explicar los 2 algoritmos en los que nos hemos basado)
+					-explicar primero la medida de la no-monotonicidad para luego explicar los algoritmos en si.
+					-algoritmo 1 explicar por encima
+					-algoritmo 2 explicar por encima
+
+-Explicar la propuesta: explicar que queremos hacer en palabras generales y por que. Explicar con un ejemplo y referenciarlo (el que hay en la propuesta de la docu)
+	-¿como lo hemos hecho? explicar los dos algoritmos de forma extendida
+	-explicar conjuntos de datos y medidas usadas MAE y NMI
+	-Mostrar ejemplos de ambos algoritmos en comparacion con alguno de hoeffding tree basico?
+
+-analizar los resultados: poner ejemplo de caso en el que el accuracy sea mayor pero haya menor interpretabilidad del arbol (le pasa esto al del ejemplo de la propuesta?)
+-conclusiones trabajos futuros.
+
+
+	
