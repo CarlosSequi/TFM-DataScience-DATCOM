@@ -20,12 +20,13 @@
 		 Lo malo del muestreo es la dificultad de obtener una muestra representativa de la población, ya que podemos
 		 estar tomando anomalias o valores extremos.
 		-Algoritmos de flujos de datos adaptativos o métodos como el de ventana de tiempo: para lidiar con el concept drift
-			Con este último método(ventana de tiempo) podemos conseguir olvidar los datos antiguos entendiendo que los más ercientemente procesados son los que mejor
+			Con este último método(ventana de tiempo) podemos conseguir olvidar los datos antiguos entendiendo que los más recientemente procesados son los que mejor
 	 	 	explican el modelo actual al que nos enfrentamos, pudiendo detectar de esta forma los cambios de concepto. Los hay de dos tipos:
 	 	 		-basada en secuencia: tamaño de ventana en función de la cantidad de observaciones del conjunto de datos
-	 	 		-basad en marca de tiempo: tamaño de ventana preestablecido a un valor de tiempo que mide la duración de la instancia en el modelo.
+	 	 		-basada en marca de tiempo: tamaño de ventana preestablecido a un valor de tiempo que mide la duración de la instancia en el modelo.
 	 	-existen problemas de que requieren técnicas de procesamiento no exactas para poder evaluar un flujo continuo de datos que requiere cantidad ilimitada de 
-	 	 memoria. Estos algortimos producen soluciones aproximadas a dichos problemas para poder mediar con dichas cantidades de datos. Las técnicas de 
+	 	 memoria, como en data streaming tenemos la memoria limitada, estos algortimos producen soluciones aproximadas a dichos problemas para poder mediar con dichas cantidades de datos
+	 	 siempre y cuando dichas soluciones no superen cierto nivel de tolerancia al fallo. Las técnicas de 
 	 	 tratamiento de estos se basan en la compactación de información mediante alguno de los siguientes métodos:
 	 			-sinopsis - estructuras de compactación de información que resumen datos para ser consultados posteriormente
 	 			-bocetos - mapeo aleatorio de datos en cierta dimensión a una más reducida
@@ -41,5 +42,40 @@
 	 	-Los sensores de los vehículos de transporte, el equipo industrial y la maquinaria agrícola envían datos a una aplicación de streaming. La aplicación supervisa el rendimiento, detecta cualquier posible defecto de forma anticipada y envía el pedido de un recambio automáticamente, lo que evita el tiempo de inactividad del equipo.
 
 	-que tipos de algoritmos para el tratamiento de estos flujos de datos existen?
-		-modelo insert-only: entran los datos de forma secuencial, se tratan tal cual vienen y ahi se queda la información sobre cada dato (ESTE ES EL MODELO QUE USO YO)
-		-modelo insert-delete: donde los datos que entran pueden ser eliminados en el tiempo o actualizados a nuevos valores
+		-modelo insert-only: entran los datos de forma secuencial, se tratan tal cual vienen y ahi se queda la información sobre cada dato (ESTE ES EL MODELO QUE USO YO) (modelo incremental)
+		-modelo insert-delete: donde los datos que entran pueden ser eliminados en el tiempo o actualizados a nuevos valores (modelo incremental y decremental)
+
+-clasificacion ordinal y monotona:
+	-antes de proceder con la explicacion de clasificacion ordinal y monotonica en si, procedo a definir de forma rapida los conceptos de funcion monotona y principio de dominancia:
+		-principio de dominancia: todos los atributos de x son mayores o iguales que x' entonces x domina a x'. En la práctica no se aplica tan restrictivamente este concepto, si no que más bien
+		 se habla de dominancia estocástica, es decir en términos probabilisticos. En este caso decimos de forma generica que la probabilidad de que la etiqueta de x sea mayor que la etiqueta de x'
+		 es más alta que el caso contrario (que la de x' sea mayor). Además en muchas ocasiones este concepto de dominancia no se aplica sobre todos los atributos, si no que se aplica una
+		 seleccion de caracteristicas que nos interesan para evaluar dicha relacion de dominancia.
+		-funcion monotona: si x domina a x' entonces la etiqueta de x es mayor o igual que la de x'
+
+	-ahora si procedemos a la definicion del objetivo principal de este apartado:
+		-clasificación ordinal: relación de monotonía exclusivamente en las clases, es decir, que estas estan ordenadas
+		-clasificacion ordinal con restricciones monotonicas: cuando demás del orden existente en las clases, existe una relación monotónica entre la evaluación de los atributos de una instancia
+		 y las clases asignadas a estas. PONER EJEMPLO DE NUM habitaciones de una casa y su precio (o el dela polucion y menor precio)
+
+	-motivaciones del uso de las restricciones monotonicas:
+		-pocas clases: lo que facilita el aprendizaje
+		-queremos usar otra medida ademas del accuracy para dar validez a un modelo: la medida de monotonia para evaluar la interpretabilidad
+
+	-metodos de clasificacion no parametricos: (aceptan distribuciones no normales, actuan sobre variables discretas/nominales)
+		-aproximacion plug-in:
+			-proviene de la regresion isotonica
+			-usamos un vector de estimadores de densidad condicional: nos da la probabilidad de pertenecer a cada una de las clases para cada instancia.
+			-en el problema multiclase dividimos el espacio en varios problemas binarios y aplicamos la metodologia a cada uno de esos problemas.
+
+		-aproximacion directa:
+			-se basa en la minimizacion del riesgo empirico en funciones monotonas, es decir, minimizar la sumatoria de la funcion de perdida para cada instancia
+			-tenemos en cuenta las restricciones monotonicas
+	-EJEMPLOS:
+		-Comparaci´on de dos compan˜´ıas donde una domina sobre la otra en t´erminos de todos los indicadores ﬁnancieros. Debido a esto, la compan˜´ıa dominante ha de tener una evaluaci´on ﬁnal superior a la compan˜´ıa dominada
+		-calificacion de trabajadores de una empresa donde se evaluan ciertos aspectos asi como puntualidad, meritos alcanzados o comportamiento y sus etiquetas de clase son malo,bueno,excelente.
+
+
+
+
+
