@@ -81,12 +81,13 @@
 	-forma de arbol para representar y categorizar una serie de condiciones que ocurren de manera sucesiva
 	-divide el espacio de los predictores en regiones distintas no superpuestas. Estas regiones pretenden
 	 ser lo mas homogeneas posibles internamente y lo mas heterogeneas entre las distintas regiones
-	-terminologia
+	-terminologia básica
 		-nodo raiz
 		-nodo decision
 		-nodo hoja
 	-regresion vs clasificacion: el valor de la clase
-		-para regresion usamos la media de los valores que caen en las hojas, para clasificacion usamos la moda como valor de las hojas
+		-Cuando la variable dependiente es continua usamos arboles de regresion, cuando es categorica usamos arboles de clasificacion.
+		 por tanto para regresion usamos la media de los valores que caen en las hojas, para clasificacion usamos la moda como valor de las hojas
 
 	-ventajas
 		-facilmente interpretables
@@ -94,8 +95,70 @@
 		-es util para conocer la relevancia de los predictores a la hora de expandir el arbol
 		-no les influyen outliers ni valores perdidos en gran medida -> requieren menor limpieza de datos
 	-inconvenientes
-		-producen sobreajuste: hay que usar metodos como la poda o el uso de restricciones (niveles maximos del arbol...)
+		-producen sobreajuste: hay que usar metodos como la poda o el uso de restricciones como los criterios de parada(maximo numero de observaciones sobre nodo hoja, profundidad maxima del arbol...)
 		-no resultan tan efectivos como SVM o ensambladores
+		-sensibles a ruido en los datos: pueden modificar la estructura del arbol de forma significativa
 	-funcionamiento del arbol:
-		-
+		-comienza en nodo raiz y conforme bajamos por las ramas inferiores vamos teniendo cada vez subconjuntos mas y mas homogeneos con respecto a la variable de salida
+		-para hacer esot posible necesitamos que en cada nodo se tome la decisión de qué atributo escoger para hacer la siguiente expansión del árbol.
+		-esta decisión se basa en una medida de pureza que nos dice cual de todos los atributos es el que mejor separa los datos en cuanto a homogeneidad en cada uno de los subgrupos creados
+		-de esta forma se van creando ramas y mas ramas hasta que todos los datos queden totalmente separados o hasta que se cumpla cierta condicion de parada
+	-medidas de pureza: (En clasificacion que es lo que vamos a tratar)
+		-índice Gini o entropia: ambos nos enseñan la pureza de un nodo haciendo uso de la cantidad de elementos de la misma clase que pertenecen a ese nodo.
+		-ganancia de informacion: cuanto se reduce la entropia con cada uno de los atributos candidatos a ser escogidos para la expansion?
 
+	-PARA FLUJOS DE DATOS
+		-Hoeffding tree (VFDT) y otros algoritmos de flujos de datos:
+			-hacen uso de la idea de que una pequela muestra a menudo puede ser lo suficientemente representativa de la poblacion estudiada como para elegir un atributo de division optimo.
+			-esta idea esta respaldada por la cota hoeffding(hoeffding bound), que cuantifica el numero de observaciones necesarios para poder estimar el atributo de expansion.
+			-con hoeffding tree nos aseguramos de que los arboles creados son similares a los que se crean con un proceso batch, ya que la cota hoeffding nos garantiza que el modelo 
+			 obtenido no difiere de forma significante de aquel que se obtendria con todos los datos.
+			-en nuestro caso, la decisión de expandir el árbol se tomara en caso de que:
+				-La diferencia entre la ganancia ofrecida por el mejor atributo para la divisi´on y la ganancia ofrecida por el segundo mejor atributo, es mayor que el Hoeﬀding bound.
+				-El Hoeﬀding bound es menor que un par´ametro de desempate (tiebreaking) establecido para cuando se d´e el caso de que el Hoeﬀding bound es lo suﬁcientemente pequen˜o
+				 pero los dos mejores atributos escogidos para la divisi´on son demasiado similares como para que se cumpla la condici´on anterior, lo que podr´ıa llevar a un estancamiento
+				 del ´arbol. El par´ametro de desempate, segu´n la literatura, suele establecerse a un valor de 0.05, que se suele alcanzar con unas 3.400 instancias analizadas.
+
+		-problema de hoeffding tree: no tiene en cuenta el concept drift por lo que ante cambios de concepto en el flujo de datos puede ofrecer malos resultados.
+		 Para solventarlo existen varios algoritmos que si lo tienen en cuenta:
+			 	-CVFDT:hace uso de un algoritmo de ventana deslizante y comprueba si el arbol actual en cada momento es el que mejor
+				 describe el concepto actual de los datos de la ventana.
+				-HATT: explota los datos conforme llegan al arbol, es decir, se olvida de la cota hoeffding y a cada momento hace uso de los datos que tiene para la creacion de arbol,
+				 en caso de que se detecte en cierto momento que hay una mejor solucion para una de las ramas creadas, la sustituye de inmediato.
+				-option trees: el cual es una adaptacion de hoeffding tree donde ademas de nodo raiz, nodo hoja y nodo decision, tenemos el nodo opcion, el cual permite a las instancias
+				 que pasan por el, viajar a varios de sus nodos hijo, permitiendo que una instancia viaje por varios caminos distintos influyendo con su informacion en varios nodos hoja.
+	-PARA RESTRICCIONES MONOTONICAS
+		-estrapolamos la definicion ya comentada de restricciones monotonicas al problema de los árboles de decision para saber como es un arbol de decision monotonico
+		-en un arbol de decision, decimos que dos caminos distintos del arbol son monotonicos entre si en caso de que cumplan las mismas reglas de montonia descritas anteriormente
+		 Es decir, para ser mas concretos: si los valores de la rama A son inferiores que los de la rama B, el nodo hoja de la rama A ha de tener un valor de clase inferior al nodo
+		 hoja de la clase B.
+		-Problema: el hecho de que todos los ejemplos de un conjunto de datos guarden una relacion de monotonia entre si no garantiza que el árbol de decision que se
+		 genera a partir de ellos sea monotonico.
+		-aprovecho la siguiente pregunta para comenzar con la explicacion de la propuesta: ¿como creamos un arbol de decision monotonico?
+
+-propuesta:
+	-ahora que conocemos los 3 pilares fundamentales que forman la propuesta: arboles de decision, restricciones montonicas y flujos de datos, procedo a explicar la propuesta en si.
+	-Básicamente consiste en utilizar el algoritmo más usado en la literatura como base del experimento, es decir, el Hoeffding tree, que como ya sabemos es un árbol de decisión
+	 para flujos de datos, para introducirle el conocimiento necesario a cerca de restricciones monotonicas y de esta forma trate de mejor manera a los conjuntos de datos que poseen
+	 ese tipo de restricciones, con el fin de obtener mejores resultados en cuanto a interpretabilidad de los árboles que construye Hoeffding tree a partir de los flujos de datos.
+
+	-como introducimos esas restricciones montonicas en Hoeffding tree? de las explicadas en la documentacion, he implementado las dos siguientes:
+		-ambos algoritmos:
+			-simulacion de data streaming
+			-validacion con MAE y NMI:
+				-MAE(mean absolute error): lo calculamos como la suma de las diferencias de los errores con respecto a los valores originales de clase entre la cantidad total de instancias
+				-NMI(non-monotonicity index): contamos las colisiones existentes entre las instancias de todo el conjunto de datos y lo dividimos entre la maxima cantidad de instancias que 
+											  podria haber en caso de que todas las instancias colisionasen con todas las demas del conjunto de datos
+				-estas son las medidas que usaremos para la validación de los algoritmos y nos interesara principalente que baje el NMI.
+		-Algoritmo 1:
+			-comentar el numero prefijado de iteraciones que hace el algoritmo para aprender de instancias antes de la poda (grace period)
+			-comentar el numero prefijado de cantidad de poda de ramas (valor empirico)
+			-en este caso, al ser simulacion de data streaming cuando termina el entrenamiento pasamos directamente a validar el modelo con los datos de test
+		-Algoritmo 2:
+			-comentar el parametro de tolerancia a la bajada de monotonicidad al expandir
+			-en este caso, al ser simulacion de data streaming cuando termina el entrenamiento pasamos directamente a validar el modelo con los datos de test
+
+
+-RESULTADOS:
+	-mostrar tablas
+	-explicar que hemos hecho uso de grace period y los parametros de tolerancia para la no-monotonicidad

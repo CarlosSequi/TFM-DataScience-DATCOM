@@ -47,13 +47,13 @@ ________________________________________________________________________________
 					-por que hemos cogido este y no otro que tenga en cuenta el cambio de concepto? por la literatura y porque es la base sobre la que trabajn los demas.
 			-monotonicos:
 				-problema: arbol monotonico no garantiza predicciones monotonicas
-				-como crear arbol de decision monotonico: (explicar los 2 algoritmos en los que nos hemos basado)
-					-explicar primero la medida de la no-monotonicidad para luego explicar los algoritmos en si.
-					-algoritmo 1 explicar por encima
-					-algoritmo 2 explicar por encima
+				-como crear arbol de decision monotonico: propuesta
 
 -Explicar la propuesta: explicar que queremos hacer en palabras generales y por que. Explicar con un ejemplo y referenciarlo (el que hay en la propuesta de la docu)
-	-¿como lo hemos hecho? explicar los dos algoritmos de forma extendida
+	-¿como lo hemos hecho? 
+		-explicar primero la medida de la no-monotonicidad para luego explicar los algoritmos en si.
+					-algoritmo 1 explicar por encima
+					-algoritmo 2 explicar por encima
 	-explicar conjuntos de datos y medidas usadas MAE y NMI
 	-Mostrar ejemplos de ambos algoritmos en comparacion con alguno de hoeffding tree basico?
 
