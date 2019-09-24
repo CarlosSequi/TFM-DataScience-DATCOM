@@ -1,0 +1,19 @@
+-por que he buscado esas condiciones del experimento? esos parametros?
+-tomar ejemplos en Netbeans que muestren el por que baja tan poco la monotonicidad: ejemplo de arbol con y ejemplo de arbol sin?
+-por que no has hecho pruebas con data streaming real? tiempo? dificil hacer data streaming para mi?
+-por que no has hecho pruebas con conjuntos de datos mas grandes? la literatura recomienda esos data sets? la literatura del paper de salva usa esos data sets? no habia mas data sets monotonicos mas grandes (en la literatura o donde sea)?
+-preguntar a salva: es conveniente que diga que no he tenido tiempo para probar otros conjuntos, para probar data streaming?
+-no he puesto referencias en todo el contexto inicial sobre data streaming y arboles de decision. (Estan referenciados los libros abajo del todo, pero no las he añadido en esas partes)
+-por que no he usado un algoritmo que tenga en cuenta concept drift? porque mi objetivo no es aumentar el accuracy, si no la monotonicidad
+-de cada cosa que definamos (motonicos, flujos de datos y arboles) decir que tipo vamos a usar en el experimento
+-clasificacion isotonica existe? ver la adaptacion de la regresion a la clasif.
+-tener claro cuando se cumple una violacion de monotonia en un arbol
+-parametro grace period exactamente que es?
+-¿que metodo de clasificacion con restricciones monotonicas usas? plug-in o aproximacion directa? no estoy usando eso, uso hoeffding tree,
+ lo que yo estoy haciendo es introducir restricciones monotonicas a hoeffding tree, el metodo de clasificacion es hoeffding tree
+-para data streaming uso insert-only model, ya que los datos entran y en ningun momento eliminamos info de estos, simplemente podamos, que no tiene que ver con las
+ instancias, si no con el modelo en si
+-que metodos usas para cumplir los requisitos de data streaming? ventana de tiempo? muestreo? resumenes? se usan resumenes o almacenamiento de estadisticas necesarias en los nodos  
+ sobre los valores de los atributos, ademas, con la cota hoeffiding tampoco es necesario hacer resumenes muy extensos, ya que como sabemos minimiza
+ el numero de instancias necesarias para expandir el arbol, asi cumplimos con los requisitos de tiempo y memoria.
+ -¿que valor de desempate has utilizado en tu algoritmo?
