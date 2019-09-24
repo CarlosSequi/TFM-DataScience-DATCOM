@@ -3,121 +3,140 @@
 	 Como definición, a rasgos generales podemos decir que es una generación constante de datos por parte de una fuente de información los cuales, en este contexto,
 	 habrán de ser analizados de una forma distinta a la que usaríamos para analizar tablas de datos estáticos, es decir, ya generados atrás en el tiempo y
 	 almacenados en tablas persistentes de información.
-	 Mas precisamente, a diferencia del procesamiento de información para bases de datos estaticas, en el procesamiento para flujos de datos son deseadas las siguientes
+	 Como ejemplos de flujos de datos podemos tener:
+	 	-Una compañía de juegos en línea recopila datos de streaming acerca de las interacciones de los jugadores con el juego y los envía a su plataforma de juegos. Tras ello, analiza los datos en tiempo real, ofrece incentivos y experiencias dinámicas que involucran a los jugadores.
+	 	-Los sensores de los vehículos de transporte, el equipo industrial y la maquinaria agrícola que envían datos a una aplicación de streaming, la aplicación supervisa el rendimiento, detecta cualquier posible defecto de forma anticipada y envía el pedido de un recambio automáticamente, lo que evita el tiempo de inactividad del equipo.
+	 	-deteccion de fraude en tiempo real
+
+	 -que tipos de algoritmos para el tratamiento de estos flujos de datos existen?
+		-modelo solo de insercion: entran los datos de forma secuencial, se tratan tal cual vienen y se mantiene siempre la información sobre cada dato (ESTE ES EL MODELO QUE USO YO?) (modelo incremental)
+		-modelo de insercion y borrado: donde los datos que entran pueden ser eliminados en el tiempo o actualizados a nuevos valores (modelo incremental y decremental)
+
+	 A diferencia del procesamiento de información para bases de datos estaticas, en el procesamiento para flujos de datos son deseadas las siguientes
 	 caracteristicas:
-	 	-aprendizaje online, es decir, que al recibir un nuevo dato ha de realizar el proceso de aprendizaje con ese nuevo dato
-	 	-un tiempo restringido de actuación frente a un dato nuevo/conjuto de datos.
-	 	-memoria limitada: solo se puede procesar una vez un dato, no se almacena
-	 	-hay que tener en cuenta el concept drift (cambio de concepto), ya que es complicado asumir en flujos de datos que estamos trabajando con una distribucion
+	 	-aprendizaje online, es decir, que al recibir un nuevo dato, el modelo ha de realizar el proceso de aprendizaje con ese nuevo dato DE FORMA INCREMENTAL
+	 	-tien un tiempo restringido de actuación frente a un dato nuevo/subconjuto de datos.
+	 	-tiene memoria limitada, ya que solo se puede procesar una vez un dato, no se almacena
+	 	-y hay que tener en cuenta el concept drift (cambio de concepto), ya que es complicado asumir en flujos de datos que estamos trabajando con una distribucion
 	 	 de los datos estacionaria, es decir, asumir que la función objetivo no varía con el tiempo en el análisis de datos que llegan de forma constante.
 
 
-	-metodos para lidiar con las características deseables de data streaming:
+	 -ciclo de clasificacion para flujos de datos:
+	 	1-algoritmo toma siguiente ejemplo del flujo: solamente uno como ya hemos dicho antes
+	 	2-se procesa el ejemplo actualizando sus estructuras de datos: como veremos mas adelante seran estructuras basadas en resumenes debido a la poca memoria y se hará en un tiempo limitado
+	 	3-el algoritmo estará listo para crear un modelo, una predicción en cada momento y para aceptar el siguiente ejemplo
+
+
+	-metodos para poder cumplir con las características deseables de data streaming:
+		-métodos como el de ventana de tiempo: para tener en cuenta el concept drift con el cual
+		 podemos conseguir olvidar los datos antiguos entendiendo que los más recientemente procesados son los que mejor
+	 	 	explican el modelo actual al que nos enfrentamos, pudiendo detectar de esta forma los cambios de concepto. Dos tipos de metodos de ventana deslizante pueden ser:
+	 	 		-basada en secuencia: donde el tamaño de ventana va en función de la cantidad de observaciones del conjunto de datos
+	 	 		-basada en marca de tiempo: donde el tamaño de ventana queda preestablecido a un valor de tiempo que mide la duración de la instancia en el modelo.
 		-muestreo: para tratar las restricciones asociadas al tiempo de procesamiento de dato y a la memoria limitada. Tipos:
-			-random sampling
-			-reservoir sampling
-			-load shedding
+			-random sampling: muestreo aleatorio
+			-reservoir sampling: donde se almacena una muestra de tamaño K y, cada vez que entra un nuevo dato tiene probabilidad k/n de sustituir a un dato antiguo de la reserva
+			-load shedding: el cual elimina secuencias del flujo de datos cuando se producen cuellos de botella en las capacidades de procesamiento
 		 Lo malo del muestreo es la dificultad de obtener una muestra representativa de la población, ya que podemos
 		 estar tomando anomalias o valores extremos.
-		-Algoritmos de flujos de datos adaptativos o métodos como el de ventana de tiempo: para lidiar con el concept drift
-			Con este último método(ventana de tiempo) podemos conseguir olvidar los datos antiguos entendiendo que los más recientemente procesados son los que mejor
-	 	 	explican el modelo actual al que nos enfrentamos, pudiendo detectar de esta forma los cambios de concepto. Los hay de dos tipos:
-	 	 		-basada en secuencia: tamaño de ventana en función de la cantidad de observaciones del conjunto de datos
-	 	 		-basada en marca de tiempo: tamaño de ventana preestablecido a un valor de tiempo que mide la duración de la instancia en el modelo.
-	 	-existen problemas de que requieren técnicas de procesamiento no exactas para poder evaluar un flujo continuo de datos que requiere cantidad ilimitada de 
+		
+	 	-Por ultimo, existen problemas que requieren técnicas de procesamiento no exactas para poder evaluar un flujo continuo de datos que requiere cantidad ilimitada de 
 	 	 memoria, como en data streaming tenemos la memoria limitada, estos algortimos producen soluciones aproximadas a dichos problemas para poder mediar con dichas cantidades de datos
 	 	 siempre y cuando dichas soluciones no superen cierto nivel de tolerancia al fallo. Las técnicas de 
-	 	 tratamiento de estos se basan en la compactación de información mediante alguno de los siguientes métodos:
-	 			-sinopsis - estructuras de compactación de información que resumen datos para ser consultados posteriormente
-	 			-bocetos - mapeo aleatorio de datos en cierta dimensión a una más reducida
-	 			-resumenes - usado para aproximaciones (e,d) para resolver consultas de rango, consultas puntuales y consultas innerproduct
+	 	 tratamiento de estos se basan en la compactación de información en estructuras como sinopsis, bocetos y resumenes.
+	 
 
-	 -ciclo de clasificacion para flujos de datos:
-	 	1-algoritmo toma siguiente ejemplo del flujo
-	 	2-se procesa el ejemplo actualizando sus estructuras de datos
-	 	3-el algoritmo esta listo para aceptar el siguiente ejemplo
+	 ----------------------------------------------
 
-	 Ejemplos:
-	 	-Una compañía de juegos en línea recopila datos de streaming acerca de las interacciones de los jugadores con el juego y los envía a su plataforma de juegos. A continuación, analiza los datos en tiempo real, ofrece incentivos y experiencias dinámicas que involucran a los jugadores.
-	 	-Los sensores de los vehículos de transporte, el equipo industrial y la maquinaria agrícola envían datos a una aplicación de streaming. La aplicación supervisa el rendimiento, detecta cualquier posible defecto de forma anticipada y envía el pedido de un recambio automáticamente, lo que evita el tiempo de inactividad del equipo.
-
-	-que tipos de algoritmos para el tratamiento de estos flujos de datos existen?
-		-modelo insert-only: entran los datos de forma secuencial, se tratan tal cual vienen y ahi se queda la información sobre cada dato (ESTE ES EL MODELO QUE USO YO) (modelo incremental)
-		-modelo insert-delete: donde los datos que entran pueden ser eliminados en el tiempo o actualizados a nuevos valores (modelo incremental y decremental)
+	
 
 -clasificacion ordinal y monotona:
 	-antes de proceder con la explicacion de clasificacion ordinal y monotonica en si, procedo a definir de forma rapida los conceptos de funcion monotona y principio de dominancia:
-		-principio de dominancia: todos los atributos de x son mayores o iguales que x' entonces x domina a x'. En la práctica no se aplica tan restrictivamente este concepto, si no que más bien
-		 se habla de dominancia estocástica, es decir en términos probabilisticos. En este caso decimos de forma generica que la probabilidad de que la etiqueta de x sea mayor que la etiqueta de x'
-		 es más alta que el caso contrario (que la de x' sea mayor). Además en muchas ocasiones este concepto de dominancia no se aplica sobre todos los atributos, si no que se aplica una
-		 seleccion de caracteristicas que nos interesan para evaluar dicha relacion de dominancia.
-		-funcion monotona: si x domina a x' entonces la etiqueta de x es mayor o igual que la de x'
+		-principio de dominancia: en la figura tenemos representadas instancias (x y x') que tienen una serie de atributos, con sus correspondientes etiquetas de clase (y e y').
+		Como en el ejemplo de la imagen inferior,
+		 Si	el valor de todos los atributos de x es mayor o igual que el valor de los de x', la etiqueta de x será mayor o igual que la de x' y entonces diremos que x domina a x'.
+		 cuando esto e cumple, es a lo que llamamos el principio de dominancia
+		 			-En la práctica no se aplica tan restrictivamente este concepto, si no que más bien
+					 se habla de dominancia estocástica, es decir en términos probabilisticos. 
+					 En este caso decimos de forma generica que la probabilidad de que la etiqueta de x sea mayor que la etiqueta de x'
+		 			 es más alta que el caso contrario (que la de x' sea mayor). 
+		 			-Además en muchas ocasiones este concepto de dominancia no se aplica sobre todos los atributos, si no que se aplica una
+		 			 seleccion de caracteristicas que nos interesan para evaluar dicha relacion de dominancia.
+		-funcion monotona: basandonos en este principio, llegamos a la definicion de función monótona, donde se cumple que cualquier par de instancias escogido de la población
+						   cumple el principio de dominancia, ya sea de forma creciente o decreciente
+		 
 
 	-ahora si procedemos a la definicion del objetivo principal de este apartado:
-		-clasificación ordinal: relación de monotonía exclusivamente en las clases, es decir, que estas estan ordenadas
-		-clasificacion ordinal con restricciones monotonicas: cuando demás del orden existente en las clases, existe una relación monotónica entre la evaluación de los atributos de una instancia
-		 y las clases asignadas a estas. PONER EJEMPLO DE NUM habitaciones de una casa y su precio (o el dela polucion y menor precio)
+		-En la clasificación ordinal tenemos que los valores de clase aguardan entre si unna relación de monotonía, es decir, que estan ordenadas, pero los atributos de 
+		 las instancias no aguardan ninguna relacion con la clase. Un ejemplo de ello seria predecir si la experiencia de un cliente en un
+		 scape room ha sido mala, normal, buena en funcion de ciertas preguntas que no aguardan relación con su satisfacción durante la experiencia (tiempo en la sala, cantidad de participantes,
+		 sensacion termica...)
+		-Por otro lado, en la clasificacion ordinal con restricciones monotonicas, además del orden existente entre valores de clase, existe una relación monotónica entre la evaluación de los atributos de una instancia y la clase asignada a esta. Por ejemplo, a la hora de predecir el precio de una vivienda, su atributo "numero de habitaciones" sabemos que aguarda una relacion de 
+		monotonia con el valor de la clase que se le vaya a asignar, ya que a mayor numero de habitaciones, mayor sera su precio.
 
-	-motivaciones del uso de las restricciones monotonicas:
-		-pocas clases: lo que facilita el aprendizaje
-		-queremos usar otra medida ademas del accuracy para dar validez a un modelo: la medida de monotonia para evaluar la interpretabilidad
+	-el uso de restricciones monotonicas en una tarea de aprendizaje queda motivado por los siguientes hechos:
+		- CUANDO el Tamaño del espacio de la hipotésis reducido, es decir, cuando hay pocas clases: lo que facilita el aprendizaje
+		- CUANDO queremos usar otra medida ademas del accuracy para dar validez a un modelo: la medida de monotonia para evaluar la interpretabilidad, para ver si nos va a ser util el modelo que
+		  vamos a crear para la prediccion, lo cual esta unido con la siguiente motivacion
+		-que es: que NUESTROS MODELOS HAN DE AUMENTAR la interpretabilidad de los resultados, es decir, han de ofrecer resultados más realistas al tener en cuenta el 
+		 conocimiento que le ofrecemos sobre la relacion entre atributos y clase
 
-	-metodos de clasificacion no parametricos: (aceptan distribuciones no normales, actuan sobre variables discretas/nominales)
+	-metodos de clasificacion no parametricos: (los cuales aceptan distribuciones no normales y actuan sobre variables discretas/nominales)
 		-aproximacion plug-in:
-			-proviene de la regresion isotonica
-			-usamos un vector de estimadores de densidad condicional: nos da la probabilidad de pertenecer a cada una de las clases para cada instancia.
-			-en el problema multiclase dividimos el espacio en varios problemas binarios y aplicamos la metodologia a cada uno de esos problemas.
+			-proviene de la regresion isotonica: es decir que la predicción ha de ser creciente o decreciente, pero nunca una mezcla
+			-se utiliza un vector de estimadores de densidad condicional: nos da la probabilidad de pertenecer a cada una de las clases para cada instancia.
 
 		-aproximacion directa:
 			-se basa en la minimizacion del riesgo empirico en funciones monotonas, es decir, minimizar la sumatoria de la funcion de perdida para cada instancia
-			-tenemos en cuenta las restricciones monotonicas
+			 teniendo en cuenta las restricciones monotonicas
 	-EJEMPLOS:
 		-Comparaci´on de dos compan˜´ıas donde una domina sobre la otra en t´erminos de todos los indicadores ﬁnancieros. Debido a esto, la compan˜´ıa dominante ha de tener una evaluaci´on ﬁnal superior a la compan˜´ıa dominada
-		-calificacion de trabajadores de una empresa donde se evaluan ciertos aspectos asi como puntualidad, meritos alcanzados o comportamiento y sus etiquetas de clase son malo,bueno,excelente.
+		-calificacion de trabajadores de una empresa donde se evaluan ciertos aspectos asi como la puntualidad, meritos alcanzados o comportamiento y sus etiquetas de clase son malo,bueno,excelente.
 
 
 -arboles de decision
-	-algoritmos de aprendizaje supervisado
-	-forma de arbol para representar y categorizar una serie de condiciones que ocurren de manera sucesiva
+	-son algoritmos de aprendizaje supervisado
+	-cuya representacion grafica es forma de arbol invertido formado por nodos(raiz, decision y hoja) y ramas que los conectan, y nos sirven para
+	 para representar y categorizar una serie de condiciones que ocurren de manera sucesiva 
 	-divide el espacio de los predictores en regiones distintas no superpuestas. Estas regiones pretenden
 	 ser lo mas homogeneas posibles internamente y lo mas heterogeneas entre las distintas regiones
-	-terminologia básica
-		-nodo raiz
-		-nodo decision
-		-nodo hoja
-	-regresion vs clasificacion: el valor de la clase
+	-Sirven para regresion y para clasificacion: solo cambia el tipo del valor de la variable dependiente
 		-Cuando la variable dependiente es continua usamos arboles de regresion, cuando es categorica usamos arboles de clasificacion.
 		 por tanto para regresion usamos la media de los valores que caen en las hojas, para clasificacion usamos la moda como valor de las hojas
+		-en nuestra propuesta utilizaremos clasificacion
 
 	-ventajas
-		-facilmente interpretables
+		-son facilmente interpretables
 		-es no parametrico
-		-es util para conocer la relevancia de los predictores a la hora de expandir el arbol
+		-es util para conocer la relevancia de los predictores(los atributos) ya que a la hora de expandir el arbol se cogen de forma secuencial los mas relevantes
 		-no les influyen outliers ni valores perdidos en gran medida -> requieren menor limpieza de datos
 	-inconvenientes
 		-producen sobreajuste: hay que usar metodos como la poda o el uso de restricciones como los criterios de parada(maximo numero de observaciones sobre nodo hoja, profundidad maxima del arbol...)
-		-no resultan tan efectivos como SVM o ensambladores
-		-sensibles a ruido en los datos: pueden modificar la estructura del arbol de forma significativa
+		-no resultan tan efectivos como SVM o ensambladores en cuanto a precisión
+		-sensibles a ruido en los datos, lo cual puede modificar la estructura del arbol de forma significativa
 	-funcionamiento del arbol:
-		-comienza en nodo raiz y conforme bajamos por las ramas inferiores vamos teniendo cada vez subconjuntos mas y mas homogeneos con respecto a la variable de salida
-		-para hacer esot posible necesitamos que en cada nodo se tome la decisión de qué atributo escoger para hacer la siguiente expansión del árbol.
+		-comienza en nodo raiz y conforme se expande el arbol vamos teniendo cada vez subconjuntos mas y mas homogeneos con respecto a la variable de salida.
+		 En este arbol, la primera rama por ejemplo, contiene a la gente menor de 30 años con buena alimentacion, por tanto se le ha asignado la etiqueta de "en forma"
+		-para hacer esto posible necesitamos que en cada nodo se tome la decisión de qué atributo escoger para hacer la siguiente expansión del árbol cuando sea necesario, por ello los
+		 nodos internos se llaman nodos decision.
 		-esta decisión se basa en una medida de pureza que nos dice cual de todos los atributos es el que mejor separa los datos en cuanto a homogeneidad en cada uno de los subgrupos creados
-		-de esta forma se van creando ramas y mas ramas hasta que todos los datos queden totalmente separados o hasta que se cumpla cierta condicion de parada
-	-medidas de pureza: (En clasificacion que es lo que vamos a tratar)
-		-índice Gini o entropia: ambos nos enseñan la pureza de un nodo haciendo uso de la cantidad de elementos de la misma clase que pertenecen a ese nodo.
-		-ganancia de informacion: cuanto se reduce la entropia con cada uno de los atributos candidatos a ser escogidos para la expansion?
+			-medidas de pureza: (En clasificacion que es lo que vamos a tratar)
+				-índice Gini o entropia: ambos nos enseñan la pureza de un nodo haciendo uso de la cantidad de elementos de la misma clase que pertenecen a ese nodo.
+				-ganancia de informacion: cuanto se reduce la entropia con cada uno de los atributos candidatos a ser escogidos para la expansion?
+		-Finalmente de esta forma se van creando ramas y mas ramas hasta que todos los datos queden totalmente separados o hasta que se cumpla cierta condicion de parada
+	
 
 	-PARA FLUJOS DE DATOS
-		-Hoeffding tree (VFDT) y otros algoritmos de flujos de datos:
-			-hacen uso de la idea de que una pequela muestra a menudo puede ser lo suficientemente representativa de la poblacion estudiada como para elegir un atributo de division optimo.
-			-esta idea esta respaldada por la cota hoeffding(hoeffding bound), que cuantifica el numero de observaciones necesarios para poder estimar el atributo de expansion.
+		-tenemos el Hoeffding tree (VFDT):
+			-el cual hace uso de la idea de que una pequeña muestra a menudo puede ser lo suficientemente representativa de la poblacion estudiada como para elegir un atributo de division optimo.
 			-con hoeffding tree nos aseguramos de que los arboles creados son similares a los que se crean con un proceso batch, ya que la cota hoeffding nos garantiza que el modelo 
-			 obtenido no difiere de forma significante de aquel que se obtendria con todos los datos.
+			 obtenido no difiere de forma significativa de aquel que se obtendria con todos los datos.
+			-esta idea esta respaldada por la cota hoeffding(hoeffding bound), que cuantifica el numero de observaciones necesarias para poder estimar el atributo de expansion.
 			-en nuestro caso, la decisión de expandir el árbol se tomara en caso de que:
-				-La diferencia entre la ganancia ofrecida por el mejor atributo para la divisi´on y la ganancia ofrecida por el segundo mejor atributo, es mayor que el Hoeﬀding bound.
-				-El Hoeﬀding bound es menor que un par´ametro de desempate (tiebreaking) establecido para cuando se d´e el caso de que el Hoeﬀding bound es lo suﬁcientemente pequen˜o
+				-La diferencia entre la ganancia ofrecida por el mejor atributo para la divisi´on y la ganancia ofrecida por el segundo mejor atributo, sea mayor que la cota.
+				-que la cota sea mayor que un par´ametro de desempate (tiebreaking) establecido para cuando se d´e el caso de que la cota es lo suﬁcientemente grande
 				 pero los dos mejores atributos escogidos para la divisi´on son demasiado similares como para que se cumpla la condici´on anterior, lo que podr´ıa llevar a un estancamiento
-				 del ´arbol. El par´ametro de desempate, segu´n la literatura, suele establecerse a un valor de 0.05, que se suele alcanzar con unas 3.400 instancias analizadas.
+				 del ´arbol. (El par´ametro de desempate, segu´n la literatura, suele establecerse a un valor de 0.05, que se suele alcanzar con unas 3.400 instancias analizadas.)
 
 		-problema de hoeffding tree: no tiene en cuenta el concept drift por lo que ante cambios de concepto en el flujo de datos puede ofrecer malos resultados.
 		 Para solventarlo existen varios algoritmos que si lo tienen en cuenta:
@@ -126,12 +145,14 @@
 				-HATT: explota los datos conforme llegan al arbol, es decir, se olvida de la cota hoeffding y a cada momento hace uso de los datos que tiene para la creacion de arbol,
 				 en caso de que se detecte en cierto momento que hay una mejor solucion para una de las ramas creadas, la sustituye de inmediato.
 				-option trees: el cual es una adaptacion de hoeffding tree donde ademas de nodo raiz, nodo hoja y nodo decision, tenemos el nodo opcion, el cual permite a las instancias
-				 que pasan por el, viajar a varios de sus nodos hijo, permitiendo que una instancia viaje por varios caminos distintos influyendo con su informacion en varios nodos hoja.
-	-PARA RESTRICCIONES MONOTONICAS
-		-estrapolamos la definicion ya comentada de restricciones monotonicas al problema de los árboles de decision para saber como es un arbol de decision monotonico
+				 que pasan por el, viajar a varios de sus nodos hijo, permitiendo que una instancia influya con su informacion sobre varios nodos hoja.
+	-(EN CUANTO A ARBOLES DE CLASIFICACION CON RESTRICCIONES MONOTONICAS)
+		-estrapolamos la definicion ya comentada de restricciones monotonicas al problema de los árboles de decision para saber como es un arbol de decision monotonico con el
+		 siguiente ejemplo extraido de uno de los artículos de Ben David.
 		-en un arbol de decision, decimos que dos caminos distintos del arbol son monotonicos entre si en caso de que cumplan las mismas reglas de montonia descritas anteriormente
-		 Es decir, para ser mas concretos: si los valores de la rama A son inferiores que los de la rama B, el nodo hoja de la rama A ha de tener un valor de clase inferior al nodo
-		 hoja de la clase B.
+		 Es decir, para ser mas concretos: En este caso, el credito ofrecido a un cliente con bajos ingresos ha de ser menor que el ofrecido a uno con altos ingresos. A su vez, el credito
+		 ofrecido a un cliente con altos activos ha de ser superior al ofrecido a uno con bajos activos. Por contra, en el otro ejemplo podemos ver como esta restriccion
+		 de monotonia no se cumple, ya que se le ofrece un credito mayor a un cliente con unos activos inferiores
 		-Problema: el hecho de que todos los ejemplos de un conjunto de datos guarden una relacion de monotonia entre si no garantiza que el árbol de decision que se
 		 genera a partir de ellos sea monotonico.
 		-aprovecho la siguiente pregunta para comenzar con la explicacion de la propuesta: ¿como creamos un arbol de decision monotonico?
@@ -139,26 +160,41 @@
 -propuesta:
 	-ahora que conocemos los 3 pilares fundamentales que forman la propuesta: arboles de decision, restricciones montonicas y flujos de datos, procedo a explicar la propuesta en si.
 	-Básicamente consiste en utilizar el algoritmo más usado en la literatura como base del experimento, es decir, el Hoeffding tree, que como ya sabemos es un árbol de decisión
-	 para flujos de datos, para introducirle el conocimiento necesario a cerca de restricciones monotonicas y de esta forma trate de mejor manera a los conjuntos de datos que poseen
-	 ese tipo de restricciones, con el fin de obtener mejores resultados en cuanto a interpretabilidad de los árboles que construye Hoeffding tree a partir de los flujos de datos.
+	 para flujos de datos, para introducirle el conocimiento necesario a cerca de restricciones monotonicas y que de esta forma trate de mejor manera a los conjuntos de datos que poseen
+	 ese tipo de restricciones, con el fin de obtener mejores resultados en cuanto a interpretabilidad de los árboles que construye a partir de los flujos de datos.
 
-	-como introducimos esas restricciones montonicas en Hoeffding tree? de las explicadas en la documentacion, he implementado las dos siguientes:
-		-ambos algoritmos:
-			-simulacion de data streaming
-			-validacion con MAE y NMI:
-				-MAE(mean absolute error): lo calculamos como la suma de las diferencias de los errores con respecto a los valores originales de clase entre la cantidad total de instancias
-				-NMI(non-monotonicity index): contamos las colisiones existentes entre las instancias de todo el conjunto de datos y lo dividimos entre la maxima cantidad de instancias que 
-											  podria haber en caso de que todas las instancias colisionasen con todas las demas del conjunto de datos
-				-estas son las medidas que usaremos para la validación de los algoritmos y nos interesara principalente que baje el NMI.
+	-como introducimos esas restricciones montonicas en Hoeffding tree?:
 		-Algoritmo 1:
-			-comentar el numero prefijado de iteraciones que hace el algoritmo para aprender de instancias antes de la poda (grace period)
-			-comentar el numero prefijado de cantidad de poda de ramas (valor empirico)
-			-en este caso, al ser simulacion de data streaming cuando termina el entrenamiento pasamos directamente a validar el modelo con los datos de test
+			-donde entrenamos el modelo con datos uno a uno conforme llegan del flujo hasta que se cumple cierto numero de iteraciones para realizar la poda, en dicho
+			 momento se crea una matriz de colisiones entre ramas, es decir, se observa cuantas veces infringe cada rama las restricciones de monotonia con respecto
+			 a otras ramas y, tras esto, se podan las que mayor violaciones de estas restricciones cumplan.
+							(-comentar el numero prefijado de iteraciones que hace el algoritmo para aprender de instancias antes de la poda (grace period)
+														-comentar el numero prefijado de cantidad de poda de ramas (valor empirico)
+														-en este caso, al ser simulacion de data streaming cuando termina el entrenamiento pasamos directamente a validar el modelo con los datos de test)
 		-Algoritmo 2:
-			-comentar el parametro de tolerancia a la bajada de monotonicidad al expandir
-			-en este caso, al ser simulacion de data streaming cuando termina el entrenamiento pasamos directamente a validar el modelo con los datos de test
+			-el cual, a la hora de decidir si expandir el arbol o no en el nodo decision donde ha caido el ultimo ejemplo, tiene en cuenta que el indice de no monotonicidad no sea peor
+			 al expandir el arbol que el actual, es decir, si el algoritmo detecta que al expandir el arbol se va a violar las restricciones de monotonicidad, entonces no se
+			 producira dicha expansion. Este metodo esta controlado por un parametro de tolerancia para evitar perder precision a la hora de intentar formar un arbol monotonico.
+							(-comentar el parametro de tolerancia a la bajada de monotonicidad al expandir
+														-en este caso, al ser simulacion de data streaming cuando termina el entrenamiento pasamos directamente a validar el modelo con los datos de test)
+	-aspectos a tener en cuenta:
+		-Hoeffding tree: MOA: entorno de trabajo para el tratamiento de flujos de datos de evolución masiva
+		-los 4 conjuntos de datos usados, son data sets tomados de la literatura, con pocas instancias y estaticos, por lo que el entorno de flujo de datos ha debido ser simulado para poder realizar. Los data sets cumplen casi al completo con restricciones monotonicas
 
+		-validacion con MAE y NMI para la comparativa de algoritmos:
+			-MAE(mean absolute error): es una medida de clasificacion multiclase. lo calculamos como la suma de las diferencias de los errores con respecto a los valores originales de clase entre la cantidad total de instancias. Nos interesa para tener en cuenta las distancias de los errores 
+			-NMI(non-monotonicity index): contamos las colisiones existentes entre las instancias de todo el conjunto de datos y lo dividimos entre la maxima cantidad de instancias que 
+										  podria haber en caso de que todas las instancias colisionasen con todas las demas del conjunto de datos
+			-estas son las medidas que usaremos para la validación de los algoritmos y nos interesara principalente que baje el NMI.
 
 -RESULTADOS:
-	-mostrar tablas
-	-explicar que hemos hecho uso de grace period y los parametros de tolerancia para la no-monotonicidad
+	-bajada del NMI exitosa en todos los data sets y algoritmos, aunque pequeña
+	-data sets pequeños, no son de flujos de datos que traen masificacion de datos, no dan resultados significativos, de hecho hemos tenido que modificar los 
+	 parametros ya mencionados para poder tener arboles lo suficientemente grandes que nos ofrezcan resultados algo representativos
+	-MAE sube porque el algoritmo original seguramente esta ofreciendo resultados mejores sobre resultados menos interpretables que los de los otros algoritmos
+	-objetivo: conseguir mayor interpretabilidad, un resultado logico acorde a los conjuntos de datos que estamos tratando.
+
+-como trabajo futuro, seria necesario hacer experimentos con flujos
+ de datos reales, lo cual, seguramente, nos aportara resultados
+ más significativos en cuanto a la ganancia de monotonicidad y, 
+ por tanto, interpretabilidad de los resultados.
